@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import HeroSlideshow from '@/components/HeroSlideshow'
-import StatBar from '@/components/StatBar'
 import ProgramsSection from '@/components/ProgramsSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import AnimateOnView from '@/components/AnimateOnView'
@@ -45,10 +44,7 @@ export default function HomePage() {
       {/* ── 1. Hero ── */}
       <HeroSlideshow />
 
-      {/* ── 2. Stats bar ── */}
-      <StatBar />
-
-      {/* ── 3. Mission Statement ── */}
+      {/* ── 2. Mission Statement ── */}
       <section className="py-xl bg-surface">
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
           <AnimateOnView className="max-w-5xl mx-auto">
