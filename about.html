@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>About Us | Brainy Kings &amp; Queens Montessori</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface": "#fbfaee",
+                    "secondary-fixed": "#ffe088",
+                    "on-surface-variant": "#424655",
+                    "primary-container": "#1e6bff",
+                    "on-tertiary-container": "#fffeff",
+                    "outline-variant": "#c2c6d8",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "on-error-container": "#93000a",
+                    "secondary": "#735c00",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dbdbcf",
+                    "on-secondary-fixed": "#241a00",
+                    "on-tertiary-fixed": "#410007",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b3c5ff",
+                    "surface-bright": "#fbfaee",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-primary-container": "#fffeff",
+                    "outline": "#737687",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary": "#b9132b",
+                    "on-secondary-container": "#745c00",
+                    "tertiary-fixed": "#ffdad8",
+                    "on-background": "#1b1c15",
+                    "surface-container-low": "#f5f4e8",
+                    "secondary-container": "#fed65b",
+                    "on-surface": "#1b1c15",
+                    "background": "#fbfaee",
+                    "primary-fixed-dim": "#b3c5ff",
+                    "inverse-on-surface": "#f2f1e5",
+                    "surface-tint": "#0054d7",
+                    "surface-container-highest": "#e4e3d7",
+                    "surface-container-high": "#e9e9dd",
+                    "on-tertiary-fixed-variant": "#92001c",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#303129",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003fa5",
+                    "surface-variant": "#e4e3d7",
+                    "secondary-fixed-dim": "#e9c349",
+                    "surface-container": "#efeee3",
+                    "primary": "#0053d4",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#dd3240",
+                    "on-primary-fixed": "#001849"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+                "spacing": {
+                    "xs": "4px",
+                    "xl": "80px",
+                    "lg": "48px",
+                    "sm": "12px",
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "margin-desktop": "64px",
+                    "md": "24px",
+                    "gutter": "24px"
+                },
+                "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+                },
+                "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .royal-gradient {
+        background: linear-gradient(135deg, #0053d4 0%, #1e6bff 100%);
+    }
+    .glass-card {
+        background: rgba(251, 250, 238, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(194, 198, 216, 0.3);
+    }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 shadow-sm bg-surface transition-all duration-300" id="main-nav">
+    <div class="flex items-center gap-sm">
+        <span class="material-symbols-outlined text-primary text-headline-md" style="font-variation-settings: 'FILL' 1;">school</span>
+        <span class="text-label-lg font-headline-md font-bold text-primary">Brainy Kings &amp; Queens</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-lg">
+        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="index.html">Home</a>
+        <a class="text-primary font-bold border-b-2 border-primary transition-colors px-3 py-1 text-label-lg font-label-lg" href="about.html">About</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="admissions.html">Admissions</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="curriculum.html">Curriculum</a>
+    </nav>
+    <div class="flex items-center gap-md">
+        <a href="admissions.html" class="bg-primary text-on-primary px-6 py-2 rounded-full text-label-lg font-label-lg shadow-sm hover:opacity-80 active:scale-95 duration-150">Apply Now</a>
+        <button class="md:hidden p-2 text-primary" id="mobile-menu-btn">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="md:hidden fixed top-[72px] left-0 w-full z-40 bg-surface shadow-lg hidden" id="mobile-menu">
+    <nav class="flex flex-col px-margin-mobile py-md gap-sm border-t border-outline-variant">
+        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="index.html">Home</a>
+        <a class="text-primary font-bold py-3 px-4 rounded-lg bg-surface-container text-label-lg" href="about.html">About</a>
+        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="admissions.html">Admissions</a>
+        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="curriculum.html">Curriculum</a>
+    </nav>
+</div>
+
+<main class="pt-[80px]">
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] flex items-center overflow-hidden bg-primary-container">
+        <div class="absolute inset-0 z-0">
+            <img alt="Nurturing Montessori Environment" class="w-full h-full object-cover opacity-30 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBckEHZ0xJAbESePq2KtN7ndABhSD6ISjQU5ESn8O4K9hHBxSTFHCzRxfs9fW-43msey_kn7okrM46QF2XQyV_ktQeMDKu60TP5nB-NF9CLJMXmfV0TpjB9on56oN2DiCHp0RtZyfgTaGsl94S0vJxiBL6tDMmyKXL0jl-ue6wcOZiVKKe6rWbN7FzENUaJkMPMudIzij5ggj8znmcOFu_DcI7uvvu632t4UZszIm2x5e8x7ydwCxkXufe3JIiY4DL6ADj4i-Cp9uM">
+        </div>
+        <div class="container mx-auto px-margin-desktop relative z-10">
+            <div class="max-w-2xl">
+                <span class="inline-block bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-label-lg font-bold mb-md uppercase tracking-wider">Our Heritage</span>
+                <h1 class="text-headline-xl font-headline-xl text-on-primary-container mb-md leading-tight">
+                    Nurturing Tomorrow's <br><span class="text-secondary-fixed">Kings and Queens</span>
+                </h1>
+                <p class="text-body-lg text-on-primary-container/90 max-w-xl">
+                    Founded on the principles of dignity, intellectual curiosity, and community, Brainy Kings &amp; Queens Montessori provides a royal start to your child's journey of discovery.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two-Column Heritage & Philosophy -->
+    <section class="py-xl bg-surface">
+        <div class="container mx-auto px-margin-desktop">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+                <!-- Left: Heritage Image Cluster -->
+                <div class="relative grid grid-cols-2 gap-md">
+                    <div class="pt-lg">
+                        <img class="rounded-xl shadow-lg w-full aspect-[4/5] object-cover" alt="Child with Montessori materials" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgUfrz4Q-G3NkNIE9Qo4yp329zb0rFzmzSUYnfTP8u4k9HbTlbSxx2Y13nKHd5pkd6aiTy7VyX-sBvj5LKMEkah4S_LT4mFwiRC9To_mt5-cnRMhX0E8WS-ZpZI2l2TxOJGj43Zzuz6dzdKTIAuRtW47jYNTmRytOYiW8s2sDJiXoYeljElsBtfFHaII7kHgGoBCa-0N_MTGEzl_p9l6I-o-N7qd3_MMSY5umxsGWsdDh4CSdsYtG9QbxAQJuPLhes8rnpTCzsCXg">
+                    </div>
+                    <div class="space-y-md">
+                        <img class="rounded-xl shadow-lg w-full aspect-square object-cover" alt="Teacher with students in a sunlit library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd5iHEzEbO7Z7MpT8N7ze5XrpZWPmh21fy3Fkb9P68WLERD560lau36zorB7I6g65EiKkh_z5HHZTVKmUztxXM6Ws38UxM_oDYBmesRuBtno46gg3Cd2YLnwImf16uI01xvD6xelpaFvnyn79nVtswP97pKpPQygfmlVLqVI_uKzLdkV_IWDWibx-Alup6c28_ZOUYH32tpzalai7CVtzOh4Fm66HK67YiMBazDXmHc8hX2m5lysCj3AYLDWA9s4hSt0IxGIzHQmw">
+                        <div class="bg-primary p-md rounded-xl shadow-xl text-on-primary">
+                            <h3 class="text-headline-md font-headline-md mb-xs">15+ Years</h3>
+                            <p class="text-label-sm">Of Academic Excellence &amp; Royal Nurturing</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Philosophy Text -->
+                <div class="space-y-lg">
+                    <div>
+                        <h2 class="text-headline-lg font-headline-lg text-primary mb-md">Our Royal Philosophy</h2>
+                        <p class="text-body-md text-on-surface-variant leading-relaxed">
+                            At Brainy Kings &amp; Queens, we believe that every child is born with the innate dignity of a leader and the curiosity of a scientist. Our Montessori-led approach honors this potential by creating an environment where choice is the bridge to mastery.
+                        </p>
+                    </div>
+                    <div class="space-y-md">
+                        <div class="flex gap-md items-start">
+                            <div class="bg-secondary-container p-3 rounded-lg flex-shrink-0">
+                                <span class="material-symbols-outlined text-secondary">workspace_premium</span>
+                            </div>
+                            <div>
+                                <h4 class="text-label-lg font-bold text-on-surface">The Crown of Character</h4>
+                                <p class="text-body-md text-on-surface-variant">We prioritize emotional intelligence and ethical leadership, ensuring children grow to be compassionate citizens.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-md items-start">
+                            <div class="bg-primary-fixed p-3 rounded-lg flex-shrink-0">
+                                <span class="material-symbols-outlined text-primary">auto_awesome</span>
+                            </div>
+                            <div>
+                                <h4 class="text-label-lg font-bold text-on-surface">The Spark of Intellect</h4>
+                                <p class="text-body-md text-on-surface-variant">Our curriculum stimulates critical thinking through self-directed exploration and hands-on discovery.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual Pillars of Excellence -->
+    <section class="py-xl bg-surface-container-low overflow-hidden">
+        <div class="container mx-auto px-margin-desktop text-center mb-lg">
+            <h2 class="text-headline-lg font-headline-lg text-primary mb-xs">Dual Pillars of Excellence</h2>
+            <p class="text-body-md text-on-surface-variant max-w-xl mx-auto">The foundation upon which our educational sanctuary is built.</p>
+        </div>
+        <div class="container mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <!-- Pillar 1: Academic Rigor -->
+            <div class="group relative bg-surface-container-lowest p-lg rounded-3xl shadow-sm border border-outline-variant hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-32 h-32 royal-gradient opacity-5 rounded-bl-full group-hover:opacity-10 transition-opacity"></div>
+                <div class="flex flex-col items-center text-center space-y-md">
+                    <div class="w-16 h-16 rounded-full royal-gradient flex items-center justify-center text-on-primary shadow-lg">
+                        <span class="material-symbols-outlined text-[32px]">menu_book</span>
+                    </div>
+                    <h3 class="text-headline-md font-headline-md text-primary">Academic Distinction</h3>
+                    <p class="text-body-md text-on-surface-variant">Our students consistently outperform national benchmarks, mastering complex concepts in mathematics, linguistics, and the sciences through the refined Montessori method.</p>
+                    <div class="pt-md w-full grid grid-cols-2 gap-sm">
+                        <div class="bg-surface-container p-sm rounded-xl">
+                            <span class="block text-primary font-bold text-headline-md">1:8</span>
+                            <span class="text-label-sm uppercase opacity-70">Teacher Ratio</span>
+                        </div>
+                        <div class="bg-surface-container p-sm rounded-xl">
+                            <span class="block text-primary font-bold text-headline-md">100%</span>
+                            <span class="text-label-sm uppercase opacity-70">Literacy Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pillar 2: Holistic Wellness -->
+            <div class="group relative bg-surface-container-lowest p-lg rounded-3xl shadow-sm border border-outline-variant hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container opacity-10 rounded-bl-full group-hover:opacity-20 transition-opacity"></div>
+                <div class="flex flex-col items-center text-center space-y-md">
+                    <div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-lg">
+                        <span class="material-symbols-outlined text-[32px]">eco</span>
+                    </div>
+                    <h3 class="text-headline-md font-headline-md text-secondary">Holistic Development</h3>
+                    <p class="text-body-md text-on-surface-variant">We cultivate the physical and spiritual well-being of every child through arts, outdoor play, and mindfulness, creating well-rounded kings and queens.</p>
+                    <div class="pt-md w-full grid grid-cols-2 gap-sm">
+                        <div class="bg-surface-container p-sm rounded-xl">
+                            <span class="block text-secondary font-bold text-headline-md">Daily</span>
+                            <span class="text-label-sm uppercase opacity-70">Creative Arts</span>
+                        </div>
+                        <div class="bg-surface-container p-sm rounded-xl">
+                            <span class="block text-secondary font-bold text-headline-md">Nature</span>
+                            <span class="text-label-sm uppercase opacity-70">Immersive Study</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-xl">
+        <div class="container mx-auto px-margin-desktop">
+            <div class="royal-gradient rounded-[2rem] p-xl flex flex-col md:flex-row items-center justify-between gap-lg relative overflow-hidden shadow-2xl">
+                <div class="relative z-10 text-center md:text-left space-y-md">
+                    <h2 class="text-headline-lg font-headline-xl text-on-primary-container">Witness the Royal Excellence</h2>
+                    <p class="text-body-lg text-on-primary-container/80 max-w-lg">Schedule a private tour of our Kumasi-Ahodwo campus and discover how your child can thrive in our Montessori sanctuary.</p>
+                    <div class="flex flex-wrap gap-md justify-center md:justify-start pt-md">
+                        <a href="admissions.html" class="bg-secondary-container text-on-secondary-container px-8 py-3 rounded-full font-bold text-label-lg shadow-lg hover:opacity-90 active:scale-95 transition-all inline-block">Book a Campus Tour</a>
+                        <button class="border-2 border-on-primary-container text-on-primary-container px-8 py-3 rounded-full font-bold text-label-lg hover:bg-on-primary-container/10 transition-all">Download Prospectus</button>
+                    </div>
+                </div>
+                <div class="relative z-10 hidden lg:block">
+                    <div class="w-72 h-72 rounded-full border-4 border-on-primary-container/20 flex items-center justify-center animate-pulse">
+                        <span class="material-symbols-outlined text-[120px] text-on-primary-container/30">calendar_today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-xl flex flex-col items-center gap-lg text-center bg-surface-container-highest border-t border-outline-variant">
+    <div class="flex flex-col items-center gap-base">
+        <span class="text-headline-md font-headline-md text-primary font-bold">Brainy Kings &amp; Queens</span>
+        <p class="text-body-md text-on-surface-variant max-w-md">The preferred Montessori school in Kumasi, empowering children to lead and innovate.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-lg">
+        <a class="flex items-center gap-2 text-secondary hover:text-tertiary transition-colors font-label-lg" href="tel:0591664392">
+            <span class="material-symbols-outlined text-[20px]">call</span>
+            0591664392
+        </a>
+        <span class="flex items-center gap-2 text-on-surface-variant font-label-lg">
+            <span class="material-symbols-outlined text-[20px]">location_on</span>
+            Kumasi-Ahodwo
+        </span>
+        <a class="text-on-surface-variant hover:text-tertiary transition-colors font-label-lg underline" href="#">Privacy Policy</a>
+    </div>
+    <nav class="flex flex-wrap justify-center gap-lg pt-base border-t border-outline-variant/30 w-full">
+        <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Home</a>
+        <a href="about.html" class="text-primary font-bold font-label-lg">About</a>
+        <a href="admissions.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Admissions</a>
+        <a href="curriculum.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Curriculum</a>
+    </nav>
+    <p class="text-label-sm text-on-surface-variant opacity-70">&copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.</p>
+</footer>
+
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-2 pt-2 bg-surface-container rounded-t-xl shadow-lg">
+    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="index.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-label-sm font-label-sm">Home</span>
+    </a>
+    <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="about.html">
+        <span class="material-symbols-outlined">school</span>
+        <span class="text-label-sm font-label-sm">About</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="admissions.html">
+        <span class="material-symbols-outlined">assignment_ind</span>
+        <span class="text-label-sm font-label-sm">Apply</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="curriculum.html">
+        <span class="material-symbols-outlined">menu_book</span>
+        <span class="text-label-sm font-label-sm">Lessons</span>
+    </a>
+</nav>
+
+<script>
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 20) {
+            nav.classList.add('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
+        } else {
+            nav.classList.remove('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
+        }
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.group').forEach(card => {
+        const icon = card.querySelector('.material-symbols-outlined');
+        if (icon) {
+            card.addEventListener('mouseenter', () => { icon.style.transform = 'scale(1.1) rotate(5deg)'; });
+            card.addEventListener('mouseleave', () => { icon.style.transform = 'scale(1) rotate(0deg)'; });
+        }
+    });
+</script>
+</body>
+</html>

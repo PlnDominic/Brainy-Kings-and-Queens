@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Curriculum | Brainy Kings &amp; Queens Montessori</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface": "#fbfaee",
+                    "secondary-fixed": "#ffe088",
+                    "on-surface-variant": "#424655",
+                    "primary-container": "#1e6bff",
+                    "on-tertiary-container": "#fffeff",
+                    "outline-variant": "#c2c6d8",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "on-error-container": "#93000a",
+                    "secondary": "#735c00",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dbdbcf",
+                    "on-secondary-fixed": "#241a00",
+                    "on-tertiary-fixed": "#410007",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b3c5ff",
+                    "surface-bright": "#fbfaee",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-primary-container": "#fffeff",
+                    "outline": "#737687",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary": "#b9132b",
+                    "on-secondary-container": "#745c00",
+                    "tertiary-fixed": "#ffdad8",
+                    "on-background": "#1b1c15",
+                    "surface-container-low": "#f5f4e8",
+                    "secondary-container": "#fed65b",
+                    "on-surface": "#1b1c15",
+                    "background": "#fbfaee",
+                    "primary-fixed-dim": "#b3c5ff",
+                    "inverse-on-surface": "#f2f1e5",
+                    "surface-tint": "#0054d7",
+                    "surface-container-highest": "#e4e3d7",
+                    "surface-container-high": "#e9e9dd",
+                    "on-tertiary-fixed-variant": "#92001c",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#303129",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003fa5",
+                    "surface-variant": "#e4e3d7",
+                    "secondary-fixed-dim": "#e9c349",
+                    "surface-container": "#efeee3",
+                    "primary": "#0053d4",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#dd3240",
+                    "on-primary-fixed": "#001849"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+                "spacing": {
+                    "xs": "4px",
+                    "xl": "80px",
+                    "lg": "48px",
+                    "sm": "12px",
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "margin-desktop": "64px",
+                    "md": "24px",
+                    "gutter": "24px"
+                },
+                "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+                },
+                "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .curriculum-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .curriculum-card:hover {
+        transform: translateY(-4px);
+    }
+    .curriculum-dot::before {
+        content: '';
+        position: absolute;
+        left: -33px;
+        top: 8px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #0053d4;
+        border: 2px solid #fbfaee;
+        z-index: 10;
+    }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 shadow-sm bg-surface transition-all duration-300" id="main-nav">
+    <div class="flex items-center gap-base">
+        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+        <span class="text-label-lg font-headline-md font-bold text-primary">Brainy Kings &amp; Queens</span>
+    </div>
+    <nav class="hidden md:flex gap-lg items-center">
+        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="about.html">About</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="admissions.html">Admissions</a>
+        <a class="text-primary font-bold border-b-2 border-primary px-3 py-1 text-label-lg font-label-lg" href="curriculum.html">Curriculum</a>
+    </nav>
+    <div class="flex items-center gap-md">
+        <a href="admissions.html" class="bg-primary text-on-primary px-md py-base rounded-full text-label-lg font-label-lg hover:opacity-80 active:scale-95 duration-150 transition-all">Apply Now</a>
+        <button class="md:hidden text-primary" id="mobile-menu-btn">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="md:hidden fixed top-[72px] left-0 w-full z-40 bg-surface shadow-lg hidden" id="mobile-menu">
+    <nav class="flex flex-col px-margin-mobile py-md gap-sm border-t border-outline-variant">
+        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="about.html">About</a>
+        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="admissions.html">Admissions</a>
+        <a class="text-primary font-bold py-3 px-4 rounded-lg bg-surface-container text-label-lg" href="curriculum.html">Curriculum</a>
+    </nav>
+</div>
+
+<main class="pt-[72px]">
+    <!-- Hero Section -->
+    <section class="relative h-[400px] flex items-center justify-center overflow-hidden bg-surface-container">
+        <div class="absolute inset-0 z-0">
+            <img alt="Bright Montessori Classroom" class="w-full h-full object-cover opacity-20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRUBEncAXPdcEJbTg-NdfGoKjFT_luRg3QINPn6UfheM5jgHpSOiniotbn08Z8okrVc0MpBEFgwVakJeUDmPiuFSppQA58CWi1fZTIyiM_hZO81BsopIQBCkhsvEn4P10ABYqSwlDMb7pqLcUQ2UfTMovPB5VK1FNg0D1DT1bJbyfBvChwO4L-OU8A2bW5xey_ZMcaQHcJdnf442QL-IGc1M3yGU-DQhph_TtEiFlJ9A9Hmpq3UfzzQnEPGueYZVLUOa9B-pe3YV0">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface"></div>
+        </div>
+        <div class="relative z-10 text-center max-w-4xl px-margin-desktop">
+            <h1 class="font-headline-xl text-headline-xl text-primary mb-md">Empowering Minds, Shaping Future Royalty</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration.</p>
+        </div>
+    </section>
+
+    <!-- Teaching Philosophy Section -->
+    <section class="py-xl px-margin-desktop max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center gap-xl">
+            <div class="flex-1">
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-lg">The "Brainy" Way</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-lg leading-relaxed">
+                    At Brainy Kings &amp; Queens, we believe every child is born with innate nobility and curiosity. Our teaching philosophy is built upon the Montessori method, emphasizing independence, respect for a child's natural psychological development, and technological literacy.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+                    <div class="flex gap-base items-start p-md bg-surface-container-low rounded-xl">
+                        <span class="material-symbols-outlined text-secondary text-headline-md">psychology</span>
+                        <div>
+                            <h4 class="font-headline-md text-label-lg text-on-surface">Critical Thinking</h4>
+                            <p class="text-label-sm text-on-surface-variant">Encouraging "why" over "what" in every lesson.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-base items-start p-md bg-surface-container-low rounded-xl">
+                        <span class="material-symbols-outlined text-secondary text-headline-md">diversity_3</span>
+                        <div>
+                            <h4 class="font-headline-md text-label-lg text-on-surface">Global Perspective</h4>
+                            <p class="text-label-sm text-on-surface-variant">Fostering empathy and cultural awareness.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-base items-start p-md bg-surface-container-low rounded-xl">
+                        <span class="material-symbols-outlined text-secondary text-headline-md">palette</span>
+                        <div>
+                            <h4 class="font-headline-md text-label-lg text-on-surface">Creative Sovereignty</h4>
+                            <p class="text-label-sm text-on-surface-variant">Self-expression through arts and crafts.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-base items-start p-md bg-surface-container-low rounded-xl">
+                        <span class="material-symbols-outlined text-secondary text-headline-md">diamond</span>
+                        <div>
+                            <h4 class="font-headline-md text-label-lg text-on-surface">Character Dignity</h4>
+                            <p class="text-label-sm text-on-surface-variant">Building leadership and moral integrity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 w-full relative">
+                <div class="aspect-square rounded-full overflow-hidden border-8 border-surface-container-highest shadow-xl">
+                    <img alt="Children in collaborative learning activity" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd5iHEzEbO7Z7MpT8N7ze5XrpZWPmh21fy3Fkb9P68WLERD560lau36zorB7I6g65EiKkh_z5HHZTVKmUztxXM6Ws38UxM_oDYBmesRuBtno46gg3Cd2YLnwImf16uI01xvD6xelpaFvnyn79nVtswP97pKpPQygfmlVLqVI_uKzLdkV_IWDWibx-Alup6c28_ZOUYH32tpzalai7CVtzOh4Fm66HK67YiMBazDXmHc8hX2m5lysCj3AYLDWA9s4hSt0IxGIzHQmw">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-secondary-container p-lg rounded-2xl shadow-lg max-w-[200px]">
+                    <span class="material-symbols-outlined text-headline-xl text-on-secondary-container">format_quote</span>
+                    <p class="font-headline-md text-on-secondary-container text-label-lg italic">The child is both a hope and a promise for mankind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Journey Section -->
+    <section class="bg-surface-container-low py-xl">
+        <div class="max-w-7xl mx-auto px-margin-desktop">
+            <div class="text-center mb-xl">
+                <h2 class="font-headline-lg text-headline-lg text-primary">Academic Journey</h2>
+                <p class="text-body-lg text-on-surface-variant mt-base">A structured path from discovery to mastery.</p>
+            </div>
+            <div class="relative border-l-2 border-outline-variant ml-8 md:ml-0 md:border-l-0">
+                <!-- Pre-School Block -->
+                <div class="flex flex-col md:flex-row gap-lg mb-xl relative">
+                    <div class="hidden md:flex flex-col items-end w-1/3 pr-lg text-right">
+                        <h3 class="font-headline-md text-primary">Pre-School</h3>
+                        <p class="text-label-lg text-on-surface-variant">Ages 2.5 — 5 Years</p>
+                    </div>
+                    <div class="md:w-2/3 curriculum-card bg-surface p-lg rounded-2xl shadow-sm border border-outline-variant curriculum-dot">
+                        <div class="md:hidden mb-base">
+                            <h3 class="font-headline-md text-primary">Pre-School</h3>
+                            <p class="text-label-sm text-on-surface-variant font-bold">Ages 2.5 — 5 Years</p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-md">
+                            <div>
+                                <h4 class="font-label-lg text-secondary mb-base">The Prepared Environment</h4>
+                                <p class="text-body-md text-on-surface-variant">Focusing on sensorial education and practical life skills. Children develop fine motor control and concentration through purposeful work with specialized Montessori materials.</p>
+                            </div>
+                            <div class="bg-surface-container p-md rounded-xl">
+                                <p class="font-label-lg text-primary mb-xs">Key Milestones:</p>
+                                <ul class="text-label-sm space-y-1 text-on-surface-variant">
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Phonetic Reading</li>
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Basic Mathematical Concepts</li>
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Emotional Self-Regulation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lower Primary Block -->
+                <div class="flex flex-col md:flex-row-reverse gap-lg mb-xl relative">
+                    <div class="hidden md:flex flex-col items-start w-1/3 pl-lg text-left">
+                        <h3 class="font-headline-md text-primary">Lower Primary</h3>
+                        <p class="text-label-lg text-on-surface-variant">Grades 1 — 3</p>
+                    </div>
+                    <div class="md:w-2/3 curriculum-card bg-surface p-lg rounded-2xl shadow-sm border border-outline-variant curriculum-dot">
+                        <div class="md:hidden mb-base">
+                            <h3 class="font-headline-md text-primary">Lower Primary</h3>
+                            <p class="text-label-sm text-on-surface-variant font-bold">Grades 1 — 3</p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-md">
+                            <div class="bg-surface-container p-md rounded-xl order-2 md:order-1">
+                                <p class="font-label-lg text-primary mb-xs">Featured Subjects:</p>
+                                <ul class="text-label-sm space-y-1 text-on-surface-variant">
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Creative Writing &amp; Literacy</li>
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Cosmic Education (Sciences)</li>
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Computational Thinking</li>
+                                </ul>
+                            </div>
+                            <div class="order-1 md:order-2">
+                                <h4 class="font-label-lg text-secondary mb-base">The Great Lessons</h4>
+                                <p class="text-body-md text-on-surface-variant">Transitioning into abstract thinking. Students begin to explore the "Great Lessons" that tell the story of the universe, sparking a lifelong interest in history and science.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Upper Primary Block -->
+                <div class="flex flex-col md:flex-row gap-lg mb-base relative">
+                    <div class="hidden md:flex flex-col items-end w-1/3 pr-lg text-right">
+                        <h3 class="font-headline-md text-primary">Upper Primary</h3>
+                        <p class="text-label-lg text-on-surface-variant">Grades 4 — 6</p>
+                    </div>
+                    <div class="md:w-2/3 curriculum-card bg-surface p-lg rounded-2xl shadow-sm border border-outline-variant curriculum-dot">
+                        <div class="md:hidden mb-base">
+                            <h3 class="font-headline-md text-primary">Upper Primary</h3>
+                            <p class="text-label-sm text-on-surface-variant font-bold">Grades 4 — 6</p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-md">
+                            <div>
+                                <h4 class="font-label-lg text-secondary mb-base">Leadership &amp; Legacy</h4>
+                                <p class="text-body-md text-on-surface-variant">Preparing for the world beyond. Emphasis on complex project management, collaborative research, and advanced mathematical applications.</p>
+                            </div>
+                            <div class="bg-surface-container p-md rounded-xl">
+                                <p class="font-label-lg text-primary mb-xs">Advanced Focus:</p>
+                                <ul class="text-label-sm space-y-1 text-on-surface-variant">
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Public Speaking &amp; Debate</li>
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Environmental Stewardship</li>
+                                    <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Advanced Logic &amp; Algebra</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-xl px-margin-desktop text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="font-headline-lg text-headline-lg text-primary mb-base">Start the Journey Today</h2>
+            <p class="text-body-md text-on-surface-variant mb-lg">See our curriculum in action. Schedule a private tour of our classrooms and meet our expert facilitators.</p>
+            <div class="flex gap-md justify-center flex-wrap">
+                <a href="admissions.html" class="bg-primary text-on-primary px-lg py-md rounded-full font-label-lg hover:shadow-lg transition-shadow inline-block">Book a Visit</a>
+                <button class="border-2 border-secondary text-secondary px-lg py-md rounded-full font-label-lg hover:bg-secondary-fixed transition-colors">Download Prospectus</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-xl flex flex-col items-center gap-lg text-center bg-surface-container-highest border-t border-outline-variant">
+    <div class="text-headline-md font-headline-md text-primary mb-base font-bold">Brainy Kings &amp; Queens</div>
+    <div class="flex flex-wrap justify-center gap-lg mb-md">
+        <a class="text-on-surface-variant hover:text-tertiary transition-colors flex items-center gap-xs font-label-lg" href="tel:0591664392">
+            <span class="material-symbols-outlined text-[18px]">phone</span> 0591664392
+        </a>
+        <span class="text-on-surface-variant flex items-center gap-xs font-label-lg">
+            <span class="material-symbols-outlined text-[18px]">location_on</span> Kumasi-Ahodwo
+        </span>
+        <a class="text-on-surface-variant hover:text-tertiary transition-colors font-label-lg" href="#">Privacy Policy</a>
+    </div>
+    <nav class="flex flex-wrap justify-center gap-lg pt-base border-t border-outline-variant/30 w-full">
+        <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Home</a>
+        <a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">About</a>
+        <a href="admissions.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Admissions</a>
+        <a href="curriculum.html" class="text-primary font-bold font-label-lg">Curriculum</a>
+    </nav>
+    <p class="text-label-sm font-label-sm text-on-surface-variant opacity-70">&copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.</p>
+</footer>
+
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-2 pt-2 bg-surface-container shadow-[0_-4px_15px_rgba(0,0,0,0.08)] rounded-t-xl">
+    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="index.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-label-sm font-label-sm">Home</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="about.html">
+        <span class="material-symbols-outlined">school</span>
+        <span class="text-label-sm font-label-sm">About</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="admissions.html">
+        <span class="material-symbols-outlined">assignment_ind</span>
+        <span class="text-label-sm font-label-sm">Admissions</span>
+    </a>
+    <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="curriculum.html">
+        <span class="material-symbols-outlined">menu_book</span>
+        <span class="text-label-sm font-label-sm">Curriculum</span>
+    </a>
+</nav>
+
+<script>
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
+        } else {
+            nav.classList.remove('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
+        }
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
