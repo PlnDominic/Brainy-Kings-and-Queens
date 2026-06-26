@@ -107,21 +107,19 @@
  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
  }
  .curriculum-card {
- transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
- }
- .curriculum-card:hover {
- transform: translateY(-4px);
+ transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
  }
  .curriculum-dot::before {
  content: '';
  position: absolute;
  left: -33px;
- top: 8px;
- width: 12px;
- height: 12px;
+ top: 12px;
+ width: 14px;
+ height: 14px;
  background-color: #0053d4;
- border: 2px solid #fbfaee;
+ border: 3px solid #fbfaee;
  z-index: 10;
+ box-shadow: 0 0 0 2px #0053d4;
  }
 </style>
 </head>
@@ -159,49 +157,53 @@
 
 <main class="pt-[72px]">
  <!-- Hero Section -->
- <section class="relative h-[400px] flex items-center justify-center overflow-hidden bg-surface-container">
+ <section class="relative h-[480px] flex items-center justify-center overflow-hidden">
  <div class="absolute inset-0 z-0">
- <img alt="Brainy Kings and Queens school campus" class="w-full h-full object-cover opacity-20" src="images/school-building.jpeg">
- <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface"></div>
+ <img alt="Brainy Kings and Queens school campus" class="w-full h-full object-cover" src="images/school-building.jpeg">
+ <div class="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-surface"></div>
  </div>
+ <!-- Decorative element -->
+ <div class="absolute right-12 top-12 w-32 h-32 border-4 border-white/10 hidden md:block"></div>
+ <div class="absolute right-20 top-20 w-16 h-16 border-2 border-secondary-container/30 hidden md:block"></div>
  <div class="relative z-10 text-center max-w-4xl px-margin-mobile md:px-margin-desktop">
- <h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary mb-md">Empowering Minds, Shaping Future Royalty</h1>
- <p class="font-body-lg text-body-lg text-on-surface-variant">Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration.</p>
+ <span class="inline-block bg-secondary-container text-on-secondary-container px-4 py-1 text-label-sm font-bold uppercase tracking-wider mb-md" data-hero>Our Curriculum</span>
+ <h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-primary-container mb-md" data-hero>Empowering Minds, Shaping Future Royalty</h1>
+ <p class="font-body-lg text-body-lg text-on-primary-container/85" data-hero>Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration.</p>
  </div>
  </section>
 
  <!-- Teaching Philosophy Section -->
  <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
  <div class="flex flex-col md:flex-row items-center gap-xl">
- <div class="flex-1">
- <h2 class="font-headline-lg text-headline-lg text-primary mb-lg">The"Brainy" Way</h2>
+ <div class="flex-1" data-reveal-left>
+ <h2 class="font-headline-lg text-headline-lg text-primary mb-lg" data-underline>The "Brainy" Way</h2>
  <p class="font-body-lg text-body-lg text-on-surface-variant mb-lg leading-relaxed">
  At Brainy Kings &amp; Queens, we believe every child is born with innate nobility and curiosity. Our teaching philosophy is built upon the Montessori method, emphasizing independence, respect for a child's natural psychological development, and technological literacy.
  </p>
- <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
- <div class="flex gap-base items-start p-md bg-surface-container-low">
- <span class="material-symbols-outlined text-secondary text-headline-md">psychology</span>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-md" data-stagger>
+ <div class="flex gap-base items-start p-md bg-surface-container-low border-l-4 border-secondary" data-stagger-item>
+ <span class="material-symbols-outlined text-secondary text-headline-md" style="font-variation-settings: 'FILL' 1;">psychology</span>
  <div>
  <h4 class="font-headline-md text-label-lg text-on-surface">Critical Thinking</h4>
- <p class="text-label-sm text-on-surface-variant">Encouraging"why" over"what" in every lesson.</p>
+ <p class="text-label-sm text-on-surface-variant">Encouraging "why" over "what" in every lesson.</p>
  </div>
  </div>
- <div class="flex gap-base items-start p-md bg-surface-container-low">
- <span class="material-symbols-outlined text-secondary text-headline-md">diversity_3</span>
+ <div class="flex gap-base items-start p-md bg-surface-container-low border-l-4 border-secondary" data-stagger-item>
+ <span class="material-symbols-outlined text-secondary text-headline-md" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
  <div>
  <h4 class="font-headline-md text-label-lg text-on-surface">Global Perspective</h4>
  <p class="text-label-sm text-on-surface-variant">Fostering empathy and cultural awareness.</p>
  </div>
  </div>
- <div class="flex gap-base items-start p-md bg-surface-container-low">
- <span class="material-symbols-outlined text-secondary text-headline-md">palette</span>
+ <div class="flex gap-base items-start p-md bg-surface-container-low border-l-4 border-secondary" data-stagger-item>
+ <span class="material-symbols-outlined text-secondary text-headline-md" style="font-variation-settings: 'FILL' 1;">palette</span>
  <div>
  <h4 class="font-headline-md text-label-lg text-on-surface">Creative Sovereignty</h4>
  <p class="text-label-sm text-on-surface-variant">Self-expression through arts and crafts.</p>
  </div>
  </div>
- <div class="flex gap-base items-start p-md bg-surface-container-low">
- <span class="material-symbols-outlined text-secondary text-headline-md">diamond</span>
+ <div class="flex gap-base items-start p-md bg-surface-container-low border-l-4 border-secondary" data-stagger-item>
+ <span class="material-symbols-outlined text-secondary text-headline-md" style="font-variation-settings: 'FILL' 1;">diamond</span>
  <div>
  <h4 class="font-headline-md text-label-lg text-on-surface">Character Dignity</h4>
  <p class="text-label-sm text-on-surface-variant">Building leadership and moral integrity.</p>
@@ -209,12 +211,12 @@
  </div>
  </div>
  </div>
- <div class="flex-1 w-full relative">
- <div class="aspect-square overflow-hidden border-8 border-surface-container-highest shadow-xl">
- <img alt="Smiling Brainy Kings and Queens students" class="w-full h-full object-cover" src="images/students-smiling-closeup.jpeg">
+ <div class="flex-1 w-full relative" data-reveal-right>
+ <div class="aspect-square overflow-hidden border-8 border-surface-container-highest shadow-2xl">
+ <img alt="Smiling Brainy Kings and Queens students" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="images/students-smiling-closeup.jpeg">
  </div>
- <div class="absolute -bottom-6 -left-6 bg-secondary-container p-lg shadow-lg max-w-[200px]">
- <span class="material-symbols-outlined text-headline-xl text-on-secondary-container">format_quote</span>
+ <div class="absolute -bottom-6 -left-6 bg-secondary-container p-lg shadow-xl max-w-[200px] border-t-4 border-secondary">
+ <span class="material-symbols-outlined text-headline-xl text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">format_quote</span>
  <p class="font-headline-md text-on-secondary-container text-label-lg italic">The child is both a hope and a promise for mankind.</p>
  </div>
  </div>
@@ -224,45 +226,49 @@
  <!-- Academic Journey Section -->
  <section class="bg-surface-container-low py-xl">
  <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
- <div class="text-center mb-xl">
- <h2 class="font-headline-lg text-headline-lg text-primary">Academic Journey</h2>
+ <div class="text-center mb-xl" data-reveal>
+ <h2 class="font-headline-lg text-headline-lg text-primary" data-underline>Academic Journey</h2>
  <p class="text-body-lg text-on-surface-variant mt-base">A structured path from discovery to mastery.</p>
  </div>
- <div class="relative border-l-2 border-outline-variant ml-8 md:ml-0 md:border-l-0">
+ <div class="relative border-l-2 border-primary/30 ml-8 md:ml-0 md:border-l-0">
  <!-- Pre-School Block -->
- <div class="flex flex-col md:flex-row gap-lg mb-xl relative">
+ <div class="flex flex-col md:flex-row gap-lg mb-xl relative" data-timeline-item>
  <div class="hidden md:flex flex-col items-end w-1/3 pr-lg text-right">
- <h3 class="font-headline-md text-primary">Pre-School</h3>
+ <div class="bg-primary text-on-primary px-md py-xs inline-block mb-xs">
+ <h3 class="font-headline-md text-on-primary">Pre-School</h3>
+ </div>
  <p class="text-label-lg text-on-surface-variant">Ages 2.5 — 5 Years</p>
  </div>
- <div class="md:w-2/3 curriculum-card bg-surface p-lg shadow-sm border border-outline-variant curriculum-dot">
+ <div class="md:w-2/3 curriculum-card bg-surface p-lg shadow-md border border-outline-variant/50 curriculum-dot" data-hover-lift>
  <div class="md:hidden mb-base">
  <h3 class="font-headline-md text-primary">Pre-School</h3>
  <p class="text-label-sm text-on-surface-variant font-bold">Ages 2.5 — 5 Years</p>
  </div>
  <div class="grid md:grid-cols-2 gap-md">
  <div>
- <h4 class="font-label-lg text-secondary mb-base">The Prepared Environment</h4>
+ <h4 class="font-label-lg text-secondary mb-base uppercase tracking-wide">The Prepared Environment</h4>
  <p class="text-body-md text-on-surface-variant">Focusing on sensorial education and practical life skills. Children develop fine motor control and concentration through purposeful work with specialized Montessori materials.</p>
  </div>
  <div class="bg-surface-container p-md">
  <p class="font-label-lg text-primary mb-xs">Key Milestones:</p>
  <ul class="text-label-sm space-y-1 text-on-surface-variant">
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Phonetic Reading</li>
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Basic Mathematical Concepts</li>
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Emotional Self-Regulation</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Phonetic Reading</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Basic Mathematical Concepts</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Emotional Self-Regulation</li>
  </ul>
  </div>
  </div>
  </div>
  </div>
  <!-- Lower Primary Block -->
- <div class="flex flex-col md:flex-row-reverse gap-lg mb-xl relative">
+ <div class="flex flex-col md:flex-row-reverse gap-lg mb-xl relative" data-timeline-item>
  <div class="hidden md:flex flex-col items-start w-1/3 pl-lg text-left">
- <h3 class="font-headline-md text-primary">Lower Primary</h3>
+ <div class="bg-secondary text-on-secondary px-md py-xs inline-block mb-xs">
+ <h3 class="font-headline-md text-on-secondary">Lower Primary</h3>
+ </div>
  <p class="text-label-lg text-on-surface-variant">Grades 1 — 3</p>
  </div>
- <div class="md:w-2/3 curriculum-card bg-surface p-lg shadow-sm border border-outline-variant curriculum-dot">
+ <div class="md:w-2/3 curriculum-card bg-surface p-lg shadow-md border border-outline-variant/50 curriculum-dot" data-hover-lift>
  <div class="md:hidden mb-base">
  <h3 class="font-headline-md text-primary">Lower Primary</h3>
  <p class="text-label-sm text-on-surface-variant font-bold">Grades 1 — 3</p>
@@ -271,40 +277,42 @@
  <div class="bg-surface-container p-md order-2 md:order-1">
  <p class="font-label-lg text-primary mb-xs">Featured Subjects:</p>
  <ul class="text-label-sm space-y-1 text-on-surface-variant">
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Creative Writing &amp; Literacy</li>
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Cosmic Education (Sciences)</li>
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Computational Thinking</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Creative Writing &amp; Literacy</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Cosmic Education (Sciences)</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Computational Thinking</li>
  </ul>
  </div>
  <div class="order-1 md:order-2">
- <h4 class="font-label-lg text-secondary mb-base">The Great Lessons</h4>
- <p class="text-body-md text-on-surface-variant">Transitioning into abstract thinking. Students begin to explore the"Great Lessons" that tell the story of the universe, sparking a lifelong interest in history and science.</p>
+ <h4 class="font-label-lg text-secondary mb-base uppercase tracking-wide">The Great Lessons</h4>
+ <p class="text-body-md text-on-surface-variant">Transitioning into abstract thinking. Students explore the "Great Lessons" that tell the story of the universe, sparking a lifelong interest in history and science.</p>
  </div>
  </div>
  </div>
  </div>
  <!-- Upper Primary Block -->
- <div class="flex flex-col md:flex-row gap-lg mb-base relative">
+ <div class="flex flex-col md:flex-row gap-lg mb-base relative" data-timeline-item>
  <div class="hidden md:flex flex-col items-end w-1/3 pr-lg text-right">
- <h3 class="font-headline-md text-primary">Upper Primary</h3>
+ <div class="bg-tertiary text-on-tertiary px-md py-xs inline-block mb-xs">
+ <h3 class="font-headline-md text-on-tertiary">Upper Primary</h3>
+ </div>
  <p class="text-label-lg text-on-surface-variant">Grades 4 — 6</p>
  </div>
- <div class="md:w-2/3 curriculum-card bg-surface p-lg shadow-sm border border-outline-variant curriculum-dot">
+ <div class="md:w-2/3 curriculum-card bg-surface p-lg shadow-md border border-outline-variant/50 curriculum-dot" data-hover-lift>
  <div class="md:hidden mb-base">
  <h3 class="font-headline-md text-primary">Upper Primary</h3>
  <p class="text-label-sm text-on-surface-variant font-bold">Grades 4 — 6</p>
  </div>
  <div class="grid md:grid-cols-2 gap-md">
  <div>
- <h4 class="font-label-lg text-secondary mb-base">Leadership &amp; Legacy</h4>
+ <h4 class="font-label-lg text-secondary mb-base uppercase tracking-wide">Leadership &amp; Legacy</h4>
  <p class="text-body-md text-on-surface-variant">Preparing for the world beyond. Emphasis on complex project management, collaborative research, and advanced mathematical applications.</p>
  </div>
  <div class="bg-surface-container p-md">
  <p class="font-label-lg text-primary mb-xs">Advanced Focus:</p>
  <ul class="text-label-sm space-y-1 text-on-surface-variant">
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Public Speaking &amp; Debate</li>
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Environmental Stewardship</li>
- <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary">check_circle</span> Advanced Logic &amp; Algebra</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Public Speaking &amp; Debate</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Environmental Stewardship</li>
+ <li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span> Advanced Logic &amp; Algebra</li>
  </ul>
  </div>
  </div>
@@ -315,13 +323,16 @@
  </section>
 
  <!-- CTA Section -->
- <section class="py-xl px-margin-mobile md:px-margin-desktop text-center">
- <div class="max-w-2xl mx-auto">
- <h2 class="font-headline-lg text-headline-lg text-primary mb-base">Start the Journey Today</h2>
- <p class="text-body-md text-on-surface-variant mb-lg">Enroll your child and watch them flourish in our carefully prepared Montessori environment.</p>
+ <section class="py-xl px-margin-mobile md:px-margin-desktop">
+ <div class="max-w-3xl mx-auto bg-primary p-xl shadow-2xl relative overflow-hidden" data-reveal>
+ <div class="absolute -right-16 -top-16 w-64 h-64 bg-white/5 pointer-events-none"></div>
+ <div class="text-center relative z-10">
+ <h2 class="font-headline-lg text-headline-lg text-on-primary mb-base">Start the Journey Today</h2>
+ <p class="text-body-md text-on-primary/80 mb-lg">Enroll your child and watch them flourish in our carefully prepared Montessori environment.</p>
  <div class="flex gap-md justify-center flex-wrap">
- <a href="admissions.html" class="bg-primary text-on-primary px-lg py-md font-label-lg hover:shadow-lg transition-shadow inline-block">Apply Now</a>
- <button class="border-2 border-secondary text-secondary px-lg py-md font-label-lg hover:bg-secondary-fixed transition-colors">Download Prospectus</button>
+ <a href="admissions.html" class="bg-secondary-container text-on-secondary-container px-lg py-md font-label-lg font-bold hover:opacity-90 transition-all shadow-lg inline-block">Apply Now</a>
+ <button class="border-2 border-on-primary/40 text-on-primary px-lg py-md font-label-lg hover:border-on-primary hover:bg-white/10 transition-all">Download Prospectus</button>
+ </div>
  </div>
  </div>
  </section>
@@ -329,89 +340,73 @@
 
 <!-- Footer -->
 <footer class="bg-white border-t-4 border-primary">
-    <div class="px-margin-mobile md:px-margin-desktop py-xl">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
-
-            <!-- Brand -->
-            <div>
-                <div class="flex items-center gap-base mb-md">
-                    <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
-                    <span class="text-headline-md font-headline-md font-bold text-primary">Brainy Kings &amp; Queens</span>
-                </div>
-                <p class="text-body-md text-on-surface-variant mb-lg leading-relaxed">The preferred Montessori school in Kumasi, empowering children to lead and innovate.</p>
-                <div class="flex gap-sm">
-                    <a class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#" aria-label="Facebook">
-                        <span class="material-symbols-outlined text-[20px]">social_leaderboard</span>
-                    </a>
-                    <a class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#" aria-label="Email">
-                        <span class="material-symbols-outlined text-[20px]">alternate_email</span>
-                    </a>
-                    <a class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#" aria-label="Instagram">
-                        <span class="material-symbols-outlined text-[20px]">photo_camera</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h3 class="text-label-lg font-bold text-on-surface uppercase tracking-[0.15em] mb-lg">Quick Links</h3>
-                <nav class="flex flex-col gap-md">
-                    <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs">
-                        <span class="material-symbols-outlined text-[16px] text-primary">chevron_right</span>Home
-                    </a>
-                    <a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs">
-                        <span class="material-symbols-outlined text-[16px] text-primary">chevron_right</span>About Us
-                    </a>
-                    <a href="admissions.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs">
-                        <span class="material-symbols-outlined text-[16px] text-primary">chevron_right</span>Admissions
-                    </a>
-                    <a href="curriculum.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs">
-                        <span class="material-symbols-outlined text-[16px] text-primary">chevron_right</span>Curriculum
-                    </a>
-                </nav>
-            </div>
-
-            <!-- Contact -->
-            <div>
-                <h3 class="text-label-lg font-bold text-on-surface uppercase tracking-[0.15em] mb-lg">Get In Touch</h3>
-                <div class="flex flex-col gap-md">
-                    <a href="tel:0591664392" class="flex items-center gap-md group">
-                        <div class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
-                            <span class="material-symbols-outlined text-[20px]">call</span>
-                        </div>
-                        <span class="text-on-surface-variant group-hover:text-primary transition-colors font-label-lg">0591664392</span>
-                    </a>
-                    <div class="flex items-center gap-md">
-                        <div class="w-10 h-10 bg-secondary-container flex items-center justify-center text-secondary flex-shrink-0">
-                            <span class="material-symbols-outlined text-[20px]">location_on</span>
-                        </div>
-                        <span class="text-on-surface-variant font-label-lg">Kumasi-Ahodwo, Ashanti Region, Ghana</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Copyright bar -->
-    <div class="bg-surface-container-low border-t border-outline-variant/30 px-margin-mobile md:px-margin-desktop py-md flex flex-col sm:flex-row justify-between items-center gap-sm">
-        <p class="text-label-sm text-on-surface-variant">&copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.</p>
-        <a href="#" class="text-label-sm text-on-surface-variant hover:text-primary transition-colors underline">Privacy Policy</a>
-    </div>
+ <div class="px-margin-mobile md:px-margin-desktop py-xl">
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+ <!-- Brand -->
+ <div>
+ <div class="flex items-center gap-base mb-md">
+ <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
+ <span class="text-headline-md font-headline-md font-bold text-primary">Brainy Kings &amp; Queens</span>
+ </div>
+ <p class="text-body-md text-on-surface-variant mb-lg leading-relaxed">The preferred Montessori school in Kumasi, empowering children to lead and innovate.</p>
+ <div class="flex gap-sm">
+ <a class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#" aria-label="Facebook">
+ <span class="material-symbols-outlined text-[20px]">social_leaderboard</span>
+ </a>
+ <a class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#" aria-label="Email">
+ <span class="material-symbols-outlined text-[20px]">alternate_email</span>
+ </a>
+ <a class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#" aria-label="Instagram">
+ <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+ </a>
+ </div>
+ </div>
+ <!-- Quick Links -->
+ <div>
+ <h3 class="text-label-lg font-bold text-on-surface uppercase tracking-[0.15em] mb-lg">Quick Links</h3>
+ <nav class="flex flex-col gap-md">
+ <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs">
+ <span class="material-symbols-outlined text-[16px] text-primary">chevron_right</span>Home
+ </a>
+ <a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs">
+ <span class="material-symbols-outlined text-[16px] text-primary">chevron_right</span>About Us
+ </a>
+ <a href="admissions.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs">
+ <span class="material-symbols-outlined text-[16px] text-primary">chevron_right</span>Admissions
+ </a>
+ <a href="curriculum.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs">
+ <span class="material-symbols-outlined text-[16px] text-primary">chevron_right</span>Curriculum
+ </a>
+ </nav>
+ </div>
+ <!-- Contact -->
+ <div>
+ <h3 class="text-label-lg font-bold text-on-surface uppercase tracking-[0.15em] mb-lg">Get In Touch</h3>
+ <div class="flex flex-col gap-md">
+ <a href="tel:0591664392" class="flex items-center gap-md group">
+ <div class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
+ <span class="material-symbols-outlined text-[20px]">call</span>
+ </div>
+ <span class="text-on-surface-variant group-hover:text-primary transition-colors font-label-lg">0591664392</span>
+ </a>
+ <div class="flex items-center gap-md">
+ <div class="w-10 h-10 bg-secondary-container flex items-center justify-center text-secondary flex-shrink-0">
+ <span class="material-symbols-outlined text-[20px]">location_on</span>
+ </div>
+ <span class="text-on-surface-variant font-label-lg">Kumasi-Ahodwo, Ashanti Region, Ghana</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- Copyright bar -->
+ <div class="bg-surface-container-low border-t border-outline-variant/30 px-margin-mobile md:px-margin-desktop py-md flex flex-col sm:flex-row justify-between items-center gap-sm">
+ <p class="text-label-sm text-on-surface-variant">&copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.</p>
+ <a href="#" class="text-label-sm text-on-surface-variant hover:text-primary transition-colors underline">Privacy Policy</a>
+ </div>
 </footer>
 
-<script>
- window.addEventListener('scroll', () => {
- const nav = document.getElementById('main-nav');
- if (window.scrollY > 50) {
- nav.classList.add('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
- } else {
- nav.classList.remove('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
- }
- });
-
- document.getElementById('mobile-menu-btn').addEventListener('click', () => {
- document.getElementById('mobile-menu').classList.toggle('hidden');
- });
-</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@11/dist/motion.js"></script>
+<script src="js/animations.js"></script>
 </body>
 </html>
