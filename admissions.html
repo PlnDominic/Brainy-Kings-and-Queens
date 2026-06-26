@@ -8,361 +8,351 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                "colors": {
-                    "surface": "#fbfaee",
-                    "secondary-fixed": "#ffe088",
-                    "on-surface-variant": "#424655",
-                    "primary-container": "#1e6bff",
-                    "on-tertiary-container": "#fffeff",
-                    "outline-variant": "#c2c6d8",
-                    "tertiary-fixed-dim": "#ffb3b1",
-                    "on-error-container": "#93000a",
-                    "secondary": "#735c00",
-                    "error-container": "#ffdad6",
-                    "surface-dim": "#dbdbcf",
-                    "on-secondary-fixed": "#241a00",
-                    "on-tertiary-fixed": "#410007",
-                    "on-secondary": "#ffffff",
-                    "inverse-primary": "#b3c5ff",
-                    "surface-bright": "#fbfaee",
-                    "on-secondary-fixed-variant": "#574500",
-                    "on-primary-container": "#fffeff",
-                    "outline": "#737687",
-                    "on-error": "#ffffff",
-                    "error": "#ba1a1a",
-                    "tertiary": "#b9132b",
-                    "on-secondary-container": "#745c00",
-                    "tertiary-fixed": "#ffdad8",
-                    "on-background": "#1b1c15",
-                    "surface-container-low": "#f5f4e8",
-                    "secondary-container": "#fed65b",
-                    "on-surface": "#1b1c15",
-                    "background": "#fbfaee",
-                    "primary-fixed-dim": "#b3c5ff",
-                    "inverse-on-surface": "#f2f1e5",
-                    "surface-tint": "#0054d7",
-                    "surface-container-highest": "#e4e3d7",
-                    "surface-container-high": "#e9e9dd",
-                    "on-tertiary-fixed-variant": "#92001c",
-                    "surface-container-lowest": "#ffffff",
-                    "inverse-surface": "#303129",
-                    "primary-fixed": "#dbe1ff",
-                    "on-primary-fixed-variant": "#003fa5",
-                    "surface-variant": "#e4e3d7",
-                    "secondary-fixed-dim": "#e9c349",
-                    "surface-container": "#efeee3",
-                    "primary": "#0053d4",
-                    "on-tertiary": "#ffffff",
-                    "on-primary": "#ffffff",
-                    "tertiary-container": "#dd3240",
-                    "on-primary-fixed": "#001849"
-                },
-                "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-                },
-                "spacing": {
-                    "xs": "4px",
-                    "xl": "80px",
-                    "lg": "48px",
-                    "sm": "12px",
-                    "margin-mobile": "16px",
-                    "base": "8px",
-                    "margin-desktop": "64px",
-                    "md": "24px",
-                    "gutter": "24px"
-                },
-                "fontFamily": {
-                    "headline-lg-mobile": ["Plus Jakarta Sans"],
-                    "body-md": ["Be Vietnam Pro"],
-                    "body-lg": ["Be Vietnam Pro"],
-                    "label-sm": ["Plus Jakarta Sans"],
-                    "headline-md": ["Plus Jakarta Sans"],
-                    "headline-lg": ["Plus Jakarta Sans"],
-                    "label-lg": ["Plus Jakarta Sans"],
-                    "headline-xl": ["Plus Jakarta Sans"]
-                },
-                "fontSize": {
-                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
-                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
-                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
-                }
-            },
-        },
-    }
+ tailwind.config = {
+ darkMode:"class",
+ theme: {
+ extend: {
+"colors": {
+"surface":"#fbfaee",
+"secondary-fixed":"#ffe088",
+"on-surface-variant":"#424655",
+"primary-container":"#1e6bff",
+"on-tertiary-container":"#fffeff",
+"outline-variant":"#c2c6d8",
+"tertiary-fixed-dim":"#ffb3b1",
+"on-error-container":"#93000a",
+"secondary":"#735c00",
+"error-container":"#ffdad6",
+"surface-dim":"#dbdbcf",
+"on-secondary-fixed":"#241a00",
+"on-tertiary-fixed":"#410007",
+"on-secondary":"#ffffff",
+"inverse-primary":"#b3c5ff",
+"surface-bright":"#fbfaee",
+"on-secondary-fixed-variant":"#574500",
+"on-primary-container":"#fffeff",
+"outline":"#737687",
+"on-error":"#ffffff",
+"error":"#ba1a1a",
+"tertiary":"#b9132b",
+"on-secondary-container":"#745c00",
+"tertiary-fixed":"#ffdad8",
+"on-background":"#1b1c15",
+"surface-container-low":"#f5f4e8",
+"secondary-container":"#fed65b",
+"on-surface":"#1b1c15",
+"background":"#fbfaee",
+"primary-fixed-dim":"#b3c5ff",
+"inverse-on-surface":"#f2f1e5",
+"surface-tint":"#0054d7",
+"surface-container-highest":"#e4e3d7",
+"surface-container-high":"#e9e9dd",
+"on-tertiary-fixed-variant":"#92001c",
+"surface-container-lowest":"#ffffff",
+"inverse-surface":"#303129",
+"primary-fixed":"#dbe1ff",
+"on-primary-fixed-variant":"#003fa5",
+"surface-variant":"#e4e3d7",
+"secondary-fixed-dim":"#e9c349",
+"surface-container":"#efeee3",
+"primary":"#0053d4",
+"on-tertiary":"#ffffff",
+"on-primary":"#ffffff",
+"tertiary-container":"#dd3240",
+"on-primary-fixed":"#001849"
+ },
+"borderRadius": {
+"DEFAULT":"0.25rem",
+"lg":"0.5rem",
+"xl":"0.75rem",
+"full":"9999px"
+ },
+"spacing": {
+"xs":"4px",
+"xl":"80px",
+"lg":"48px",
+"sm":"12px",
+"margin-mobile":"16px",
+"base":"8px",
+"margin-desktop":"64px",
+"md":"24px",
+"gutter":"24px"
+ },
+"fontFamily": {
+"headline-lg-mobile": ["Plus Jakarta Sans"],
+"body-md": ["Be Vietnam Pro"],
+"body-lg": ["Be Vietnam Pro"],
+"label-sm": ["Plus Jakarta Sans"],
+"headline-md": ["Plus Jakarta Sans"],
+"headline-lg": ["Plus Jakarta Sans"],
+"label-lg": ["Plus Jakarta Sans"],
+"headline-xl": ["Plus Jakarta Sans"]
+ },
+"fontSize": {
+"headline-lg-mobile": ["28px", {"lineHeight":"36px","fontWeight":"700"}],
+"body-md": ["16px", {"lineHeight":"24px","fontWeight":"400"}],
+"body-lg": ["18px", {"lineHeight":"28px","fontWeight":"400"}],
+"label-sm": ["12px", {"lineHeight":"16px","fontWeight":"500"}],
+"headline-md": ["24px", {"lineHeight":"32px","fontWeight":"600"}],
+"headline-lg": ["32px", {"lineHeight":"40px","fontWeight":"700"}],
+"label-lg": ["14px", {"lineHeight":"20px","fontWeight":"600"}],
+"headline-xl": ["48px", {"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"800"}]
+ }
+ },
+ },
+ }
 </script>
 <style>
-    .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    }
-    .glass-card {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
+ .material-symbols-outlined {
+ font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+ }
+ .glass-card {
+ background: rgba(255, 255, 255, 0.7);
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(255, 255, 255, 0.3);
+ }
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md min-h-screen overflow-x-hidden">
 
 <!-- TopAppBar -->
-<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface shadow-sm transition-all duration-300" id="main-nav">
-    <div class="flex items-center gap-base">
-        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
-        <h1 class="text-label-lg font-headline-md font-bold text-primary">Brainy Kings &amp; Queens</h1>
-    </div>
-    <nav class="hidden md:flex items-center gap-lg">
-        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="index.html">Home</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="about.html">About</a>
-        <a class="text-primary font-bold border-b-2 border-primary px-3 py-1 text-label-lg font-label-lg" href="admissions.html">Admissions</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 rounded-lg text-label-lg font-label-lg" href="curriculum.html">Curriculum</a>
-    </nav>
-    <div class="flex items-center gap-md">
-        <a href="admissions.html" class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-lg hover:opacity-80 active:scale-95 transition-all">Apply Now</a>
-        <button class="md:hidden text-primary" id="mobile-menu-btn">
-            <span class="material-symbols-outlined">menu</span>
-        </button>
-    </div>
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface shadow-sm transition-all duration-300" id="main-nav">
+ <div class="flex items-center gap-base">
+ <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+ <h1 class="text-label-lg font-headline-md font-bold text-primary">Brainy Kings &amp; Queens</h1>
+ </div>
+ <nav class="hidden md:flex items-center gap-lg">
+ <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 text-label-lg font-label-lg" href="index.html">Home</a>
+ <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 text-label-lg font-label-lg" href="about.html">About</a>
+ <a class="text-primary font-bold border-b-2 border-primary px-3 py-1 text-label-lg font-label-lg" href="admissions.html">Admissions</a>
+ <a class="text-on-surface-variant hover:text-primary transition-colors px-3 py-1 text-label-lg font-label-lg" href="curriculum.html">Curriculum</a>
+ </nav>
+ <div class="flex items-center gap-md">
+ <a href="admissions.html" class="bg-primary text-on-primary px-6 py-2 font-label-lg hover:opacity-80 active:scale-95 transition-all">Apply Now</a>
+ <button class="md:hidden text-primary" id="mobile-menu-btn">
+ <span class="material-symbols-outlined">menu</span>
+ </button>
+ </div>
 </header>
 
 <!-- Mobile Menu -->
 <div class="md:hidden fixed top-[72px] left-0 w-full z-40 bg-surface shadow-lg hidden" id="mobile-menu">
-    <nav class="flex flex-col px-margin-mobile py-md gap-sm border-t border-outline-variant">
-        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="index.html">Home</a>
-        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="about.html">About</a>
-        <a class="text-primary font-bold py-3 px-4 rounded-lg bg-surface-container text-label-lg" href="admissions.html">Admissions</a>
-        <a class="text-on-surface-variant hover:text-primary py-3 px-4 rounded-lg hover:bg-surface-container text-label-lg transition-colors" href="curriculum.html">Curriculum</a>
-    </nav>
+ <nav class="flex flex-col px-margin-mobile py-md gap-sm border-t border-outline-variant">
+ <a class="text-on-surface-variant hover:text-primary py-3 px-4 hover:bg-surface-container text-label-lg transition-colors" href="index.html">Home</a>
+ <a class="text-on-surface-variant hover:text-primary py-3 px-4 hover:bg-surface-container text-label-lg transition-colors" href="about.html">About</a>
+ <a class="text-primary font-bold py-3 px-4 bg-surface-container text-label-lg" href="admissions.html">Admissions</a>
+ <a class="text-on-surface-variant hover:text-primary py-3 px-4 hover:bg-surface-container text-label-lg transition-colors" href="curriculum.html">Curriculum</a>
+ </nav>
 </div>
 
-<main class="pt-[100px] pb-xl px-margin-desktop max-w-[1440px] mx-auto">
-    <!-- Progress Tracker Section -->
-    <section class="mb-lg">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex items-center justify-between relative mb-base">
-                <!-- Progress Line Background -->
-                <div class="absolute top-1/2 left-0 w-full h-1 bg-surface-container-highest -translate-y-1/2 z-0 rounded-full"></div>
-                <!-- Active Progress Line -->
-                <div class="absolute top-1/2 left-0 w-1/3 h-1 bg-primary -translate-y-1/2 z-0 rounded-full transition-all duration-700" id="progress-line"></div>
-                <!-- Steps -->
-                <div class="relative z-10 flex flex-col items-center">
-                    <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md">
-                        <span class="material-symbols-outlined">edit_note</span>
-                    </div>
-                    <span class="mt-2 font-label-lg text-primary">Inquiry</span>
-                </div>
-                <div class="relative z-10 flex flex-col items-center">
-                    <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant">
-                        <span class="material-symbols-outlined">visibility</span>
-                    </div>
-                    <span class="mt-2 font-label-lg text-on-surface-variant">Tour</span>
-                </div>
-                <div class="relative z-10 flex flex-col items-center">
-                    <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant">
-                        <span class="material-symbols-outlined">assignment</span>
-                    </div>
-                    <span class="mt-2 font-label-lg text-on-surface-variant">Review</span>
-                </div>
-                <div class="relative z-10 flex flex-col items-center">
-                    <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant">
-                        <span class="material-symbols-outlined">verified</span>
-                    </div>
-                    <span class="mt-2 font-label-lg text-on-surface-variant">Enrollment</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<main class="pt-[100px] pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+ <!-- Progress Tracker Section -->
+ <section class="mb-lg">
+ <div class="max-w-4xl mx-auto">
+ <div class="flex items-center justify-between relative mb-base">
+ <!-- Progress Line Background -->
+ <div class="absolute top-1/2 left-0 w-full h-1 bg-surface-container-highest -translate-y-1/2 z-0"></div>
+ <!-- Active Progress Line -->
+ <div class="absolute top-1/2 left-0 w-1/3 h-1 bg-primary -translate-y-1/2 z-0 transition-all duration-700" id="progress-line"></div>
+ <!-- Steps -->
+ <div class="relative z-10 flex flex-col items-center">
+ <div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center shadow-md">
+ <span class="material-symbols-outlined">edit_note</span>
+ </div>
+ <span class="mt-2 font-label-lg text-primary">Inquiry</span>
+ </div>
+ <div class="relative z-10 flex flex-col items-center">
+ <div class="w-10 h-10 bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant">
+ <span class="material-symbols-outlined">fact_check</span>
+ </div>
+ <span class="mt-2 font-label-lg text-on-surface-variant">Assessment</span>
+ </div>
+ <div class="relative z-10 flex flex-col items-center">
+ <div class="w-10 h-10 bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant">
+ <span class="material-symbols-outlined">assignment</span>
+ </div>
+ <span class="mt-2 font-label-lg text-on-surface-variant">Review</span>
+ </div>
+ <div class="relative z-10 flex flex-col items-center">
+ <div class="w-10 h-10 bg-surface-container-highest text-on-surface-variant flex items-center justify-center border-2 border-outline-variant">
+ <span class="material-symbols-outlined">verified</span>
+ </div>
+ <span class="mt-2 font-label-lg text-on-surface-variant">Enrollment</span>
+ </div>
+ </div>
+ </div>
+ </section>
 
-    <!-- Main Content Split Grid -->
-    <div class="grid grid-cols-12 gap-gutter items-start">
-        <!-- Left: Inquiry Form -->
-        <div class="col-span-12 lg:col-span-7">
-            <div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.05)] border border-surface-container-highest">
-                <h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Admission Inquiry</h2>
-                <p class="text-body-lg text-on-surface-variant mb-lg">Take the first step toward a royal education for your child. Complete the form below and our admissions team will contact you within 24 hours.</p>
-                <form class="space-y-md" id="inquiry-form">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
-                        <div class="flex flex-col gap-xs">
-                            <label class="font-label-lg text-on-surface ml-1">Parent's Full Name</label>
-                            <input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 rounded-lg px-4 py-3 transition-all" placeholder="John Doe" type="text" required>
-                        </div>
-                        <div class="flex flex-col gap-xs">
-                            <label class="font-label-lg text-on-surface ml-1">Phone Number</label>
-                            <input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 rounded-lg px-4 py-3 transition-all" placeholder="050 000 0000" type="tel" required>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-xs">
-                        <label class="font-label-lg text-on-surface ml-1">Email Address</label>
-                        <input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 rounded-lg px-4 py-3 transition-all" placeholder="example@email.com" type="email" required>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
-                        <div class="flex flex-col gap-xs">
-                            <label class="font-label-lg text-on-surface ml-1">Child's Age</label>
-                            <select class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 rounded-lg px-4 py-3 transition-all">
-                                <option>2 - 3 Years (Pre-K)</option>
-                                <option>4 - 5 Years (Primary)</option>
-                                <option>6+ Years</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col gap-xs">
-                            <label class="font-label-lg text-on-surface ml-1">Preferred Start Date</label>
-                            <input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 rounded-lg px-4 py-3 transition-all" type="date">
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-xs">
-                        <label class="font-label-lg text-on-surface ml-1">How did you hear about us?</label>
-                        <div class="flex flex-wrap gap-sm pt-base">
-                            <label class="flex items-center gap-base px-4 py-2 rounded-full border-2 border-surface-container-high cursor-pointer hover:border-secondary transition-all">
-                                <input class="text-secondary focus:ring-secondary" name="source" type="radio" value="social">
-                                <span class="text-label-lg">Social Media</span>
-                            </label>
-                            <label class="flex items-center gap-base px-4 py-2 rounded-full border-2 border-surface-container-high cursor-pointer hover:border-secondary transition-all">
-                                <input class="text-secondary focus:ring-secondary" name="source" type="radio" value="referral">
-                                <span class="text-label-lg">Referral</span>
-                            </label>
-                            <label class="flex items-center gap-base px-4 py-2 rounded-full border-2 border-surface-container-high cursor-pointer hover:border-secondary transition-all">
-                                <input class="text-secondary focus:ring-secondary" name="source" type="radio" value="signage">
-                                <span class="text-label-lg">Signage</span>
-                            </label>
-                        </div>
-                    </div>
-                    <button class="w-full bg-primary text-on-primary font-headline-md py-lg rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95 transition-all flex items-center justify-center gap-base mt-lg" type="submit" id="submit-btn">
-                        Submit Inquiry
-                        <span class="material-symbols-outlined">arrow_forward</span>
-                    </button>
-                </form>
-            </div>
-        </div>
+ <!-- Main Content Split Grid -->
+ <div class="grid grid-cols-12 gap-gutter items-start">
+ <!-- Left: Inquiry Form -->
+ <div class="col-span-12 lg:col-span-7">
+ <div class="bg-surface-container-lowest p-lg shadow-[0_4px_15px_rgba(0,0,0,0.05)] border border-surface-container-highest">
+ <h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Admission Inquiry</h2>
+ <p class="text-body-lg text-on-surface-variant mb-lg">Take the first step toward a royal education for your child. Complete the form below and our admissions team will contact you within 24 hours.</p>
+ <form class="space-y-md" id="inquiry-form">
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+ <div class="flex flex-col gap-xs">
+ <label class="font-label-lg text-on-surface ml-1">Parent's Full Name</label>
+ <input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 px-4 py-3 transition-all" placeholder="John Doe" type="text" required>
+ </div>
+ <div class="flex flex-col gap-xs">
+ <label class="font-label-lg text-on-surface ml-1">Phone Number</label>
+ <input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 px-4 py-3 transition-all" placeholder="050 000 0000" type="tel" required>
+ </div>
+ </div>
+ <div class="flex flex-col gap-xs">
+ <label class="font-label-lg text-on-surface ml-1">Email Address</label>
+ <input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 px-4 py-3 transition-all" placeholder="example@email.com" type="email" required>
+ </div>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+ <div class="flex flex-col gap-xs">
+ <label class="font-label-lg text-on-surface ml-1">Child's Age</label>
+ <select class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 px-4 py-3 transition-all">
+ <option>2 - 3 Years (Pre-K)</option>
+ <option>4 - 5 Years (Primary)</option>
+ <option>6+ Years</option>
+ </select>
+ </div>
+ <div class="flex flex-col gap-xs">
+ <label class="font-label-lg text-on-surface ml-1">Preferred Start Date</label>
+ <input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:ring-0 px-4 py-3 transition-all" type="date">
+ </div>
+ </div>
+ <div class="flex flex-col gap-xs">
+ <label class="font-label-lg text-on-surface ml-1">How did you hear about us?</label>
+ <div class="flex flex-wrap gap-sm pt-base">
+ <label class="flex items-center gap-base px-4 py-2 border-2 border-surface-container-high cursor-pointer hover:border-secondary transition-all">
+ <input class="text-secondary focus:ring-secondary" name="source" type="radio" value="social">
+ <span class="text-label-lg">Social Media</span>
+ </label>
+ <label class="flex items-center gap-base px-4 py-2 border-2 border-surface-container-high cursor-pointer hover:border-secondary transition-all">
+ <input class="text-secondary focus:ring-secondary" name="source" type="radio" value="referral">
+ <span class="text-label-lg">Referral</span>
+ </label>
+ <label class="flex items-center gap-base px-4 py-2 border-2 border-surface-container-high cursor-pointer hover:border-secondary transition-all">
+ <input class="text-secondary focus:ring-secondary" name="source" type="radio" value="signage">
+ <span class="text-label-lg">Signage</span>
+ </label>
+ </div>
+ </div>
+ <button class="w-full bg-primary text-on-primary font-headline-md py-lg shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95 transition-all flex items-center justify-center gap-base mt-lg" type="submit" id="submit-btn">
+ Submit Inquiry
+ <span class="material-symbols-outlined">arrow_forward</span>
+ </button>
+ </form>
+ </div>
+ </div>
 
-        <!-- Right: Contact & Location Section -->
-        <div class="col-span-12 lg:col-span-5 flex flex-col gap-gutter">
-            <!-- Contact Card -->
-            <div class="bg-secondary-container p-lg rounded-xl shadow-md flex flex-col gap-md border border-secondary/20">
-                <h3 class="font-headline-md text-headline-md text-on-secondary-container">Direct Contact</h3>
-                <div class="flex flex-col gap-sm">
-                    <div class="flex items-center gap-md p-sm bg-surface/50 rounded-lg">
-                        <div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0">
-                            <span class="material-symbols-outlined">call</span>
-                        </div>
-                        <div>
-                            <p class="text-label-sm font-bold opacity-70">Phone</p>
-                            <a href="tel:0591664392" class="font-headline-md text-on-secondary-container hover:opacity-70 transition-opacity">0591664392</a>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-md p-sm bg-surface/50 rounded-lg">
-                        <div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0">
-                            <span class="material-symbols-outlined">mail</span>
-                        </div>
-                        <div>
-                            <p class="text-label-sm font-bold opacity-70">Email</p>
-                            <a href="mailto:admissions@brainykings.edu" class="font-headline-md text-on-secondary-container hover:opacity-70 transition-opacity break-all">admissions@brainykings.edu</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+ <!-- Right: Contact & Location Section -->
+ <div class="col-span-12 lg:col-span-5 flex flex-col gap-gutter">
+ <!-- Contact Card -->
+ <div class="bg-secondary-container p-lg shadow-md flex flex-col gap-md border border-secondary/20">
+ <h3 class="font-headline-md text-headline-md text-on-secondary-container">Direct Contact</h3>
+ <div class="flex flex-col gap-sm">
+ <div class="flex items-center gap-md p-sm bg-surface/50">
+ <div class="w-12 h-12 bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0">
+ <span class="material-symbols-outlined">call</span>
+ </div>
+ <div>
+ <p class="text-label-sm font-bold opacity-70">Phone</p>
+ <a href="tel:0591664392" class="font-headline-md text-on-secondary-container hover:opacity-70 transition-opacity">0591664392</a>
+ </div>
+ </div>
+ <div class="flex items-center gap-md p-sm bg-surface/50">
+ <div class="w-12 h-12 bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0">
+ <span class="material-symbols-outlined">mail</span>
+ </div>
+ <div>
+ <p class="text-label-sm font-bold opacity-70">Email</p>
+ <a href="mailto:admissions@brainykings.edu" class="font-headline-md text-on-secondary-container hover:opacity-70 transition-opacity break-all">admissions@brainykings.edu</a>
+ </div>
+ </div>
+ </div>
+ </div>
 
-            <!-- Location / Map -->
-            <div class="relative h-[300px] rounded-xl overflow-hidden shadow-md group">
-                <img alt="School Location Map — Kumasi-Ahodwo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFuMS74OLcIjpgjpWqtpkVUDAU114M_32eH_9b1CCrb_KbFY7yXo4mZ1XCOS30kcA2gVXr6Okx0XZqejyYtKiap4RQ39fYEIdTTCa0LQJT1c3645A5fN_hx5FMpHjHvTVQb_spCQ7C72hHg5yXFS_SlqDvSEZ9ZH4W9VwsDZKDdOHWEMfjG7BUlF5TQ3PM7lgkLt8TKMC894UcClHLJiwzbf8IvbEpLerd3VU9qKMM-8VqVwqQoHjTw5P7lV951FUogdWjemZoYtQ">
-                <div class="absolute bottom-4 left-4 right-4 bg-surface p-md rounded-lg shadow-xl border border-outline-variant/30 transition-transform group-hover:-translate-y-2">
-                    <div class="flex items-start gap-sm">
-                        <span class="material-symbols-outlined text-tertiary">location_on</span>
-                        <div>
-                            <h4 class="font-headline-md text-on-surface">Kumasi-Ahodwo</h4>
-                            <p class="text-body-md text-on-surface-variant">Adjacent the Royal Golf Course, Ashanti Region, Ghana</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+ <!-- Location / Map -->
+ <div class="relative h-[300px] overflow-hidden shadow-md group">
+ <img alt="School Location Map — Kumasi-Ahodwo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFuMS74OLcIjpgjpWqtpkVUDAU114M_32eH_9b1CCrb_KbFY7yXo4mZ1XCOS30kcA2gVXr6Okx0XZqejyYtKiap4RQ39fYEIdTTCa0LQJT1c3645A5fN_hx5FMpHjHvTVQb_spCQ7C72hHg5yXFS_SlqDvSEZ9ZH4W9VwsDZKDdOHWEMfjG7BUlF5TQ3PM7lgkLt8TKMC894UcClHLJiwzbf8IvbEpLerd3VU9qKMM-8VqVwqQoHjTw5P7lV951FUogdWjemZoYtQ">
+ <div class="absolute bottom-4 left-4 right-4 bg-surface p-md shadow-xl border border-outline-variant/30 transition-transform group-hover:-translate-y-2">
+ <div class="flex items-start gap-sm">
+ <span class="material-symbols-outlined text-tertiary">location_on</span>
+ <div>
+ <h4 class="font-headline-md text-on-surface">Kumasi-Ahodwo</h4>
+ <p class="text-body-md text-on-surface-variant">Adjacent the Royal Golf Course, Ashanti Region, Ghana</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-            <!-- Schedule a Tour Card -->
-            <div class="bg-tertiary-container p-lg rounded-xl text-on-tertiary-container flex flex-col justify-between min-h-[200px]">
-                <div>
-                    <h3 class="font-headline-md text-headline-md mb-base">Schedule a Private Tour</h3>
-                    <p class="text-body-md opacity-90">Experience our Montessori classrooms first-hand and see where the magic of learning happens.</p>
-                </div>
-                <button class="mt-md bg-on-tertiary-container text-tertiary font-label-lg px-6 py-3 rounded-full self-start hover:bg-opacity-90 active:scale-95 transition-all" onclick="document.getElementById('inquiry-form').scrollIntoView({behavior:'smooth'})">
-                    Book Appointment
-                </button>
-            </div>
-        </div>
-    </div>
+ </div>
+ </div>
 </main>
 
 <!-- Footer -->
-<footer class="w-full px-margin-desktop py-xl flex flex-col items-center gap-lg text-center bg-surface-container-highest border-t border-outline-variant mt-xl">
-    <h2 class="text-headline-md font-headline-md text-primary font-bold">Brainy Kings &amp; Queens</h2>
-    <div class="flex gap-md flex-wrap justify-center">
-        <a href="tel:0591664392" class="text-on-surface-variant text-body-md font-body-md hover:text-tertiary transition-colors">0591664392</a>
-        <span class="text-on-surface-variant text-body-md font-body-md">Kumasi-Ahodwo</span>
-        <a class="text-on-surface-variant text-body-md font-body-md hover:text-tertiary transition-colors" href="#">Privacy Policy</a>
-    </div>
-    <nav class="flex flex-wrap justify-center gap-lg pt-base border-t border-outline-variant/30 w-full">
-        <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Home</a>
-        <a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">About</a>
-        <a href="admissions.html" class="text-primary font-bold font-label-lg">Admissions</a>
-        <a href="curriculum.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Curriculum</a>
-    </nav>
-    <p class="text-label-sm font-label-sm text-on-surface-variant opacity-70">&copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.</p>
+<footer class="w-full px-margin-mobile md:px-margin-desktop py-xl flex flex-col items-center gap-lg text-center bg-surface-container-highest border-t border-outline-variant mt-xl">
+ <h2 class="text-headline-md font-headline-md text-primary font-bold">Brainy Kings &amp; Queens</h2>
+ <div class="flex gap-md flex-wrap justify-center">
+ <a href="tel:0591664392" class="text-on-surface-variant text-body-md font-body-md hover:text-tertiary transition-colors">0591664392</a>
+ <span class="text-on-surface-variant text-body-md font-body-md">Kumasi-Ahodwo</span>
+ <a class="text-on-surface-variant text-body-md font-body-md hover:text-tertiary transition-colors" href="#">Privacy Policy</a>
+ </div>
+ <nav class="flex flex-wrap justify-center gap-lg pt-base border-t border-outline-variant/30 w-full">
+ <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Home</a>
+ <a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">About</a>
+ <a href="admissions.html" class="text-primary font-bold font-label-lg">Admissions</a>
+ <a href="curriculum.html" class="text-on-surface-variant hover:text-primary transition-colors font-label-lg">Curriculum</a>
+ </nav>
+ <p class="text-label-sm font-label-sm text-on-surface-variant opacity-70">&copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.</p>
 </footer>
 
 <!-- Mobile Bottom Nav -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-2 pt-2 bg-surface-container shadow-[0_-4px_15px_rgba(0,0,0,0.08)] rounded-t-xl">
-    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="index.html">
-        <span class="material-symbols-outlined">home</span>
-        <span class="text-label-sm font-label-sm">Home</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="about.html">
-        <span class="material-symbols-outlined">school</span>
-        <span class="text-label-sm font-label-sm">About</span>
-    </a>
-    <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="admissions.html">
-        <span class="material-symbols-outlined">assignment_ind</span>
-        <span class="text-label-sm font-label-sm font-bold">Admissions</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="curriculum.html">
-        <span class="material-symbols-outlined">menu_book</span>
-        <span class="text-label-sm font-label-sm">Curriculum</span>
-    </a>
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-2 pt-2 bg-surface-container shadow-[0_-4px_15px_rgba(0,0,0,0.08)]">
+ <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="index.html">
+ <span class="material-symbols-outlined">home</span>
+ <span class="text-label-sm font-label-sm">Home</span>
+ </a>
+ <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="about.html">
+ <span class="material-symbols-outlined">school</span>
+ <span class="text-label-sm font-label-sm">About</span>
+ </a>
+ <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container px-4 py-1" href="admissions.html">
+ <span class="material-symbols-outlined">assignment_ind</span>
+ <span class="text-label-sm font-label-sm font-bold">Admissions</span>
+ </a>
+ <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="curriculum.html">
+ <span class="material-symbols-outlined">menu_book</span>
+ <span class="text-label-sm font-label-sm">Curriculum</span>
+ </a>
 </nav>
 
 <script>
-    window.addEventListener('scroll', () => {
-        const nav = document.getElementById('main-nav');
-        if (window.scrollY > 50) {
-            nav.classList.add('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
-        } else {
-            nav.classList.remove('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
-        }
-    });
+ window.addEventListener('scroll', () => {
+ const nav = document.getElementById('main-nav');
+ if (window.scrollY > 50) {
+ nav.classList.add('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
+ } else {
+ nav.classList.remove('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
+ }
+ });
 
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
+ document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+ document.getElementById('mobile-menu').classList.toggle('hidden');
+ });
 
-    document.getElementById('inquiry-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = document.getElementById('submit-btn');
-        btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Processing...';
-        btn.disabled = true;
+ document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+ e.preventDefault();
+ const btn = document.getElementById('submit-btn');
+ btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Processing...';
+ btn.disabled = true;
 
-        setTimeout(() => {
-            btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Sent Successfully!';
-            btn.classList.replace('bg-primary', 'bg-green-600');
-            // Advance progress tracker
-            document.getElementById('progress-line').style.width = '66%';
-        }, 1500);
-    });
+ setTimeout(() => {
+ btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Sent Successfully!';
+ btn.classList.replace('bg-primary', 'bg-green-600');
+ // Advance progress tracker
+ document.getElementById('progress-line').style.width = '66%';
+ }, 1500);
+ });
 </script>
 </body>
 </html>
