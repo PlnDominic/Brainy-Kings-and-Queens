@@ -116,7 +116,7 @@ export default function AboutPage() {
                 </p>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed">
                   Over 15 years, we have grown from a small pre-school to a full primary school
-                  serving over 250 students, from ages 2.5 through Grade 6. But our promise
+                  serving over 250 students, from ages 2.5 through JHS 3. But our promise
                   remains unchanged: to see each child as the leader they already are.
                 </p>
               </div>

@@ -64,6 +64,24 @@ const programs = [
     borderColor: 'border-primary',
     accentText: 'text-primary',
   },
+  {
+    number: '04',
+    level: 'Junior High',
+    age: 'JHS 1 – 3',
+    tagline: 'Excellence & Achievement',
+    description:
+      'Students sharpen critical thinking and academic rigour across core subjects, preparing thoroughly for the BECE and their next great chapter.',
+    subjects: [
+      'English Language & Literature',
+      'Mathematics & Integrated Science',
+      'ICT & Computing',
+      'Social & Civic Studies',
+      'BECE Examination Preparation',
+    ],
+    icon: 'military_tech',
+    borderColor: 'border-on-surface',
+    accentText: 'text-on-surface',
+  },
 ]
 
 const principles = [
@@ -125,7 +143,7 @@ export default function CurriculumPage() {
             </h1>
             <p className="text-body-lg text-white/70 max-w-xl leading-relaxed">
               Our Montessori-inspired curriculum blends rigorous academic standards with the dignity
-              of self-paced exploration — from age 2.5 through Grade 6.
+              of self-paced exploration — from age 2.5 through JHS 3.
             </p>
           </AnimateOnView>
         </div>
@@ -188,7 +206,7 @@ export default function CurriculumPage() {
             </h2>
           </AnimateOnView>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
             {programs.map(({ number, level, age, tagline, description, subjects, icon, borderColor, accentText }) => (
               <StaggerItem key={level}>
                 <div

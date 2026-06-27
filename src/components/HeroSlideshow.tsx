@@ -92,7 +92,7 @@ export default function HeroSlideshow() {
             className="text-body-lg text-white/70 mb-xl max-w-xl leading-relaxed"
           >
             Brainy Kings and Queens Montessori — where independent thinking,
-            royal character, and academic excellence converge from age 2.5 through Grade 6.
+            royal character, and academic excellence converge from age 2.5 through JHS 3.
           </motion.p>
 
           {/* CTAs */}
