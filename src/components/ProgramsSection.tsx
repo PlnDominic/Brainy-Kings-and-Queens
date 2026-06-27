@@ -42,6 +42,18 @@ const programs = [
     borderColor: 'border-primary',
     accentText: 'text-primary',
   },
+  {
+    number: '04',
+    level: 'Junior High',
+    age: 'JHS 1 – 3',
+    tagline: 'Excellence & Achievement',
+    description:
+      'Students sharpen critical thinking and academic rigour across core subjects, preparing thoroughly for the BECE and their next great chapter.',
+    features: ['English & Literature', 'Mathematics & Sciences', 'ICT & Computing'],
+    icon: 'military_tech',
+    borderColor: 'border-on-surface',
+    accentText: 'text-on-surface',
+  },
 ]
 
 export default function ProgramsSection() {
@@ -71,7 +83,7 @@ export default function ProgramsSection() {
         </AnimateOnView>
 
         {/* Cards */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
           {programs.map(({ number, level, age, tagline, description, features, icon, borderColor, accentText }) => (
             <StaggerItem key={level}>
               <div
