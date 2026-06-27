@@ -127,16 +127,16 @@ export default function AboutPage() {
       </section>
 
       {/* ── 4. Values ── */}
-      <section className="py-xl bg-on-surface overflow-hidden">
+      <section className="py-xl bg-surface overflow-hidden">
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
           <AnimateOnView className="mb-xl">
             <div className="flex items-center gap-md mb-md">
-              <div className="h-px w-10 bg-secondary-container flex-shrink-0" />
-              <span className="text-secondary-container text-label-sm font-bold tracking-[0.3em] uppercase">
+              <div className="h-px w-10 bg-primary flex-shrink-0" />
+              <span className="text-primary text-label-sm font-bold tracking-[0.3em] uppercase">
                 Our Values
               </span>
             </div>
-            <h2 className="text-headline-lg font-headline-lg text-inverse-on-surface max-w-xl leading-tight">
+            <h2 className="text-headline-lg font-headline-lg text-on-surface max-w-xl leading-tight">
               What We Stand For
             </h2>
           </AnimateOnView>
@@ -144,17 +144,17 @@ export default function AboutPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             {values.map(({ icon, title, body }) => (
               <StaggerItem key={title}>
-                <div className="border-t border-white/15 pt-lg flex flex-col h-full">
+                <div className="bg-surface-container-lowest border-t-4 border-primary p-lg flex flex-col h-full shadow-sm">
                   <span
-                    className="material-symbols-outlined text-[40px] text-secondary-container mb-md"
+                    className="material-symbols-outlined text-[40px] text-primary mb-md"
                     style={{ fontVariationSettings: "'FILL' 1" }}
                   >
                     {icon}
                   </span>
-                  <h3 className="text-headline-md font-headline-md text-inverse-on-surface mb-sm">
+                  <h3 className="text-headline-md font-headline-md text-on-surface mb-sm">
                     {title}
                   </h3>
-                  <p className="text-body-lg text-inverse-on-surface/75 leading-relaxed">{body}</p>
+                  <p className="text-body-lg text-on-surface-variant leading-relaxed">{body}</p>
                 </div>
               </StaggerItem>
             ))}
