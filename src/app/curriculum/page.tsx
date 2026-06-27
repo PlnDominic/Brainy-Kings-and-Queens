@@ -101,7 +101,7 @@ export default function CurriculumPage() {
       {/* ── 1. Hero ── */}
       <section
         className="relative min-h-[80vh] flex items-center overflow-hidden"
-        style={{ background: '#0d0d0b' }}
+        style={{ background: '#1C0D06' }}
       >
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container z-20" />
 

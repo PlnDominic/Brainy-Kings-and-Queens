@@ -15,7 +15,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#0d0d0b' }}>
+    <footer style={{ background: '#1C0D06' }}>
       {/* Gold top accent */}
       <div className="h-[3px] bg-secondary-container" />
 

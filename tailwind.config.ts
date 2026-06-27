@@ -6,55 +6,68 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        surface: '#fbfaee',
-        'secondary-fixed': '#ffe088',
-        'on-surface-variant': '#424655',
-        'primary-container': '#1e6bff',
-        'on-tertiary-container': '#fffeff',
-        'outline-variant': '#c2c6d8',
-        'tertiary-fixed-dim': '#ffb3b1',
-        'on-error-container': '#93000a',
-        secondary: '#735c00',
-        'error-container': '#ffdad6',
-        'surface-dim': '#dbdbcf',
-        'on-secondary-fixed': '#241a00',
-        'on-tertiary-fixed': '#410007',
-        'on-secondary': '#ffffff',
-        'inverse-primary': '#b3c5ff',
-        'surface-bright': '#fbfaee',
-        'on-secondary-fixed-variant': '#574500',
-        'on-primary-container': '#fffeff',
-        outline: '#737687',
-        'on-error': '#ffffff',
-        error: '#ba1a1a',
-        tertiary: '#b9132b',
-        'on-secondary-container': '#745c00',
-        'tertiary-fixed': '#ffdad8',
-        'on-background': '#1b1c15',
-        'surface-container-low': '#f5f4e8',
-        'secondary-container': '#fed65b',
-        'on-surface': '#1b1c15',
-        background: '#fbfaee',
-        'primary-fixed-dim': '#b3c5ff',
-        'inverse-on-surface': '#f2f1e5',
-        'surface-tint': '#0054d7',
-        'surface-container-highest': '#e4e3d7',
-        'surface-container-high': '#e9e9dd',
-        'on-tertiary-fixed-variant': '#92001c',
+        // ── Surfaces (warm cream palette) ──────────────────────────────
+        surface: '#FAF6F2',
+        'surface-bright': '#FAF6F2',
+        'surface-dim': '#E6D8D0',
+        'surface-variant': '#EBE0D8',
         'surface-container-lowest': '#ffffff',
-        'inverse-surface': '#303129',
-        'primary-fixed': '#dbe1ff',
-        'on-primary-fixed-variant': '#003fa5',
-        'surface-variant': '#e4e3d7',
-        'secondary-fixed-dim': '#e9c349',
-        'surface-container': '#efeee3',
-        primary: '#0053d4',
-        'on-tertiary': '#ffffff',
+        'surface-container-low': '#F4EDE6',
+        'surface-container': '#EFE6DE',
+        'surface-container-high': '#E9DFD7',
+        'surface-container-highest': '#E3D8D0',
+        'surface-container-low-opacity': 'rgba(244,237,230,0.9)',
+        'surface-tint': '#7B3F2B',
+        background: '#FAF6F2',
+        'on-background': '#1C0D06',
+
+        // ── On-surface text ──────────────────────────────────────────
+        'on-surface': '#1C0D06',          // very dark warm brown (dark section bg)
+        'on-surface-variant': '#50382E',  // medium warm brown
+        'inverse-surface': '#342119',     // dark inverse
+        'inverse-on-surface': '#F5EDE6',  // light on dark inverse
+
+        // ── Primary — semi-dark mahogany brown ───────────────────────
+        primary: '#7B3F2B',
         'on-primary': '#ffffff',
-        'tertiary-container': '#dd3240',
-        'on-primary-fixed': '#001849',
-        'on-tertiary-fixed-dim': '#ffb3b1',
-        'surface-container-low-opacity': 'rgba(245,244,232,0.9)',
+        'primary-container': '#A0573F',
+        'on-primary-container': '#FFF1EC',
+        'primary-fixed': '#F0D5C8',
+        'primary-fixed-dim': '#C4936E',
+        'on-primary-fixed': '#1A0600',
+        'on-primary-fixed-variant': '#5C2815',
+        'inverse-primary': '#E8B9A3',
+
+        // ── Secondary — warm amber-brown accent ──────────────────────
+        secondary: '#6B4830',
+        'on-secondary': '#ffffff',
+        'secondary-container': '#C68642',  // amber-bronze CTA / accent
+        'on-secondary-container': '#2C1600',
+        'secondary-fixed': '#E8B87A',
+        'secondary-fixed-dim': '#B8763A',
+        'on-secondary-fixed': '#2C1400',
+        'on-secondary-fixed-variant': '#4A2C12',
+
+        // ── Tertiary — warm gold-brown ───────────────────────────────
+        tertiary: '#8B6914',
+        'on-tertiary': '#ffffff',
+        'tertiary-container': '#C69232',
+        'on-tertiary-container': '#FFF8F5',
+        'tertiary-fixed': '#F5DEB3',
+        'tertiary-fixed-dim': '#D4A882',
+        'on-tertiary-fixed': '#1A0600',
+        'on-tertiary-fixed-variant': '#5C4200',
+        'on-tertiary-fixed-dim': '#E8C88A',
+
+        // ── Outline ──────────────────────────────────────────────────
+        outline: '#8A6B5E',
+        'outline-variant': '#D4C4BB',
+
+        // ── Error (unchanged) ─────────────────────────────────────────
+        error: '#ba1a1a',
+        'on-error': '#ffffff',
+        'error-container': '#ffdad6',
+        'on-error-container': '#93000a',
       },
       borderRadius: {
         DEFAULT: '0.25rem',
