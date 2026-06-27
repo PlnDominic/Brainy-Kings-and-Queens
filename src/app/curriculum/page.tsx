@@ -30,17 +30,17 @@ const programs = [
   },
   {
     number: '02',
-    level: 'Lower Primary',
-    age: 'Grades 1 – 3',
-    tagline: 'The Great Lessons',
+    level: 'Primary',
+    age: 'Grades 1 – 6',
+    tagline: 'Growing Minds',
     description:
-      'Students explore the universe through the "Great Lessons," igniting a lifelong curiosity for history, science, and language arts.',
+      'From the Great Lessons of early primary to complex research and leadership projects, students grow into confident, curious thinkers ready to lead.',
     subjects: [
       'Literacy & Creative Writing',
-      'Cosmic Education (Sciences)',
+      'Mathematics & Sciences',
       'Computational Thinking',
-      'Cultural Awareness',
-      'Community Projects',
+      'Public Speaking & Debate',
+      'Research & Leadership Projects',
     ],
     icon: 'auto_stories',
     borderColor: 'border-secondary',
@@ -48,24 +48,6 @@ const programs = [
   },
   {
     number: '03',
-    level: 'Upper Primary',
-    age: 'Grades 4 – 6',
-    tagline: 'Leadership & Legacy',
-    description:
-      'Complex projects, collaborative research, and advanced mathematics prepare our students to lead far beyond the classroom.',
-    subjects: [
-      'Public Speaking & Debate',
-      'Environmental Stewardship',
-      'Advanced Logic & Algebra',
-      'Research Projects',
-      'Leadership Seminars',
-    ],
-    icon: 'workspace_premium',
-    borderColor: 'border-primary',
-    accentText: 'text-primary',
-  },
-  {
-    number: '04',
     level: 'Junior High',
     age: 'JHS 1 – 3',
     tagline: 'Excellence & Achievement',
@@ -79,8 +61,8 @@ const programs = [
       'BECE Examination Preparation',
     ],
     icon: 'military_tech',
-    borderColor: 'border-on-surface',
-    accentText: 'text-on-surface',
+    borderColor: 'border-primary',
+    accentText: 'text-primary',
   },
 ]
 
@@ -206,7 +188,7 @@ export default function CurriculumPage() {
             </h2>
           </AnimateOnView>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             {programs.map(({ number, level, age, tagline, description, subjects, icon, borderColor, accentText }) => (
               <StaggerItem key={level}>
                 <div
