@@ -31,9 +31,6 @@ export default function Navigation() {
         }`}
         style={{ background: scrolled ? '#1C0D06' : 'transparent' }}
       >
-        {/* Gold top accent */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-secondary-container" />
-
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between">
           {/* Wordmark */}
           <Link href="/" className="flex items-center gap-sm">
@@ -109,8 +106,6 @@ export default function Navigation() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-secondary-container" />
-
             {/* Header row */}
             <div className="flex justify-between items-center px-margin-mobile py-5">
               <div className="flex items-center gap-sm">

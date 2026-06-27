@@ -44,7 +44,6 @@ export default function AdmissionsPage() {
         className="relative min-h-[70vh] flex items-center overflow-hidden"
         style={{ background: '#1C0D06' }}
       >
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container z-20" />
 
         <div className="absolute inset-0 z-0">
           <Image
