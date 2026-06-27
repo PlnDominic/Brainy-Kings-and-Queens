@@ -92,7 +92,7 @@ export default function HeroSlideshow() {
             variants={heroItem}
             className="text-body-lg text-white/70 mb-xl max-w-xl leading-relaxed"
           >
-            Kumasi&apos;s premier Montessori school — where independent thinking,
+            Brainy Kings and Queens Montessori — where independent thinking,
             royal character, and academic excellence converge from age 2.5 through Grade 6.
           </motion.p>
 

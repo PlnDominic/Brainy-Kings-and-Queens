@@ -1,108 +1,143 @@
 import Link from 'next/link'
 
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
+  { href: '/curriculum', label: 'Curriculum' },
+  { href: '/admissions', label: 'Admissions' },
+]
+
+const socials = [
+  { icon: 'social_leaderboard', label: 'Facebook' },
+  { icon: 'photo_camera', label: 'Instagram' },
+  { icon: 'alternate_email', label: 'Email' },
+]
+
 export default function Footer() {
   return (
-    <footer className="bg-white border-t-4 border-primary">
-      <div className="px-margin-mobile md:px-margin-desktop py-xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-xl">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-base mb-md">
-              <span
-                className="material-symbols-outlined text-primary text-3xl"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                school
-              </span>
-              <span className="text-headline-md font-headline-md font-bold text-primary">
-                Brainy Kings &amp; Queens
-              </span>
+    <footer style={{ background: '#0d0d0b' }}>
+      {/* Gold top accent */}
+      <div className="h-[3px] bg-secondary-container" />
+
+      <div className="container mx-auto px-margin-mobile md:px-margin-desktop pt-xl pb-lg">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-xl">
+
+          {/* Brand — 5 cols */}
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-sm mb-lg">
+              <div className="w-10 h-10 bg-secondary-container flex items-center justify-center flex-shrink-0">
+                <span
+                  className="material-symbols-outlined text-secondary text-[22px]"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  school
+                </span>
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="text-white font-bold text-headline-md font-headline-md">
+                  Brainy Kings
+                </span>
+                <span className="text-secondary-container text-[11px] font-bold uppercase tracking-[0.25em]">
+                  &amp; Queens Montessori
+                </span>
+              </div>
             </div>
-            <p className="text-body-md text-on-surface-variant mb-lg leading-relaxed">
-              The preferred Montessori school in Kumasi, empowering children to lead and innovate.
+
+            <p className="text-white/50 text-body-lg leading-relaxed mb-lg max-w-sm">
+              Kumasi&apos;s most trusted Montessori school. Empowering children to think, lead,
+              and leave their mark since 2010.
             </p>
+
             <div className="flex gap-sm">
-              {[
-                { icon: 'social_leaderboard', label: 'Facebook' },
-                { icon: 'alternate_email', label: 'Email' },
-                { icon: 'photo_camera', label: 'Instagram' },
-              ].map(({ icon, label }) => (
+              {socials.map(({ icon, label }) => (
                 <a
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                  className="w-10 h-10 border border-white/15 flex items-center justify-center text-white/40 hover:border-secondary-container hover:text-secondary-container transition-all"
                 >
-                  <span className="material-symbols-outlined text-[20px]">{icon}</span>
+                  <span className="material-symbols-outlined text-[18px]">{icon}</span>
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-label-lg font-bold text-on-surface uppercase tracking-[0.15em] mb-lg">
-              Quick Links
-            </h3>
+          {/* Spacer */}
+          <div className="hidden md:block md:col-span-1" />
+
+          {/* Navigate — 2 cols */}
+          <div className="md:col-span-2">
+            <h4 className="text-label-sm font-bold text-white uppercase tracking-[0.25em] mb-lg">
+              Navigate
+            </h4>
             <nav className="flex flex-col gap-md">
-              {[
-                { href: '/', label: 'Home' },
-                { href: '/about', label: 'About Us' },
-                { href: '/admissions', label: 'Admissions' },
-                { href: '/curriculum', label: 'Curriculum' },
-              ].map(({ href, label }) => (
+              {navLinks.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-on-surface-variant hover:text-primary transition-colors font-label-lg flex items-center gap-xs"
+                  className="text-white/50 hover:text-secondary-container transition-colors text-label-lg flex items-center gap-sm group"
                 >
-                  <span className="material-symbols-outlined text-[16px] text-primary">
-                    chevron_right
-                  </span>
+                  <span className="w-4 h-px bg-white/15 group-hover:w-6 group-hover:bg-secondary-container transition-all duration-200" />
                   {label}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-label-lg font-bold text-on-surface uppercase tracking-[0.15em] mb-lg">
-              Get In Touch
-            </h3>
+          {/* Contact — 4 cols */}
+          <div className="md:col-span-4">
+            <h4 className="text-label-sm font-bold text-white uppercase tracking-[0.25em] mb-lg">
+              Contact Us
+            </h4>
             <div className="flex flex-col gap-md">
-              <a href="tel:0591664392" className="flex items-center gap-md group">
-                <div className="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
-                  <span className="material-symbols-outlined text-[20px]">call</span>
-                </div>
-                <span className="text-on-surface-variant group-hover:text-primary transition-colors font-label-lg">
+              <a href="tel:0591664392" className="group flex items-start gap-md">
+                <span
+                  className="material-symbols-outlined text-[18px] text-secondary-container mt-px flex-shrink-0"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  call
+                </span>
+                <span className="text-white/50 group-hover:text-white transition-colors text-label-lg">
                   0591664392
                 </span>
               </a>
-              <div className="flex items-center gap-md">
-                <div className="w-10 h-10 bg-secondary-container flex items-center justify-center text-secondary flex-shrink-0">
-                  <span className="material-symbols-outlined text-[20px]">location_on</span>
-                </div>
-                <span className="text-on-surface-variant font-label-lg">
-                  Kumasi-Ahodwo, Ashanti Region, Ghana
+              <div className="flex items-start gap-md">
+                <span
+                  className="material-symbols-outlined text-[18px] text-secondary-container mt-px flex-shrink-0"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  location_on
+                </span>
+                <span className="text-white/50 text-label-lg leading-relaxed">
+                  Kumasi-Ahodwo, Adjacent the Royal Golf Course,
+                  <br />
+                  Ashanti Region, Ghana
+                </span>
+              </div>
+              <div className="flex items-start gap-md">
+                <span
+                  className="material-symbols-outlined text-[18px] text-secondary-container mt-px flex-shrink-0"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  schedule
+                </span>
+                <span className="text-white/50 text-label-lg">
+                  Mon – Fri: 7:00 AM – 4:00 PM
                 </span>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Copyright */}
-      <div className="bg-surface-container-low border-t border-outline-variant/30 px-margin-mobile md:px-margin-desktop py-md flex flex-col sm:flex-row justify-between items-center gap-sm">
-        <p className="text-label-sm text-on-surface-variant">
-          &copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.
-        </p>
-        <a
-          href="#"
-          className="text-label-sm text-on-surface-variant hover:text-primary transition-colors underline"
-        >
-          Privacy Policy
-        </a>
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 mt-xl pt-lg flex flex-col sm:flex-row justify-between items-center gap-sm">
+          <p className="text-label-sm text-white/25">
+            &copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.
+          </p>
+          <a href="#" className="text-label-sm text-white/25 hover:text-white/50 transition-colors">
+            Privacy Policy
+          </a>
+        </div>
       </div>
     </footer>
   )
