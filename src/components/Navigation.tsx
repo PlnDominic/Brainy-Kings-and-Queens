@@ -29,7 +29,7 @@ export default function Navigation() {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled ? 'py-3 shadow-2xl' : 'py-5'
         }`}
-        style={{ background: scrolled ? '#0d0d0b' : 'transparent' }}
+        style={{ background: scrolled ? '#1C0D06' : 'transparent' }}
       >
         {/* Gold top accent */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-secondary-container" />
@@ -103,7 +103,7 @@ export default function Navigation() {
         {menuOpen && (
           <motion.div
             className="md:hidden fixed inset-0 z-40 flex flex-col"
-            style={{ background: '#0d0d0b' }}
+            style={{ background: '#1C0D06' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
