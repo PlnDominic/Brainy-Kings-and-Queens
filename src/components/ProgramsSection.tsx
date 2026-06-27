@@ -20,30 +20,18 @@ const programs = [
   },
   {
     number: '02',
-    level: 'Lower Primary',
-    age: 'Grades 1 – 3',
-    tagline: 'The Great Lessons',
+    level: 'Primary',
+    age: 'Grades 1 – 6',
+    tagline: 'Growing Minds',
     description:
-      'Students explore the universe through the "Great Lessons," igniting a lifelong curiosity for history, science, and language arts.',
-    features: ['Literacy & Writing', 'Cosmic Education', 'Computational Thinking'],
+      'From the Great Lessons of early primary to complex research and leadership projects, students grow into confident, curious thinkers.',
+    features: ['Literacy & Mathematics', 'Sciences & Computing', 'Public Speaking & Leadership'],
     icon: 'auto_stories',
     borderColor: 'border-secondary',
     accentText: 'text-secondary',
   },
   {
     number: '03',
-    level: 'Upper Primary',
-    age: 'Grades 4 – 6',
-    tagline: 'Leadership & Legacy',
-    description:
-      'Complex projects, collaborative research, and advanced mathematics prepare our students to lead far beyond the classroom.',
-    features: ['Public Speaking & Debate', 'Environmental Stewardship', 'Advanced Logic & Algebra'],
-    icon: 'workspace_premium',
-    borderColor: 'border-primary',
-    accentText: 'text-primary',
-  },
-  {
-    number: '04',
     level: 'Junior High',
     age: 'JHS 1 – 3',
     tagline: 'Excellence & Achievement',
@@ -51,8 +39,8 @@ const programs = [
       'Students sharpen critical thinking and academic rigour across core subjects, preparing thoroughly for the BECE and their next great chapter.',
     features: ['English & Literature', 'Mathematics & Sciences', 'ICT & Computing'],
     icon: 'military_tech',
-    borderColor: 'border-on-surface',
-    accentText: 'text-on-surface',
+    borderColor: 'border-primary',
+    accentText: 'text-primary',
   },
 ]
 
@@ -83,7 +71,7 @@ export default function ProgramsSection() {
         </AnimateOnView>
 
         {/* Cards */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
           {programs.map(({ number, level, age, tagline, description, features, icon, borderColor, accentText }) => (
             <StaggerItem key={level}>
               <div
