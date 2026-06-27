@@ -27,17 +27,17 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-xl bg-on-surface overflow-hidden">
+    <section className="py-xl bg-surface-container-low overflow-hidden">
       <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
         {/* Header */}
         <AnimateOnView className="mb-xl">
           <div className="flex items-center gap-md mb-md">
-            <div className="h-px w-10 bg-secondary-container flex-shrink-0" />
-            <span className="text-secondary-container text-label-sm font-bold tracking-[0.3em] uppercase">
+            <div className="h-px w-10 bg-primary flex-shrink-0" />
+            <span className="text-primary text-label-sm font-bold tracking-[0.3em] uppercase">
               What Parents Say
             </span>
           </div>
-          <h2 className="text-headline-lg font-headline-lg text-inverse-on-surface max-w-xl leading-tight">
+          <h2 className="text-headline-lg font-headline-lg text-on-surface max-w-xl leading-tight">
             Stories from Our <br /> Royal Community
           </h2>
         </AnimateOnView>
@@ -46,19 +46,19 @@ export default function TestimonialsSection() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
           {testimonials.map(({ quote, name, role }) => (
             <StaggerItem key={name}>
-              <div className="border-t border-white/15 pt-lg flex flex-col h-full">
+              <div className="bg-surface-container-lowest p-lg border-t-4 border-primary flex flex-col h-full shadow-sm">
                 <span
                   className="material-symbols-outlined text-[40px] text-secondary-container mb-md"
                   style={{ fontVariationSettings: "'FILL' 1" }}
                 >
                   format_quote
                 </span>
-                <p className="text-body-lg text-inverse-on-surface/75 leading-relaxed flex-1 mb-lg">
+                <p className="text-body-lg text-on-surface-variant leading-relaxed flex-1 mb-lg">
                   &ldquo;{quote}&rdquo;
                 </p>
                 <div>
-                  <p className="text-label-lg font-bold text-inverse-on-surface">{name}</p>
-                  <p className="text-label-sm text-inverse-on-surface/45 mt-xs">{role}</p>
+                  <p className="text-label-lg font-bold text-on-surface">{name}</p>
+                  <p className="text-label-sm text-on-surface-variant/60 mt-xs">{role}</p>
                 </div>
               </div>
             </StaggerItem>
