@@ -11,6 +11,7 @@ const slides = [
   { src: '/images/students-large-group-photo.jpeg', alt: 'Our school community' },
   { src: '/images/students-cultural-day.jpeg', alt: 'Cultural celebration day' },
   { src: '/images/school-building.jpeg', alt: 'Brainy Kings & Queens campus' },
+  { src: '/images/students-uniform-outdoor-group.jpeg', alt: 'Students in uniform at Brainy Kings & Queens' },
 ]
 
 const SLIDE_DURATION = 5000

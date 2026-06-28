@@ -259,8 +259,8 @@ export default function CurriculumPage() {
             <AnimateOnView variant="fadeLeft">
               <div className="relative h-[460px] overflow-hidden">
                 <Image
-                  src="/images/students-smiling-closeup.jpeg"
-                  alt="Smiling Brainy Kings and Queens students"
+                  src="/images/students-classroom-primary.jpeg"
+                  alt="Primary students learning in the classroom"
                   fill
                   className="object-cover"
                 />
