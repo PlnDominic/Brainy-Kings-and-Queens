@@ -32,9 +32,9 @@ const galleryItems = [
     caption: 'Classroom joy',
   },
   {
-    src: '/images/students-smiling-closeup.jpeg',
-    alt: 'Happy students at Brainy Kings and Queens',
-    caption: 'Happy learners',
+    src: '/images/students-preschool-lunch-group.jpeg',
+    alt: 'Pre-school students sharing a meal together',
+    caption: 'Shared meals, shared values',
   },
 ]
 

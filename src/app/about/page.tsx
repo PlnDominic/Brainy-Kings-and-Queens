@@ -200,13 +200,13 @@ export default function AboutPage() {
                 </div>
                 <div className="relative gallery-item overflow-hidden h-[192px] md:h-auto md:flex-1">
                   <Image
-                    src="/images/students-classroom-fun.jpeg"
-                    alt="Students enjoying learning in the classroom"
+                    src="/images/students-preschool-lunch-closeup.jpeg"
+                    alt="Pre-school children enjoying lunch at school"
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
                   />
                   <div className="gallery-caption">
-                    <span className="text-white font-label-lg">Classroom Joy</span>
+                    <span className="text-white font-label-lg">Nourished &amp; Cared For</span>
                   </div>
                 </div>
               </div>
