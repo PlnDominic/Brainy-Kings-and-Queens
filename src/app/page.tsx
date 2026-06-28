@@ -22,14 +22,14 @@ const galleryItems = [
     caption: 'Ready to lead',
   },
   {
-    src: '/images/students-bench-outdoor.jpeg',
-    alt: 'Students learning outdoors',
-    caption: 'Outdoor learning',
+    src: '/images/students-preschool-standing.jpeg',
+    alt: 'Pre-school students in uniform',
+    caption: 'Our youngest royals',
   },
   {
-    src: '/images/students-field-trip-bench.jpeg',
-    alt: 'Students on a field trip',
-    caption: 'Beyond the classroom',
+    src: '/images/students-classroom-fun.jpeg',
+    alt: 'Students enjoying learning in the classroom',
+    caption: 'Classroom joy',
   },
   {
     src: '/images/students-smiling-closeup.jpeg',

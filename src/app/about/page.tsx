@@ -189,24 +189,24 @@ export default function AboutPage() {
               <div className="md:w-1/2 flex flex-col gap-md">
                 <div className="relative gallery-item overflow-hidden h-[192px] md:h-auto md:flex-1">
                   <Image
-                    src="/images/students-bench-outdoor.jpeg"
-                    alt="Students learning outdoors"
+                    src="/images/students-preschool-cubbies.jpeg"
+                    alt="Pre-school students organising their belongings"
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
                   />
                   <div className="gallery-caption">
-                    <span className="text-white font-label-lg">Outdoor Learning</span>
+                    <span className="text-white font-label-lg">Practical Life</span>
                   </div>
                 </div>
                 <div className="relative gallery-item overflow-hidden h-[192px] md:h-auto md:flex-1">
                   <Image
-                    src="/images/students-smiling-closeup.jpeg"
-                    alt="Happy students at Brainy Kings and Queens"
+                    src="/images/students-classroom-fun.jpeg"
+                    alt="Students enjoying learning in the classroom"
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
                   />
                   <div className="gallery-caption">
-                    <span className="text-white font-label-lg">Happy Learners</span>
+                    <span className="text-white font-label-lg">Classroom Joy</span>
                   </div>
                 </div>
               </div>
