@@ -35,7 +35,7 @@ export default function HeroSlideshow() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#1C0D06' }}>
+    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#1A0505' }}>
       {/* Gold left accent line */}
 
       {/* Slideshow background */}

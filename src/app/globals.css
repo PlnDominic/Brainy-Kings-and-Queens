@@ -17,7 +17,7 @@
 .gallery-caption {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(123, 63, 43, 0.82) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(179, 27, 27, 0.82) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
   display: flex;
@@ -36,13 +36,13 @@
   top: 12px;
   width: 14px;
   height: 14px;
-  background-color: #7B3F2B;
-  border: 3px solid #FAF6F2;
+  background-color: #B31B1B;
+  border: 3px solid #FFFAFA;
   z-index: 10;
-  box-shadow: 0 0 0 2px #7B3F2B;
+  box-shadow: 0 0 0 2px #B31B1B;
 }
 
-/* Brown gradient utility */
+/* Red gradient utility */
 .royal-gradient {
-  background: linear-gradient(135deg, #7B3F2B 0%, #A0573F 100%);
+  background: linear-gradient(135deg, #B31B1B 0%, #D94F4F 100%);
 }

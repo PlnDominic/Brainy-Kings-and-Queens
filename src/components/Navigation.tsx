@@ -29,7 +29,7 @@ export default function Navigation() {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled ? 'py-3 shadow-2xl' : 'py-5'
         }`}
-        style={{ background: scrolled ? '#1C0D06' : 'transparent' }}
+        style={{ background: scrolled ? '#1A0505' : 'transparent' }}
       >
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between">
           {/* Wordmark */}
@@ -100,7 +100,7 @@ export default function Navigation() {
         {menuOpen && (
           <motion.div
             className="md:hidden fixed inset-0 z-40 flex flex-col"
-            style={{ background: '#1C0D06' }}
+            style={{ background: '#1A0505' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
