@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
@@ -11,10 +12,10 @@ const programs = [
     level: 'Pre-School',
     age: 'Ages 2.5 – 5',
     tagline: 'The Prepared Environment',
-    description:
-      'Children develop fine motor control, emotional self-regulation, and early literacy through purposeful work with Montessori materials.',
+    description: 'Montessori materials build fine motor skills, self-regulation, and early literacy.',
     features: ['Sensorial Learning', 'Practical Life Skills', 'Phonetic Reading'],
     icon: 'child_care',
+    image: '/images/students-preschool-standing.jpeg',
     borderColor: 'border-secondary-container',
     accentText: 'text-secondary-container',
   },
@@ -23,10 +24,10 @@ const programs = [
     level: 'Primary',
     age: 'Grades 1 – 6',
     tagline: 'Growing Minds',
-    description:
-      'From the Great Lessons of early primary to complex research and leadership projects, students grow into confident, curious thinkers.',
+    description: 'From the Great Lessons to leadership projects — confident, curious thinkers.',
     features: ['Literacy & Mathematics', 'Sciences & Computing', 'Public Speaking & Leadership'],
     icon: 'auto_stories',
+    image: '/images/students-classroom-fun.jpeg',
     borderColor: 'border-secondary',
     accentText: 'text-secondary',
   },
@@ -35,10 +36,10 @@ const programs = [
     level: 'Junior High',
     age: 'JHS 1 – 3',
     tagline: 'Excellence & Achievement',
-    description:
-      'Students sharpen critical thinking and academic rigour across core subjects, preparing thoroughly for the BECE and their next great chapter.',
+    description: 'Core subjects, critical thinking, and BECE preparation for secondary success.',
     features: ['English & Literature', 'Mathematics & Sciences', 'ICT & Computing'],
     icon: 'military_tech',
+    image: '/images/teacher-student-mentorship.jpeg',
     borderColor: 'border-primary',
     accentText: 'text-primary',
   },
@@ -72,40 +73,48 @@ export default function ProgramsSection() {
 
         {/* Cards */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {programs.map(({ number, level, age, tagline, description, features, icon, borderColor, accentText }) => (
+          {programs.map(({ number, level, age, tagline, description, features, icon, image, borderColor, accentText }) => (
             <StaggerItem key={level}>
-              <div
-                className={`bg-surface-container-lowest border-t-4 ${borderColor} p-lg flex flex-col min-h-[440px] relative overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full shadow-sm`}
-              >
-                {/* Decorative number */}
-                <span
-                  className="absolute -right-2 -top-4 text-[100px] font-bold leading-none select-none font-headline-xl text-on-surface"
-                  style={{ opacity: 0.04 }}
-                >
-                  {number}
-                </span>
-
-                {/* Top row */}
-                <div className="flex items-start justify-between mb-lg">
-                  <span
-                    className={`material-symbols-outlined text-[36px] ${accentText}`}
-                    style={{ fontVariationSettings: "'FILL' 1" }}
-                  >
-                    {icon}
-                  </span>
-                  <span className="text-label-sm font-bold uppercase tracking-widest text-on-surface-variant">
+              <div className={`bg-surface-container-lowest border-t-4 ${borderColor} flex flex-col overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full shadow-sm`}>
+                {/* Photo */}
+                <div className="relative h-52 overflow-hidden flex-shrink-0">
+                  <Image
+                    src={image}
+                    alt={`${level} students at Brainy Kings & Queens`}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  <span className="absolute top-md right-md text-label-sm font-bold uppercase tracking-widest text-white/90 bg-black/30 px-sm py-xs backdrop-blur-sm">
                     {age}
                   </span>
                 </div>
 
-                {/* Text */}
-                <div className="flex-1">
-                  <p className={`text-label-sm font-bold uppercase tracking-[0.2em] ${accentText} mb-sm`}>
-                    {tagline}
-                  </p>
-                  <h3 className="text-headline-md font-headline-md text-on-surface mb-md">{level}</h3>
-                  <p className="text-label-lg text-on-surface-variant leading-relaxed mb-lg">{description}</p>
-                  <ul className="space-y-sm">
+                {/* Content */}
+                <div className="p-lg flex flex-col flex-1 relative overflow-hidden">
+                  <span
+                    className="absolute -right-2 -top-4 text-[100px] font-bold leading-none select-none font-headline-xl text-on-surface"
+                    style={{ opacity: 0.04 }}
+                  >
+                    {number}
+                  </span>
+
+                  <div className="flex items-center gap-sm mb-md">
+                    <span
+                      className={`material-symbols-outlined text-[28px] ${accentText}`}
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      {icon}
+                    </span>
+                    <p className={`text-label-sm font-bold uppercase tracking-[0.2em] ${accentText}`}>
+                      {tagline}
+                    </p>
+                  </div>
+
+                  <h3 className="text-headline-md font-headline-md text-on-surface mb-sm">{level}</h3>
+                  <p className="text-label-lg text-on-surface-variant leading-relaxed mb-md">{description}</p>
+
+                  <ul className="space-y-xs flex-1">
                     {features.map((f) => (
                       <li key={f} className="flex items-center gap-sm">
                         <span
@@ -118,19 +127,18 @@ export default function ProgramsSection() {
                       </li>
                     ))}
                   </ul>
-                </div>
 
-                {/* Footer */}
-                <div className="mt-lg pt-md border-t border-outline-variant">
-                  <Link
-                    href="/curriculum"
-                    className={`flex items-center gap-sm text-label-lg font-bold ${accentText} hover:gap-md transition-all group`}
-                  >
-                    Learn more
-                    <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">
-                      arrow_forward
-                    </span>
-                  </Link>
+                  <div className="mt-md pt-md border-t border-outline-variant">
+                    <Link
+                      href="/curriculum"
+                      className={`flex items-center gap-sm text-label-lg font-bold ${accentText} hover:gap-md transition-all group`}
+                    >
+                      Learn more
+                      <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">
+                        arrow_forward
+                      </span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </StaggerItem>
