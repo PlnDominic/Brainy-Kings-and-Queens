@@ -5,37 +5,23 @@ import ProgramsSection from '@/components/ProgramsSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import AnimateOnView from '@/components/AnimateOnView'
 
-const galleryItems = [
-  {
-    src: '/images/students-large-group-photo.jpeg',
-    alt: 'Our entire school community together',
-    caption: 'Our school family',
-  },
-  {
-    src: '/images/students-cultural-day.jpeg',
-    alt: 'Students celebrating cultural day in kente attire',
-    caption: 'Cultural celebration day',
-  },
-  {
-    src: '/images/student-uniform-portrait.jpeg',
-    alt: 'Young student in school uniform',
-    caption: 'Ready to lead',
-  },
-  {
-    src: '/images/students-preschool-standing.jpeg',
-    alt: 'Pre-school students in uniform',
-    caption: 'Our youngest royals',
-  },
-  {
-    src: '/images/students-classroom-fun.jpeg',
-    alt: 'Students enjoying learning in the classroom',
-    caption: 'Classroom joy',
-  },
-  {
-    src: '/images/students-preschool-lunch-group.jpeg',
-    alt: 'Pre-school students sharing a meal together',
-    caption: 'Shared meals, shared values',
-  },
+const galleryRow1 = [
+  { src: '/images/students-large-group-photo.jpeg', alt: 'Our entire school community', caption: 'Our school family', large: true },
+  { src: '/images/students-uniform-badges.jpeg', alt: 'Students proudly showing school badges', caption: 'Royal pride' },
+  { src: '/images/students-teacher-outdoor.jpeg', alt: 'Teacher with students outdoors', caption: 'Mentorship' },
+]
+
+const galleryRow2 = [
+  { src: '/images/student-field-trip-bench-2.jpeg', alt: 'Young student at field trip', caption: 'Field trip explorer' },
+  { src: '/images/students-preschool-twins-2.jpeg', alt: 'Two pre-school girls in uniform', caption: 'Our youngest royals' },
+  { src: '/images/student-field-trip-tree.jpeg', alt: 'Student at field trip by large tree', caption: 'Beyond the classroom' },
+  { src: '/images/students-cultural-day.jpeg', alt: 'Cultural celebration day', caption: 'Cultural day' },
+]
+
+const galleryRow3 = [
+  { src: '/images/students-preschool-standing.jpeg', alt: 'Pre-school students in uniform', caption: 'Ready for the day' },
+  { src: '/images/students-classroom-fun.jpeg', alt: 'Students enjoying classroom learning', caption: 'Classroom joy' },
+  { src: '/images/students-preschool-lunch-group.jpeg', alt: 'Pre-school students sharing lunch', caption: 'Shared meals' },
 ]
 
 export default function HomePage() {
@@ -123,52 +109,40 @@ export default function HomePage() {
           {/* Row 1: large (7/12) + two stacked (5/12) */}
           <AnimateOnView>
             <div className="flex flex-col md:flex-row gap-md mb-md">
-              <div className="md:w-7/12 relative gallery-item overflow-hidden h-[340px] md:h-[500px]">
-                <Image
-                  src={galleryItems[0].src}
-                  alt={galleryItems[0].alt}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
-                <div className="gallery-caption">
-                  <span className="text-white font-label-lg">{galleryItems[0].caption}</span>
-                </div>
+              <div className="md:w-7/12 relative gallery-item overflow-hidden h-[340px] md:h-[480px]">
+                <Image src={galleryRow1[0].src} alt={galleryRow1[0].alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
+                <div className="gallery-caption"><span className="text-white font-label-lg">{galleryRow1[0].caption}</span></div>
               </div>
               <div className="md:w-5/12 flex flex-col gap-md">
-                {galleryItems.slice(1, 3).map((item) => (
+                {galleryRow1.slice(1).map((item) => (
                   <div key={item.src} className="flex-1 relative gallery-item overflow-hidden h-[160px] md:h-auto">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      fill
-                      className="object-cover object-top transition-transform duration-700 hover:scale-105"
-                    />
-                    <div className="gallery-caption">
-                      <span className="text-white font-label-lg">{item.caption}</span>
-                    </div>
+                    <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
+                    <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>
                   </div>
                 ))}
               </div>
             </div>
           </AnimateOnView>
 
-          {/* Row 2: three equal */}
+          {/* Row 2: four equal */}
           <AnimateOnView delay={0.1}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-md mb-md">
+              {galleryRow2.map((item) => (
+                <div key={item.src} className="relative gallery-item overflow-hidden h-[180px] md:h-[220px]">
+                  <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
+                  <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>
+                </div>
+              ))}
+            </div>
+          </AnimateOnView>
+
+          {/* Row 3: three equal */}
+          <AnimateOnView delay={0.2}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-md">
-              {galleryItems.slice(3).map((item) => (
-                <div
-                  key={item.src}
-                  className="relative gallery-item overflow-hidden h-[220px]"
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="gallery-caption">
-                    <span className="text-white font-label-lg">{item.caption}</span>
-                  </div>
+              {galleryRow3.map((item) => (
+                <div key={item.src} className="relative gallery-item overflow-hidden h-[220px]">
+                  <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
+                  <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>
                 </div>
               ))}
             </div>

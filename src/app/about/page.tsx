@@ -33,7 +33,7 @@ export default function AboutPage() {
       {/* ── 1. Hero ── */}
       <section
         className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ background: '#1C0D06' }}
+        style={{ background: '#1A0505' }}
       >
 
         <div className="absolute inset-0 z-0">

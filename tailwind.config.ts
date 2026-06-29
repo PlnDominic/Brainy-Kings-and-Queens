@@ -6,49 +6,49 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // ── Surfaces (warm cream palette) ──────────────────────────────
-        surface: '#FAF6F2',
-        'surface-bright': '#FAF6F2',
-        'surface-dim': '#E6D8D0',
-        'surface-variant': '#EBE0D8',
+        // ── Surfaces (clean white palette) ────────────────────────────
+        surface: '#FFFAFA',
+        'surface-bright': '#FFFFFF',
+        'surface-dim': '#F0E8E8',
+        'surface-variant': '#F5ECEC',
         'surface-container-lowest': '#ffffff',
-        'surface-container-low': '#F4EDE6',
-        'surface-container': '#EFE6DE',
-        'surface-container-high': '#E9DFD7',
-        'surface-container-highest': '#E3D8D0',
-        'surface-container-low-opacity': 'rgba(244,237,230,0.9)',
-        'surface-tint': '#7B3F2B',
-        background: '#FAF6F2',
-        'on-background': '#1C0D06',
+        'surface-container-low': '#FEF5F5',
+        'surface-container': '#FAF0F0',
+        'surface-container-high': '#F5EDED',
+        'surface-container-highest': '#F0E8E8',
+        'surface-container-low-opacity': 'rgba(254,245,245,0.9)',
+        'surface-tint': '#B31B1B',
+        background: '#FFFAFA',
+        'on-background': '#1A0A0A',
 
         // ── On-surface text ──────────────────────────────────────────
-        'on-surface': '#1C0D06',          // very dark warm brown (dark section bg)
-        'on-surface-variant': '#50382E',  // medium warm brown
-        'inverse-surface': '#342119',     // dark inverse
-        'inverse-on-surface': '#F5EDE6',  // light on dark inverse
+        'on-surface': '#1A0A0A',
+        'on-surface-variant': '#5C2E2E',
+        'inverse-surface': '#2C0A0A',
+        'inverse-on-surface': '#FFF0F0',
 
-        // ── Primary — semi-dark mahogany brown ───────────────────────
-        primary: '#7B3F2B',
+        // ── Primary — deep tartan red ────────────────────────────────
+        primary: '#B31B1B',
         'on-primary': '#ffffff',
-        'primary-container': '#A0573F',
-        'on-primary-container': '#FFF1EC',
-        'primary-fixed': '#F0D5C8',
-        'primary-fixed-dim': '#C4936E',
-        'on-primary-fixed': '#1A0600',
-        'on-primary-fixed-variant': '#5C2815',
-        'inverse-primary': '#E8B9A3',
+        'primary-container': '#D94F4F',
+        'on-primary-container': '#FFF0F0',
+        'primary-fixed': '#FFD6D6',
+        'primary-fixed-dim': '#E89090',
+        'on-primary-fixed': '#1A0000',
+        'on-primary-fixed-variant': '#8B0000',
+        'inverse-primary': '#FFB0B0',
 
-        // ── Secondary — warm amber-brown accent ──────────────────────
-        secondary: '#6B4830',
+        // ── Secondary — dark maroon ──────────────────────────────────
+        secondary: '#8B1A1A',
         'on-secondary': '#ffffff',
-        'secondary-container': '#C68642',  // amber-bronze CTA / accent
-        'on-secondary-container': '#2C1600',
-        'secondary-fixed': '#E8B87A',
-        'secondary-fixed-dim': '#B8763A',
-        'on-secondary-fixed': '#2C1400',
-        'on-secondary-fixed-variant': '#4A2C12',
+        'secondary-container': '#C8A951',   // gold from uniform badge
+        'on-secondary-container': '#1A0A00',
+        'secondary-fixed': '#E8C88A',
+        'secondary-fixed-dim': '#C8A048',
+        'on-secondary-fixed': '#1A0800',
+        'on-secondary-fixed-variant': '#6B4500',
 
-        // ── Tertiary — warm gold-brown ───────────────────────────────
+        // ── Tertiary — warm gold ─────────────────────────────────────
         tertiary: '#8B6914',
         'on-tertiary': '#ffffff',
         'tertiary-container': '#C69232',
@@ -60,10 +60,10 @@ const config: Config = {
         'on-tertiary-fixed-dim': '#E8C88A',
 
         // ── Outline ──────────────────────────────────────────────────
-        outline: '#8A6B5E',
-        'outline-variant': '#D4C4BB',
+        outline: '#9C6464',
+        'outline-variant': '#D4B4B4',
 
-        // ── Error (unchanged) ─────────────────────────────────────────
+        // ── Error ────────────────────────────────────────────────────
         error: '#ba1a1a',
         'on-error': '#ffffff',
         'error-container': '#ffdad6',
