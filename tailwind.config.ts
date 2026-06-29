@@ -41,23 +41,23 @@ const config: Config = {
         // ── Secondary — dark maroon ──────────────────────────────────
         secondary: '#8B1A1A',
         'on-secondary': '#ffffff',
-        'secondary-container': '#C8A951',   // gold from uniform badge
-        'on-secondary-container': '#1A0A00',
-        'secondary-fixed': '#E8C88A',
-        'secondary-fixed-dim': '#C8A048',
-        'on-secondary-fixed': '#1A0800',
-        'on-secondary-fixed-variant': '#6B4500',
+        'secondary-container': '#ffffff',
+        'on-secondary-container': '#B31B1B',
+        'secondary-fixed': '#FFF0F0',
+        'secondary-fixed-dim': '#FFD4D4',
+        'on-secondary-fixed': '#1A0000',
+        'on-secondary-fixed-variant': '#8B0000',
 
-        // ── Tertiary — warm gold ─────────────────────────────────────
-        tertiary: '#8B6914',
+        // ── Tertiary — lighter red ───────────────────────────────────
+        tertiary: '#8B1A1A',
         'on-tertiary': '#ffffff',
-        'tertiary-container': '#C69232',
-        'on-tertiary-container': '#FFF8F5',
-        'tertiary-fixed': '#F5DEB3',
-        'tertiary-fixed-dim': '#D4A882',
-        'on-tertiary-fixed': '#1A0600',
-        'on-tertiary-fixed-variant': '#5C4200',
-        'on-tertiary-fixed-dim': '#E8C88A',
+        'tertiary-container': '#D94F4F',
+        'on-tertiary-container': '#ffffff',
+        'tertiary-fixed': '#FFD4D4',
+        'tertiary-fixed-dim': '#E89090',
+        'on-tertiary-fixed': '#1A0000',
+        'on-tertiary-fixed-variant': '#8B0000',
+        'on-tertiary-fixed-dim': '#FFD4D4',
 
         // ── Outline ──────────────────────────────────────────────────
         outline: '#9C6464',

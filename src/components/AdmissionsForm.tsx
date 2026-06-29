@@ -217,8 +217,8 @@ export default function AdmissionsForm() {
           </div>
 
           {/* Contact Card */}
-          <div className="bg-secondary-container p-lg shadow-md flex flex-col gap-md border border-secondary/20">
-            <h3 className="font-headline-md text-headline-md text-on-secondary-container">
+          <div className="bg-primary p-lg shadow-md flex flex-col gap-md">
+            <h3 className="font-headline-md text-headline-md text-on-primary">
               Direct Contact
             </h3>
             <div className="flex flex-col gap-sm">
@@ -235,7 +235,7 @@ export default function AdmissionsForm() {
                   <p className="text-label-sm font-bold opacity-70">Phone</p>
                   <a
                     href="tel:0591664392"
-                    className="font-headline-md text-on-secondary-container hover:opacity-70 transition-opacity"
+                    className="font-headline-md text-on-primary hover:opacity-70 transition-opacity"
                   >
                     0591664392
                   </a>

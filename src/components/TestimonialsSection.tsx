@@ -48,7 +48,7 @@ export default function TestimonialsSection() {
             <StaggerItem key={name}>
               <div className="bg-surface-container-lowest p-lg border-t-4 border-primary flex flex-col h-full shadow-sm">
                 <span
-                  className="material-symbols-outlined text-[40px] text-secondary-container mb-md"
+                  className="material-symbols-outlined text-[40px] text-primary mb-md"
                   style={{ fontVariationSettings: "'FILL' 1" }}
                 >
                   format_quote
