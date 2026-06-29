@@ -16,8 +16,8 @@ const programs = [
     features: ['Sensorial Learning', 'Practical Life Skills', 'Phonetic Reading'],
     icon: 'child_care',
     image: '/images/students-preschool-standing.jpeg',
-    borderColor: 'border-secondary-container',
-    accentText: 'text-secondary-container',
+    borderColor: 'border-primary',
+    accentText: 'text-primary',
   },
   {
     number: '02',

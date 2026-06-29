@@ -25,8 +25,8 @@ const programs = [
     ],
     icon: 'child_care',
     image: '/images/students-preschool-standing.jpeg',
-    borderColor: 'border-secondary-container',
-    accentText: 'text-secondary-container',
+    borderColor: 'border-primary',
+    accentText: 'text-primary',
   },
   {
     number: '02',
