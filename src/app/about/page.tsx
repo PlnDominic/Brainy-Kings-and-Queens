@@ -44,9 +44,8 @@ export default function AboutPage() {
             className="object-cover object-top"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
         </div>
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/15 to-transparent pointer-events-none" />
 
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop relative z-10 pt-28 pb-32">
           <AnimateOnView className="max-w-3xl">
