@@ -35,38 +35,46 @@ export default function HeroSlideshow() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#1A0505' }}>
-      {/* Gold left accent line */}
+    <section
+      className="flex flex-col md:flex-row md:min-h-screen overflow-hidden"
+      style={{ background: '#1A0505' }}
+    >
+      {/* ── Photo panel — top on mobile, right on desktop ── */}
+      <div className="relative h-[68vw] min-h-[300px] md:h-auto md:flex-1 overflow-hidden order-first md:order-last">
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={current}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.4, ease: 'easeInOut' }}
+          >
+            <Image
+              src={slides[current].src}
+              alt={slides[current].alt}
+              fill
+              className="object-cover"
+              priority={current === 0}
+            />
+          </motion.div>
+        </AnimatePresence>
 
-      {/* Slideshow background */}
-      <AnimatePresence mode="sync">
-        <motion.div
-          key={current}
-          className="absolute inset-0 z-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.4, ease: 'easeInOut' }}
-        >
-          <Image
-            src={slides[current].src}
-            alt={slides[current].alt}
-            fill
-            className="object-cover"
-            priority={current === 0}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-        </motion.div>
-      </AnimatePresence>
+        {/* Slide counter */}
+        <div className="absolute bottom-4 right-4 z-10">
+          <span className="text-white/50 text-label-sm font-bold tabular-nums">
+            {String(current + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+          </span>
+        </div>
+      </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-margin-mobile md:px-margin-desktop relative z-10 pt-28 pb-32">
+      {/* ── Content panel — bottom on mobile, left on desktop ── */}
+      <div className="flex flex-col justify-center px-margin-mobile md:px-12 lg:px-20 pt-12 pb-14 md:py-32 md:w-[46%] order-last md:order-first">
         <motion.div
-          className="max-w-3xl"
           variants={heroContainer}
           initial="hidden"
           animate="visible"
+          className="max-w-xl"
         >
           {/* Eyebrow */}
           <motion.div variants={heroItem} className="flex items-center gap-md mb-lg">
@@ -83,22 +91,20 @@ export default function HeroSlideshow() {
           >
             Every Child is Born a King.{' '}
             <br className="hidden md:block" />
-            <span className="text-secondary-container">
-              We Help Them Reign.
-            </span>
+            <span className="text-secondary-container">We Help Them Reign.</span>
           </motion.h1>
 
           {/* Sub */}
           <motion.p
             variants={heroItem}
-            className="text-body-lg text-white/70 mb-xl max-w-xl leading-relaxed"
+            className="text-body-lg text-white/70 mb-xl max-w-md leading-relaxed"
           >
             Brainy Kings and Queens Montessori — where independent thinking,
             royal character, and academic excellence converge from age 2.5 through JHS 3.
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={heroItem} className="flex flex-wrap gap-md">
+          <motion.div variants={heroItem} className="flex flex-wrap gap-md mb-xl">
             <Link
               href="/admissions"
               className="bg-secondary-container text-on-secondary-container px-8 py-4 font-label-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-xl"
@@ -113,57 +119,33 @@ export default function HeroSlideshow() {
               Our Story
             </Link>
           </motion.div>
+
+          {/* Slide progress indicators */}
+          <motion.div variants={heroItem} className="flex items-center gap-sm">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`Slide ${i + 1}`}
+                className="relative h-[3px] w-12 bg-white/20 overflow-hidden flex-shrink-0"
+              >
+                {i === current && (
+                  <motion.div
+                    key={key}
+                    className="absolute inset-0 bg-secondary-container origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: SLIDE_DURATION / 1000, ease: 'linear' }}
+                  />
+                )}
+                {i < current && (
+                  <div className="absolute inset-0 bg-secondary-container" />
+                )}
+              </button>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
-
-      {/* Slide progress indicators */}
-      <div className="absolute bottom-8 left-0 right-0 z-20 px-margin-mobile md:px-margin-desktop">
-        <div className="container mx-auto flex items-center gap-sm pl-4">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              aria-label={`Slide ${i + 1}`}
-              className="relative h-[3px] w-16 bg-white/20 overflow-hidden flex-shrink-0"
-            >
-              {i === current && (
-                <motion.div
-                  key={key}
-                  className="absolute inset-0 bg-secondary-container origin-left"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: SLIDE_DURATION / 1000, ease: 'linear' }}
-                />
-              )}
-              {i < current && (
-                <div className="absolute inset-0 bg-secondary-container" />
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Scroll nudge */}
-      <motion.div
-        className="absolute bottom-8 right-8 z-20 flex flex-col items-center gap-xs text-white/40 hidden md:flex"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
-      >
-        <span
-          className="text-label-sm tracking-widest uppercase"
-          style={{ writingMode: 'vertical-rl' }}
-        >
-          Scroll
-        </span>
-        <motion.span
-          className="material-symbols-outlined text-[20px]"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-        >
-          arrow_downward
-        </motion.span>
-      </motion.div>
     </section>
   )
 }

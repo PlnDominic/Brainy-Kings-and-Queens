@@ -39,7 +39,7 @@ const programs = [
     description: 'Core subjects, critical thinking, and BECE preparation for secondary success.',
     features: ['English & Literature', 'Mathematics & Sciences', 'ICT & Computing'],
     icon: 'military_tech',
-    image: '/images/students-montessori-classroom.jpeg',
+    image: '/images/students-teacher-outdoor.jpeg',
     borderColor: 'border-primary',
     accentText: 'text-primary',
   },
