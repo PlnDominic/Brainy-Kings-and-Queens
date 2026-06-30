@@ -60,7 +60,7 @@ const programs = [
       'BECE Examination Preparation',
     ],
     icon: 'military_tech',
-    image: '/images/students-montessori-classroom.jpeg',
+    image: '/images/students-teacher-outdoor.jpeg',
     borderColor: 'border-primary',
     accentText: 'text-primary',
   },
