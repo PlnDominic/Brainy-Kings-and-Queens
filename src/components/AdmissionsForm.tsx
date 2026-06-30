@@ -267,7 +267,7 @@ export default function AdmissionsForm() {
           <div className="relative h-[280px] overflow-hidden shadow-md group">
             <Image
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFuMS74OLcIjpgjpWqtpkVUDAU114M_32eH_9b1CCrb_KbFY7yXo4mZ1XCOS30kcA2gVXr6Okx0XZqejyYtKiap4RQ39fYEIdTTCa0LQJT1c3645A5fN_hx5FMpHjHvTVQb_spCQ7C72hHg5yXFS_SlqDvSEZ9ZH4W9VwsDZKDdOHWEMfjG7BUlF5TQ3PM7lgkLt8TKMC894UcClHLJiwzbf8IvbEpLerd3VU9qKMM-8VqVwqQoHjTw5P7lV951FUogdWjemZoYtQ"
-              alt="School Location Map — Kumasi-Ahodwo"
+              alt="School Location Map — Anwomaso, Kumasi"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -280,9 +280,9 @@ export default function AdmissionsForm() {
                   location_on
                 </span>
                 <div>
-                  <h4 className="font-headline-md text-on-surface">Kumasi-Ahodwo</h4>
+                  <h4 className="font-headline-md text-on-surface">Anwomaso - Ankaa Junction</h4>
                   <p className="text-body-md text-on-surface-variant">
-                    Adjacent the Royal Golf Course, Ashanti Region, Ghana
+                    Kumasi, Ashanti Region, Ghana
                   </p>
                 </div>
               </div>

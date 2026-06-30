@@ -109,9 +109,9 @@ export default function Footer() {
                   location_on
                 </span>
                 <span className="text-white/50 text-label-lg leading-relaxed">
-                  Kumasi-Ahodwo, Adjacent the Royal Golf Course,
+                  Anwomaso - Ankaa Junction,
                   <br />
-                  Ashanti Region, Ghana
+                  Kumasi, Ashanti Region, Ghana
                 </span>
               </div>
               <div className="flex items-start gap-md">
