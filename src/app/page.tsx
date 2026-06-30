@@ -178,21 +178,26 @@ export default function HomePage() {
       <TestimonialsSection />
 
       {/* ── 7. Admissions CTA ── */}
-      <section className="bg-primary py-xl">
-        <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
-          <AnimateOnView className="max-w-4xl mx-auto text-center">
-            <p className="text-label-sm font-bold text-secondary-container uppercase tracking-[0.25em] mb-md">
-              Admissions Open
-            </p>
+      <section className="bg-primary overflow-hidden">
+        {/* Text content */}
+        <div className="container mx-auto px-margin-mobile md:px-margin-desktop pt-xl pb-xl">
+          <AnimateOnView className="max-w-3xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-md mb-md">
+              <div className="h-px w-10 bg-white/20 flex-shrink-0" />
+              <p className="text-label-sm font-bold text-secondary-container uppercase tracking-[0.25em]">
+                Admissions Open
+              </p>
+              <div className="h-px w-10 bg-white/20 flex-shrink-0" />
+            </div>
             <h2 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-on-primary mb-md leading-tight">
               Secure Your Child&apos;s <br className="hidden md:block" />
               Place Today
             </h2>
-            <p className="text-body-lg text-on-primary/75 mb-xl max-w-xl mx-auto">
+            <p className="text-body-lg text-on-primary/70 mb-xl max-w-lg mx-auto leading-relaxed">
               Enrolment for the upcoming academic year is now open. Join a community that
               believes every child deserves a royal education.
             </p>
-            <div className="flex flex-wrap gap-md justify-center mb-xl">
+            <div className="flex flex-wrap gap-md justify-center">
               <Link
                 href="/admissions"
                 className="bg-secondary-container text-on-secondary-container px-10 py-4 font-label-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-xl"
@@ -208,28 +213,32 @@ export default function HomePage() {
                 0591664392
               </a>
             </div>
-
-            {/* Photo strip */}
-            <div className="grid grid-cols-2 gap-md">
-              <div className="relative overflow-hidden h-[220px] md:h-[300px]">
-                <Image
-                  src="/images/students-outdoor-play-1.jpeg"
-                  alt="Young students playing outdoors at Brainy Kings and Queens"
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-              <div className="relative overflow-hidden h-[220px] md:h-[300px]">
-                <Image
-                  src="/images/students-outdoor-play-2.jpeg"
-                  alt="Children enjoying outdoor learning time at Brainy Kings and Queens"
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-            </div>
           </AnimateOnView>
         </div>
+
+        {/* Full-bleed photo strip — asymmetric 3:2 split */}
+        <AnimateOnView>
+          <div className="flex gap-[3px] h-[280px] md:h-[420px]">
+            <div className="relative overflow-hidden flex-[3]">
+              <Image
+                src="/images/students-outdoor-play-1.jpeg"
+                alt="Young students playing outdoors at Brainy Kings and Queens"
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-primary/60 to-transparent" />
+            </div>
+            <div className="relative overflow-hidden flex-[2]">
+              <Image
+                src="/images/students-outdoor-play-2.jpeg"
+                alt="Children enjoying outdoor learning time at Brainy Kings and Queens"
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-primary/60 to-transparent" />
+            </div>
+          </div>
+        </AnimateOnView>
       </section>
     </>
   )
