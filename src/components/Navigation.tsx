@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
+import GooeyNav from './GooeyNav'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -53,25 +54,17 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-xl">
-            {links.map(({ href, label }) => {
-              const active = pathname === href
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`relative text-label-lg font-bold tracking-wide transition-colors py-1 ${
-                    active ? 'text-secondary-container' : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  {label}
-                  {active && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-secondary-container" />
-                  )}
-                </Link>
-              )
-            })}
-          </nav>
+          <div className="hidden md:block">
+            <GooeyNav
+              items={links}
+              particleCount={15}
+              particleDistances={[90, 10]}
+              particleR={100}
+              animationTime={600}
+              timeVariance={300}
+              colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+            />
+          </div>
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-md">
