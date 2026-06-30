@@ -192,7 +192,7 @@ export default function HomePage() {
               Enrolment for the upcoming academic year is now open. Join a community that
               believes every child deserves a royal education.
             </p>
-            <div className="flex flex-wrap gap-md justify-center">
+            <div className="flex flex-wrap gap-md justify-center mb-xl">
               <Link
                 href="/admissions"
                 className="bg-secondary-container text-on-secondary-container px-10 py-4 font-label-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-xl"
@@ -207,6 +207,26 @@ export default function HomePage() {
                 <span className="material-symbols-outlined text-[20px]">call</span>
                 0591664392
               </a>
+            </div>
+
+            {/* Photo strip */}
+            <div className="grid grid-cols-2 gap-md">
+              <div className="relative overflow-hidden h-[220px] md:h-[300px]">
+                <Image
+                  src="/images/students-outdoor-play-1.jpeg"
+                  alt="Young students playing outdoors at Brainy Kings and Queens"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+              <div className="relative overflow-hidden h-[220px] md:h-[300px]">
+                <Image
+                  src="/images/students-outdoor-play-2.jpeg"
+                  alt="Children enjoying outdoor learning time at Brainy Kings and Queens"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
             </div>
           </AnimateOnView>
         </div>
