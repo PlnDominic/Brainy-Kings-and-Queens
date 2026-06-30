@@ -56,8 +56,8 @@ export default function HomePage() {
                 <div className="relative">
                   <div className="relative h-[400px] overflow-hidden">
                     <Image
-                      src="/images/students-smiling-closeup.jpeg"
-                      alt="Happy students at Brainy Kings and Queens"
+                      src="/images/students-teacher-outdoor.jpeg"
+                      alt="Teacher mentoring students at Brainy Kings and Queens"
                       fill
                       className="object-cover"
                     />
