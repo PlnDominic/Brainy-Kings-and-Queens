@@ -51,16 +51,26 @@ export default function HomePage() {
                 </p>
               </div>
 
-              {/* Right: editorial photo with accent block */}
+              {/* Right: two stacked photos with accent block */}
               <AnimateOnView variant="fadeRight">
                 <div className="relative">
-                  <div className="relative h-[400px] overflow-hidden">
-                    <Image
-                      src="/images/students-teacher-outdoor.jpeg"
-                      alt="Teacher mentoring students at Brainy Kings and Queens"
-                      fill
-                      className="object-cover"
-                    />
+                  <div className="flex flex-col gap-md">
+                    <div className="relative h-[192px] overflow-hidden">
+                      <Image
+                        src="/images/students-playground-trampoline.jpeg"
+                        alt="Students playing at Brainy Kings and Queens"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="relative h-[192px] overflow-hidden">
+                      <Image
+                        src="/images/students-group-celebration.jpeg"
+                        alt="Students celebrating at Brainy Kings and Queens"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                   {/* Accent block */}
                   <div className="absolute -bottom-6 -left-6 bg-secondary-container p-md shadow-xl max-w-[200px]">
@@ -138,13 +148,27 @@ export default function HomePage() {
 
           {/* Row 3: three equal */}
           <AnimateOnView delay={0.2}>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-md">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-md mb-md">
               {galleryRow3.map((item) => (
                 <div key={item.src} className="relative gallery-item overflow-hidden h-[220px]">
                   <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
                   <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>
                 </div>
               ))}
+            </div>
+          </AnimateOnView>
+
+          {/* Row 4: two equal */}
+          <AnimateOnView delay={0.3}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+              <div className="relative gallery-item overflow-hidden h-[280px]">
+                <Image src="/images/students-school-building-front.jpeg" alt="Students in front of the Brainy Kings and Queens school building" fill className="object-cover transition-transform duration-700 hover:scale-105" />
+                <div className="gallery-caption"><span className="text-white font-label-lg">Our Campus</span></div>
+              </div>
+              <div className="relative gallery-item overflow-hidden h-[280px]">
+                <Image src="/images/students-montessori-classroom.jpeg" alt="Young students learning in the Montessori classroom" fill className="object-cover transition-transform duration-700 hover:scale-105" />
+                <div className="gallery-caption"><span className="text-white font-label-lg">Learning Through Play</span></div>
+              </div>
             </div>
           </AnimateOnView>
         </div>
