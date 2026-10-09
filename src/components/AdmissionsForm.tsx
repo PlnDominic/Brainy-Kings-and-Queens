@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import AnimateOnView from '@/components/AnimateOnView'
+import { getSupabaseBrowserClient } from '@/lib/supabase-context'
 
 const steps = [
   { icon: 'edit_note', label: 'Inquiry' },
@@ -15,21 +16,38 @@ const steps = [
 
 type Status = 'idle' | 'loading' | 'success'
 
-export default function AdmissionsForm() {
+export default function AdmissionsForm({ phone, email, address }: { phone: string; email: string; address: string }) {
+  const supabase = getSupabaseBrowserClient()
   const [status, setStatus] = useState<Status>('idle')
   const [progressStep, setProgressStep] = useState(0)
+  const [error, setError] = useState('')
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (status !== 'idle') return
     setStatus('loading')
-    setTimeout(() => {
+    setError('')
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      const { error: submitError } = await supabase.from('admissions_inquiries').insert({
+        parent_name: String(formData.get('parent_name') || ''),
+        phone: String(formData.get('phone') || ''),
+        email: String(formData.get('email') || ''),
+        child_age: String(formData.get('child_age') || ''),
+        preferred_start_date: String(formData.get('preferred_start_date') || '') || null,
+        referral_source: String(formData.get('referral_source') || '') || null,
+      })
+      if (submitError) throw submitError
       setStatus('success')
-      setProgressStep(2)
-    }, 1500)
+      setProgressStep(3)
+    } catch (submitError) {
+      setError(submitError instanceof Error ? submitError.message : 'We could not send your inquiry. Please try again.')
+      setStatus('idle')
+    }
   }
 
-  const progressPct = progressStep === 0 ? '33%' : progressStep === 1 ? '66%' : '66%'
+  const progressPct = progressStep === 0 ? '33%' : progressStep === 1 ? '66%' : progressStep === 2 ? '85%' : '100%'
 
   return (
     <>
@@ -99,6 +117,7 @@ export default function AdmissionsForm() {
                     className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:outline-none px-4 py-3 transition-all"
                     placeholder="John Doe"
                     type="text"
+                    name="parent_name"
                     required
                   />
                 </div>
@@ -108,6 +127,7 @@ export default function AdmissionsForm() {
                     className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:outline-none px-4 py-3 transition-all"
                     placeholder="050 000 0000"
                     type="tel"
+                    name="phone"
                     required
                   />
                 </div>
@@ -119,6 +139,7 @@ export default function AdmissionsForm() {
                   className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:outline-none px-4 py-3 transition-all"
                   placeholder="example@email.com"
                   type="email"
+                  name="email"
                   required
                 />
               </motion.div>
@@ -126,7 +147,8 @@ export default function AdmissionsForm() {
               <motion.div variants={staggerItem} className="grid grid-cols-1 sm:grid-cols-2 gap-md">
                 <div className="flex flex-col gap-xs">
                   <label className="font-label-lg text-on-surface ml-1">Child&apos;s Age</label>
-                  <select className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:outline-none px-4 py-3 transition-all">
+                  <select name="child_age" required className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:outline-none px-4 py-3 transition-all">
+                    <option value="">Select age range</option>
                     <option>2 - 3 Years (Pre-K)</option>
                     <option>4 - 5 Years (Primary)</option>
                     <option>6+ Years</option>
@@ -137,6 +159,7 @@ export default function AdmissionsForm() {
                   <input
                     className="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:outline-none px-4 py-3 transition-all"
                     type="date"
+                    name="preferred_start_date"
                   />
                 </div>
               </motion.div>
@@ -151,7 +174,7 @@ export default function AdmissionsForm() {
                     >
                       <input
                         className="text-secondary focus:ring-secondary"
-                        name="source"
+                        name="referral_source"
                         type="radio"
                         value={opt.toLowerCase().replace(' ', '_')}
                       />
@@ -160,6 +183,8 @@ export default function AdmissionsForm() {
                   ))}
                 </div>
               </motion.div>
+
+              {error && <p role="alert" className="border border-error/30 bg-error-container p-md text-on-error-container">{error}</p>}
 
               <motion.button
                 variants={staggerItem}
@@ -207,6 +232,7 @@ export default function AdmissionsForm() {
               src="/images/student-uniform-portrait.jpeg"
               alt="Young student in school uniform ready for class"
               fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover object-top transition-transform duration-700 hover:scale-105"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-md">
@@ -234,10 +260,10 @@ export default function AdmissionsForm() {
                 <div>
                   <p className="text-label-sm font-bold opacity-70">Phone</p>
                   <a
-                    href="tel:0591664392"
+                    href={`tel:${phone}`}
                     className="font-headline-md text-on-primary hover:opacity-70 transition-opacity"
                   >
-                    0591664392
+                    {phone}
                   </a>
                 </div>
               </div>
@@ -253,10 +279,10 @@ export default function AdmissionsForm() {
                 <div>
                   <p className="text-label-sm font-bold opacity-70">Email</p>
                   <a
-                    href="mailto:admissions@brainykings.edu"
+                    href={`mailto:${email}`}
                     className="font-headline-md text-on-secondary-container hover:opacity-70 transition-opacity break-all"
                   >
-                    admissions@brainykings.edu
+                    {email}
                   </a>
                 </div>
               </div>
@@ -269,6 +295,7 @@ export default function AdmissionsForm() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFuMS74OLcIjpgjpWqtpkVUDAU114M_32eH_9b1CCrb_KbFY7yXo4mZ1XCOS30kcA2gVXr6Okx0XZqejyYtKiap4RQ39fYEIdTTCa0LQJT1c3645A5fN_hx5FMpHjHvTVQb_spCQ7C72hHg5yXFS_SlqDvSEZ9ZH4W9VwsDZKDdOHWEMfjG7BUlF5TQ3PM7lgkLt8TKMC894UcClHLJiwzbf8IvbEpLerd3VU9qKMM-8VqVwqQoHjTw5P7lV951FUogdWjemZoYtQ"
               alt="School Location Map — Anwomaso, Kumasi"
               fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute bottom-4 left-4 right-4 bg-surface p-md shadow-xl border-l-4 border-primary transition-transform group-hover:-translate-y-2">
@@ -282,7 +309,7 @@ export default function AdmissionsForm() {
                 <div>
                   <h4 className="font-headline-md text-on-surface">Anwomaso - Ankaa Junction</h4>
                   <p className="text-body-md text-on-surface-variant">
-                    Kumasi, Ashanti Region, Ghana
+                    {address}
                   </p>
                 </div>
               </div>

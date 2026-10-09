@@ -4,10 +4,13 @@ import AnimateOnView from '@/components/AnimateOnView'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
 import AdmissionsForm from '@/components/AdmissionsForm'
+import { getAdmissionsSteps, getPageSections, getSiteSettings } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'Admissions | Brainy Kings & Queens Montessori',
 }
+
+export const dynamic = 'force-dynamic'
 
 const steps = [
   {
@@ -36,7 +39,17 @@ const steps = [
   },
 ]
 
-export default function AdmissionsPage() {
+export default async function AdmissionsPage() {
+  const [cmsSteps, pageSections, siteSettings] = await Promise.all([
+    getAdmissionsSteps(),
+    getPageSections('admissions'),
+    getSiteSettings(),
+  ])
+  const displaySteps = cmsSteps.length ? cmsSteps : steps.map((step) => ({ ...step, id: step.title }))
+  const section = (key: string) => pageSections.find((item) => item.section_key === key)
+  const heroSection = section('hero')
+  const stepsSection = section('steps')
+
   return (
     <main>
       {/* ── 1. Hero ── */}
@@ -47,7 +60,7 @@ export default function AdmissionsPage() {
 
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/student-uniform-portrait.jpeg"
+            src={heroSection?.image_url || '/images/student-uniform-portrait.jpeg'}
             alt="Young student in school uniform ready for class"
             fill
             className="object-cover object-top"
@@ -62,17 +75,14 @@ export default function AdmissionsPage() {
             <div className="flex items-center gap-md mb-lg">
               <div className="h-px w-10 bg-secondary-container flex-shrink-0" />
               <span className="text-secondary-container text-label-sm font-bold tracking-[0.3em] uppercase">
-                Admissions Open
+                {heroSection?.eyebrow ?? 'Admissions Open'}
               </span>
             </div>
             <h1 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-white mb-lg leading-tight">
-              Begin Your Child&apos;s{' '}
-              <br className="hidden md:block" />
-              <span className="text-secondary-container">Royal Journey</span>
+              {heroSection?.heading ?? <>Begin Your Child&apos;s{' '}<br className="hidden md:block" /><span className="text-secondary-container">Royal Journey</span></>}
             </h1>
             <p className="text-body-lg text-white/70 max-w-xl leading-relaxed">
-              A royal education starts with one step. Complete the inquiry form below and our team
-              will reach out within 24 hours.
+              {heroSection?.body ?? 'A royal education starts with one step. Complete the inquiry form below and our team will reach out within 24 hours.'}
             </p>
           </AnimateOnView>
         </div>
@@ -83,16 +93,16 @@ export default function AdmissionsPage() {
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
           <AnimateOnView className="mb-xl">
             <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
-              How It Works
+              {stepsSection?.eyebrow ?? 'How It Works'}
             </p>
             <h2 className="text-headline-lg font-headline-lg text-on-surface">
-              Four Steps to Enrolment
+              {stepsSection?.heading ?? 'Four Steps to Enrolment'}
             </h2>
           </AnimateOnView>
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-gutter">
-            {steps.map(({ number, icon, title, body }) => (
-              <StaggerItem key={title}>
+            {displaySteps.map(({ id, number, icon, title, body }) => (
+              <StaggerItem key={id}>
                 <div className="relative">
                   <span className="text-[80px] font-bold text-on-surface/5 font-headline-xl leading-none absolute -top-4 -left-2 select-none">
                     {number}
@@ -125,7 +135,11 @@ export default function AdmissionsPage() {
               Submit Your Inquiry
             </h2>
           </AnimateOnView>
-          <AdmissionsForm />
+          <AdmissionsForm
+            phone={siteSettings?.phone || '0591664392'}
+            email={siteSettings?.email || 'admissions@brainykings.edu'}
+            address={siteSettings?.address || 'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana'}
+          />
         </div>
       </section>
     </main>

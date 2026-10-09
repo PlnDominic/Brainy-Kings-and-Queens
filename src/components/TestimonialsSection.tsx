@@ -3,8 +3,12 @@
 import AnimateOnView from '@/components/AnimateOnView'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
+import type { Database } from '@/types/database'
 
-const testimonials = [
+type Testimonial = Database['public']['Tables']['testimonials']['Row']
+type PageSection = Database['public']['Tables']['page_sections']['Row']
+
+const fallbackTestimonials = [
   {
     quote:
       "My daughter woke up one morning and said, 'Mum, I can't wait to get to school.' That told me everything I needed to know.",
@@ -25,7 +29,11 @@ const testimonials = [
   },
 ]
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ testimonials, section }: { testimonials?: Testimonial[]; section?: PageSection }) {
+  const displayedTestimonials = testimonials === undefined
+    ? fallbackTestimonials.map((item) => ({ ...item, key: item.name }))
+    : testimonials.map((item) => ({ ...item, key: item.id }))
+
   return (
     <section className="py-xl bg-surface-container-low overflow-hidden">
       <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
@@ -34,18 +42,21 @@ export default function TestimonialsSection() {
           <div className="flex items-center gap-md mb-md">
             <div className="h-px w-10 bg-primary flex-shrink-0" />
             <span className="text-primary text-label-sm font-bold tracking-[0.3em] uppercase">
-              What Parents Say
+              {section?.eyebrow ?? 'What Parents Say'}
             </span>
           </div>
           <h2 className="text-headline-lg font-headline-lg text-on-surface max-w-xl leading-tight">
-            Stories from Our <br /> Royal Community
+            {section?.heading ?? <>Stories from Our <br /> Royal Community</>}
           </h2>
         </AnimateOnView>
 
         {/* Testimonials grid */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {testimonials.map(({ quote, name, role }) => (
-            <StaggerItem key={name}>
+          {displayedTestimonials.length === 0 && (
+            <p className="text-body-lg text-on-surface-variant">No published testimonials yet.</p>
+          )}
+          {displayedTestimonials.map(({ key, quote, name, role }) => (
+            <StaggerItem key={key}>
               <div className="bg-surface-container-lowest p-lg border-t-4 border-primary flex flex-col h-full shadow-sm">
                 <span
                   className="material-symbols-outlined text-[40px] text-primary mb-md"

@@ -4,6 +4,15 @@ import HeroSlideshow from '@/components/HeroSlideshow'
 import ProgramsSection from '@/components/ProgramsSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import AnimateOnView from '@/components/AnimateOnView'
+import {
+  getGalleryItems,
+  getHeroSlides,
+  getPageSections,
+  getPrograms,
+  getTestimonials,
+} from '@/lib/data'
+
+export const dynamic = 'force-dynamic'
 
 const galleryRow1 = [
   { src: '/images/students-large-group-photo.jpeg', alt: 'Our entire school community', caption: 'Our school family', large: true },
@@ -24,11 +33,24 @@ const galleryRow3 = [
   { src: '/images/students-preschool-lunch-group.jpeg', alt: 'Pre-school students sharing lunch', caption: 'Shared meals' },
 ]
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [slides, programs, testimonials, galleryItems, pageSections] = await Promise.all([
+    getHeroSlides(),
+    getPrograms(),
+    getTestimonials(),
+    getGalleryItems('home'),
+    getPageSections('home'),
+  ])
+  const section = (key: string) => pageSections.find((item) => item.section_key === key)
+  const gallerySection = section('gallery')
+
   return (
     <>
       {/* ── 1. Hero ── */}
-      <HeroSlideshow />
+      <HeroSlideshow
+        slides={slides.length ? slides : undefined}
+        section={section('hero')}
+      />
 
       {/* ── 2. Mission Statement ── */}
       <section className="py-xl bg-surface">
@@ -38,16 +60,13 @@ export default function HomePage() {
               {/* Left: large quote */}
               <div>
                 <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-lg">
-                  Our Philosophy
+                  {section('mission')?.eyebrow ?? 'Our Philosophy'}
                 </p>
                 <h2 className="text-headline-lg font-headline-lg text-on-surface leading-tight mb-lg">
-                  We don&apos;t just teach children.{' '}
-                  <span className="text-primary">We crown them.</span>
+                  {section('mission')?.heading ?? <>We don&apos;t just teach children.{' '}<span className="text-primary">We crown them.</span></>}
                 </h2>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed">
-                  The Montessori method recognises that children are natural learners — born
-                  with curiosity, dignity, and the capacity to lead. Our role is simply to prepare
-                  the environment and step aside.
+                  {section('mission')?.body ?? 'The Montessori method recognises that children are natural learners — born with curiosity, dignity, and the capacity to lead. Our role is simply to prepare the environment and step aside.'}
                 </p>
               </div>
 
@@ -89,7 +108,10 @@ export default function HomePage() {
       </section>
 
       {/* ── 4. Programs ── */}
-      <ProgramsSection />
+      <ProgramsSection
+        programs={programs.length ? programs : undefined}
+        section={section('programs')}
+      />
 
       {/* ── 5. Gallery ── */}
       <section className="py-xl bg-surface-container-low">
@@ -98,17 +120,17 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-md">
               <div>
                 <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
-                  Campus Life
+                  {gallerySection?.eyebrow ?? 'Campus Life'}
                 </p>
                 <h2 className="text-headline-lg font-headline-lg text-on-surface">
-                  Life at Brainy Kings &amp; Queens
+                  {gallerySection?.heading ?? 'Life at Brainy Kings & Queens'}
                 </h2>
               </div>
               <Link
-                href="/about"
+                href={gallerySection?.cta_href ?? '/about'}
                 className="flex items-center gap-sm text-primary font-label-lg font-bold hover:gap-md transition-all self-start md:self-auto group"
               >
-                See more
+                {gallerySection?.cta_label ?? 'See more'}
                 <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
                   arrow_forward
                 </span>
@@ -116,6 +138,22 @@ export default function HomePage() {
             </div>
           </AnimateOnView>
 
+          {galleryItems.length > 0 ? (
+            <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
+              {galleryItems.map((item) => (
+                <div key={item.id} className="relative gallery-item h-[220px] overflow-hidden">
+                  <Image
+                    src={item.image_url}
+                    alt={item.alt_text}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  {item.caption && <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>}
+                </div>
+              ))}
+            </div>
+          ) : (
+          <>
           {/* Row 1: large (7/12) + two stacked (5/12) */}
           <AnimateOnView>
             <div className="flex flex-col md:flex-row gap-md mb-md">
@@ -171,11 +209,16 @@ export default function HomePage() {
               </div>
             </div>
           </AnimateOnView>
+          </>
+          )}
         </div>
       </section>
 
       {/* ── 6. Testimonials ── */}
-      <TestimonialsSection />
+      <TestimonialsSection
+        testimonials={testimonials.length ? testimonials : undefined}
+        section={section('testimonials')}
+      />
 
       {/* ── 7. Admissions CTA ── */}
       <section className="bg-primary overflow-hidden">
@@ -185,24 +228,22 @@ export default function HomePage() {
             <div className="flex items-center justify-center gap-md mb-md">
               <div className="h-px w-10 bg-white/20 flex-shrink-0" />
               <p className="text-label-sm font-bold text-secondary-container uppercase tracking-[0.25em]">
-                Admissions Open
+                {section('cta')?.eyebrow ?? 'Admissions Open'}
               </p>
               <div className="h-px w-10 bg-white/20 flex-shrink-0" />
             </div>
             <h2 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-on-primary mb-md leading-tight">
-              Secure Your Child&apos;s <br className="hidden md:block" />
-              Place Today
+              {section('cta')?.heading ?? <>Secure Your Child&apos;s <br className="hidden md:block" />Place Today</>}
             </h2>
             <p className="text-body-lg text-on-primary/70 mb-xl max-w-lg mx-auto leading-relaxed">
-              Enrolment for the upcoming academic year is now open. Join a community that
-              believes every child deserves a royal education.
+              {section('cta')?.body ?? 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.'}
             </p>
             <div className="flex flex-wrap gap-md justify-center">
               <Link
-                href="/admissions"
+                href={section('cta')?.cta_href ?? '/admissions'}
                 className="bg-secondary-container text-on-secondary-container px-10 py-4 font-label-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-xl"
               >
-                Apply Now
+                {section('cta')?.cta_label ?? 'Apply Now'}
                 <span className="material-symbols-outlined">arrow_forward</span>
               </Link>
               <a

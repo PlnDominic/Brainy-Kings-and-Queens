@@ -4,10 +4,13 @@ import Link from 'next/link'
 import AnimateOnView from '@/components/AnimateOnView'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
+import { getPageSections, getPrinciples, getPrograms } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'Curriculum | Brainy Kings & Queens Montessori',
 }
+
+export const dynamic = 'force-dynamic'
 
 const programs = [
   {
@@ -89,7 +92,37 @@ const principles = [
   },
 ]
 
-export default function CurriculumPage() {
+export default async function CurriculumPage() {
+  const [cmsPrograms, cmsPrinciples, pageSections] = await Promise.all([
+    getPrograms(),
+    getPrinciples(),
+    getPageSections('curriculum'),
+  ])
+  const displayPrograms = cmsPrograms.length
+    ? cmsPrograms.map((program) => ({
+        id: program.id,
+        number: program.number,
+        level: program.level,
+        age: program.age_range,
+        tagline: program.tagline,
+        description: program.description,
+        subjects: program.features,
+        icon: program.icon,
+        image: program.image_url,
+        borderColor: program.border_color || 'border-primary',
+        accentText: program.accent_text_color || 'text-primary',
+      }))
+    : programs.map((program) => ({ ...program, id: program.level }))
+  const displayPrinciples = cmsPrinciples.length
+    ? cmsPrinciples
+    : principles.map((principle) => ({ ...principle, id: principle.title }))
+  const section = (key: string) => pageSections.find((item) => item.section_key === key)
+  const heroSection = section('hero')
+  const principlesSection = section('principles')
+  const programsSection = section('programs')
+  const quoteSection = section('quote')
+  const ctaSection = section('cta')
+
   return (
     <main>
       {/* ── 1. Hero ── */}
@@ -100,7 +133,7 @@ export default function CurriculumPage() {
 
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/school-building.jpeg"
+            src={heroSection?.image_url || '/images/school-building.jpeg'}
             alt="Brainy Kings and Queens school campus"
             fill
             className="object-cover"
@@ -115,17 +148,14 @@ export default function CurriculumPage() {
             <div className="flex items-center gap-md mb-lg">
               <div className="h-px w-10 bg-secondary-container flex-shrink-0" />
               <span className="text-secondary-container text-label-sm font-bold tracking-[0.3em] uppercase">
-                Academic Programs
+                {heroSection?.eyebrow ?? 'Academic Programs'}
               </span>
             </div>
             <h1 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-white mb-lg leading-tight">
-              A Royal Path{' '}
-              <br className="hidden md:block" />
-              <span className="text-secondary-container">Through Every Stage</span>
+              {heroSection?.heading ?? <>A Royal Path{' '}<br className="hidden md:block" /><span className="text-secondary-container">Through Every Stage</span></>}
             </h1>
             <p className="text-body-lg text-white/70 max-w-xl leading-relaxed">
-              Our Montessori-inspired curriculum blends rigorous academic standards with the dignity
-              of self-paced exploration — from age 2.5 through JHS 3.
+              {heroSection?.body ?? 'Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration — from age 2.5 through JHS 3.'}
             </p>
           </AnimateOnView>
         </div>
@@ -138,22 +168,22 @@ export default function CurriculumPage() {
             <div className="flex items-center gap-md mb-md">
               <div className="h-px w-10 bg-primary flex-shrink-0" />
               <span className="text-primary text-label-sm font-bold tracking-[0.3em] uppercase">
-                The Brainy Way
+                {principlesSection?.eyebrow ?? 'The Brainy Way'}
               </span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-xl items-end">
               <h2 className="text-headline-lg font-headline-lg text-on-surface leading-tight">
-                Four Principles That Guide Every Lesson
+                {principlesSection?.heading ?? 'Four Principles That Guide Every Lesson'}
               </h2>
               <p className="text-body-lg text-on-surface-variant leading-relaxed">
-                A philosophy that respects the child as a natural learner. Every classroom decision flows from these four commitments.
+                {principlesSection?.body ?? 'A philosophy that respects the child as a natural learner. Every classroom decision flows from these four commitments.'}
               </p>
             </div>
           </AnimateOnView>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-            {principles.map(({ icon, title, body }) => (
-              <StaggerItem key={title}>
+            {displayPrinciples.map(({ id, icon, title, body }) => (
+              <StaggerItem key={id}>
                 <div className="bg-surface-container-lowest p-lg border-l-4 border-primary flex gap-lg shadow-sm">
                   <span
                     className="material-symbols-outlined text-[32px] text-primary flex-shrink-0 mt-xs"
@@ -179,16 +209,16 @@ export default function CurriculumPage() {
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
           <AnimateOnView className="mb-xl">
             <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
-              Curriculum Detail
+              {programsSection?.eyebrow ?? 'Curriculum Detail'}
             </p>
             <h2 className="text-headline-lg font-headline-lg text-on-surface">
-              What Your Child Will Learn
+              {programsSection?.heading ?? 'What Your Child Will Learn'}
             </h2>
           </AnimateOnView>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            {programs.map(({ number, level, age, tagline, description, subjects, icon, image, borderColor, accentText }) => (
-              <StaggerItem key={level}>
+            {displayPrograms.map(({ id, number, level, age, tagline, description, subjects, icon, image, borderColor, accentText }) => (
+              <StaggerItem key={id}>
                 <div className={`bg-surface-container-lowest border-t-4 ${borderColor} flex flex-col overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full shadow-sm`}>
                   {/* Photo */}
                   <div className="relative h-52 overflow-hidden flex-shrink-0">
@@ -268,7 +298,7 @@ export default function CurriculumPage() {
             <AnimateOnView variant="fadeLeft">
               <div className="relative h-[460px] overflow-hidden">
                 <Image
-                  src="/images/students-classroom-primary.jpeg"
+                  src={quoteSection?.image_url || '/images/students-classroom-primary.jpeg'}
                   alt="Primary students learning in the classroom"
                   fill
                   className="object-cover"
@@ -286,15 +316,13 @@ export default function CurriculumPage() {
                   format_quote
                 </span>
                 <blockquote className="text-headline-md font-headline-md text-on-surface leading-relaxed mb-lg">
-                  &ldquo;The child is both a hope and a promise for mankind.&rdquo;
+                  &ldquo;{quoteSection?.heading ?? 'The child is both a hope and a promise for mankind.'}&rdquo;
                 </blockquote>
                 <cite className="text-label-sm font-bold text-secondary uppercase tracking-[0.2em] not-italic">
-                  — Maria Montessori
+                  {quoteSection?.eyebrow ?? '— Maria Montessori'}
                 </cite>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed mt-xl">
-                  This is the spirit that drives every lesson at Brainy Kings &amp; Queens. We do
-                  not teach children what to think — we create the conditions for them to discover
-                  how to think.
+                  {quoteSection?.body ?? 'This is the spirit that drives every lesson at Brainy Kings & Queens. We do not teach children what to think — we create the conditions for them to discover how to think.'}
                 </p>
               </div>
             </AnimateOnView>
@@ -307,21 +335,20 @@ export default function CurriculumPage() {
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
           <AnimateOnView className="max-w-4xl mx-auto text-center">
             <p className="text-label-sm font-bold text-secondary-container uppercase tracking-[0.25em] mb-md">
-              Start the Journey
+              {ctaSection?.eyebrow ?? 'Start the Journey'}
             </p>
             <h2 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-on-primary mb-md leading-tight">
-              Secure Your Child&apos;s <br className="hidden md:block" /> Place Today
+              {ctaSection?.heading ?? <>Secure Your Child&apos;s <br className="hidden md:block" /> Place Today</>}
             </h2>
             <p className="text-body-lg text-on-primary/75 mb-xl max-w-xl mx-auto">
-              Enrolment for the upcoming academic year is now open. Join a community that
-              believes every child deserves a royal education.
+              {ctaSection?.body ?? 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.'}
             </p>
             <div className="flex flex-wrap gap-md justify-center">
               <Link
-                href="/admissions"
+                href={ctaSection?.cta_href ?? '/admissions'}
                 className="bg-secondary-container text-on-secondary-container px-10 py-4 font-label-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-xl"
               >
-                Apply Now
+                {ctaSection?.cta_label ?? 'Apply Now'}
                 <span className="material-symbols-outlined">arrow_forward</span>
               </Link>
               <a

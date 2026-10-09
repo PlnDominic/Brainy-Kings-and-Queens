@@ -5,8 +5,12 @@ import Link from 'next/link'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
 import AnimateOnView from '@/components/AnimateOnView'
+import type { Database } from '@/types/database'
 
-const programs = [
+type Program = Database['public']['Tables']['programs']['Row']
+type PageSection = Database['public']['Tables']['page_sections']['Row']
+
+const programsFallback = [
   {
     number: '01',
     level: 'Pre-School',
@@ -45,7 +49,23 @@ const programs = [
   },
 ]
 
-export default function ProgramsSection() {
+export default function ProgramsSection({ programs, section }: { programs?: Program[]; section?: PageSection }) {
+  const displayPrograms = programs === undefined
+    ? programsFallback.map((program) => ({ ...program, id: program.level }))
+    : programs.map((program) => ({
+        id: program.id,
+        number: program.number,
+        level: program.level,
+        age: program.age_range,
+        tagline: program.tagline,
+        description: program.description,
+        features: program.features,
+        icon: program.icon,
+        image: program.image_url,
+        borderColor: program.border_color || 'border-primary',
+        accentText: program.accent_text_color || 'text-primary',
+      }))
+
   return (
     <section className="py-xl bg-surface overflow-hidden">
       <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
@@ -53,11 +73,10 @@ export default function ProgramsSection() {
         <AnimateOnView className="flex flex-col md:flex-row md:items-end justify-between mb-xl gap-md">
           <div>
             <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
-              Academic Programs
+              {section?.eyebrow ?? 'Academic Programs'}
             </p>
             <h2 className="text-headline-lg font-headline-lg text-on-surface">
-              A Royal Path <br className="hidden sm:block" />
-              Through Every Stage
+              {section?.heading ?? <>A Royal Path <br className="hidden sm:block" /> Through Every Stage</>}
             </h2>
           </div>
           <Link
@@ -73,8 +92,11 @@ export default function ProgramsSection() {
 
         {/* Cards */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {programs.map(({ number, level, age, tagline, description, features, icon, image, borderColor, accentText }) => (
-            <StaggerItem key={level}>
+          {displayPrograms.length === 0 && (
+            <p className="text-body-lg text-on-surface-variant">No published programs are available right now.</p>
+          )}
+          {displayPrograms.map(({ id, number, level, age, tagline, description, features, icon, image, borderColor, accentText }) => (
+            <StaggerItem key={id || level}>
               <div className={`bg-surface-container-lowest border-t-4 ${borderColor} flex flex-col overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full shadow-sm`}>
                 {/* Photo */}
                 <div className="relative h-52 overflow-hidden flex-shrink-0">
@@ -82,6 +104,7 @@ export default function ProgramsSection() {
                     src={image}
                     alt={`${level} students at Brainy Kings & Queens`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
