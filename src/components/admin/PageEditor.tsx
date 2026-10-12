@@ -6,13 +6,12 @@ import { useSupabase } from '@/lib/supabase-context'
 import { CmsRecord, PageDef, getCollection, pages, sectionResource, timeAgo } from './config'
 import CollectionManager from './CollectionManager'
 import RecordEditor from './RecordEditor'
-import { Btn, Card, Icon, PageHeader, Skeleton, StatusBadge, Toggle, cx, useFeedback } from './ui'
+import { Btn, Card, Icon, PageHeader, Skeleton, StatusBadge, cx } from './ui'
 
 type SectionDef = PageDef['sections'][number]
 
 export default function PageEditor({ page }: { page: PageDef }) {
   const supabase = useSupabase()
-  const { toast } = useFeedback()
   const [sections, setSections] = useState<CmsRecord[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -33,20 +32,7 @@ export default function PageEditor({ page }: { page: PageDef }) {
 
   const recordFor = (def: SectionDef) => sections.find((item) => item.section_key === def.key) || null
 
-  async function togglePublished(record: CmsRecord) {
-    const next = !record.is_published
-    setSections((current) => current.map((item) => item.id === record.id ? { ...item, is_published: next } : item))
-    const { error: updateError } = await supabase.from('page_sections').update({ is_published: next }).eq('id', record.id)
-    if (updateError) {
-      toast(updateError.message, 'error')
-      await load()
-    } else {
-      toast(next ? 'Section is live' : 'Section hidden. The page shows its default text')
-    }
-  }
-
   const editingRecord = editing ? recordFor(editing) : null
-  const filled = page.sections.filter((def) => recordFor(def)).length
 
   return (
     <>
@@ -79,7 +65,7 @@ export default function PageEditor({ page }: { page: PageDef }) {
 
       {error && <div role="alert" className="mb-6 rounded-xl border border-[#FECDCA] bg-[#FEF3F2] px-4 py-3 text-sm text-[#B42318]">{error}</div>}
 
-      <div className="grid gap-8 xl:grid-cols-[1fr_280px]">
+      <div className="max-w-4xl">
         <ol className="relative space-y-4 before:absolute before:bottom-6 before:left-[19px] before:top-6 before:w-px before:bg-[#EADADA] sm:before:left-[23px]">
           {page.sections.map((def, index) => {
             const record = recordFor(def)
@@ -104,7 +90,6 @@ export default function PageEditor({ page }: { page: PageDef }) {
                       <p className="text-[13px] text-[#8C6F6F]">{def.description}</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      {record && <Toggle checked={record.is_published} onChange={() => togglePublished(record)} label={`Show ${def.label} section`} />}
                       <Btn size="sm" variant={record ? 'secondary' : 'primary'} icon={record ? 'edit' : 'add'} onClick={() => setEditing(def)}>
                         {record ? 'Edit' : 'Customise'}
                       </Btn>
@@ -167,26 +152,6 @@ export default function PageEditor({ page }: { page: PageDef }) {
           })}
         </ol>
 
-        <aside className="hidden xl:block">
-          <div className="sticky top-24 space-y-4">
-            <Card className="overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={page.cover} alt="" className="h-32 w-full object-cover" />
-              <div className="p-5">
-                <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#A88B8B]">Page health</div>
-                <div className="mt-2 text-2xl font-extrabold text-[#1F0808]">{filled}/{page.sections.length}</div>
-                <div className="text-[13px] text-[#8C6F6F]">sections customised</div>
-                <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#F4ECEC]">
-                  <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${(filled / page.sections.length) * 100}%` }} />
-                </div>
-              </div>
-            </Card>
-            <Card className="p-5 text-[13px] leading-relaxed text-[#7A5C5C]">
-              <div className="mb-2 flex items-center gap-2 font-bold text-[#1F0808]"><Icon name="tips_and_updates" className="text-[18px] text-primary" />How it works</div>
-              Sections appear on the website in the order shown. Hidden or empty sections fall back to the original website text, so the page never looks broken.
-            </Card>
-          </div>
-        </aside>
       </div>
 
       {editing && (

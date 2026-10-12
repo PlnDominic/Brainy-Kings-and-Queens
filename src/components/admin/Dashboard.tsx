@@ -3,15 +3,12 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useSupabase } from '@/lib/supabase-context'
-import { CmsRecord, collections, pages, timeAgo } from './config'
+import { CmsRecord, pages, timeAgo } from './config'
 import { isNewInquiry } from './InquiriesInbox'
 import { Card, Icon, Skeleton, cx } from './ui'
 
-type Counts = Record<string, { total: number; live: number }>
-
 export default function Dashboard() {
   const supabase = useSupabase()
-  const [counts, setCounts] = useState<Counts>({})
   const [sections, setSections] = useState<CmsRecord[]>([])
   const [inquiries, setInquiries] = useState<CmsRecord[]>([])
   const [inquiryTotal, setInquiryTotal] = useState(0)
@@ -22,16 +19,6 @@ export default function Dashboard() {
   useEffect(() => {
     let active = true
     async function load() {
-      const collectionResults = await Promise.all(collections.map(async (collection) => {
-        let query = supabase.from(collection.table as any).select(collection.statusField ? `id, ${collection.statusField}` : 'id')
-        Object.entries(collection.scope || {}).forEach(([key, value]) => { query = query.eq(key, value) })
-        const { data } = await query
-        const rows = (data || []) as CmsRecord[]
-        return [collection.key, {
-          total: rows.length,
-          live: collection.statusField ? rows.filter((row) => row[collection.statusField!]).length : rows.length,
-        }] as const
-      }))
       const since = new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString()
       const [sectionResult, inquiryResult, mediaResult, newResult] = await Promise.all([
         supabase.from('page_sections').select('id, page_key, section_key, heading, is_published, updated_at').order('updated_at', { ascending: false }),
@@ -40,7 +27,6 @@ export default function Dashboard() {
         supabase.from('admissions_inquiries').select('id', { count: 'exact', head: true }).gte('created_at', since),
       ])
       if (!active) return
-      setCounts(Object.fromEntries(collectionResults))
       setSections(sectionResult.data || [])
       setInquiries(inquiryResult.data || [])
       setInquiryTotal(inquiryResult.count || 0)
@@ -56,13 +42,11 @@ export default function Dashboard() {
   const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening'
   const totalSections = pages.reduce((sum, page) => sum + page.sections.length, 0)
   const liveSections = sections.filter((section) => section.is_published).length
-  const liveItems = Object.values(counts).reduce((sum, count) => sum + count.live, 0)
 
   const stats = [
     { label: 'New inquiries', value: newTotal, hint: `${inquiryTotal} total`, icon: 'mark_email_unread', href: '/admin/inquiries' },
     { label: 'Live sections', value: liveSections, hint: `of ${totalSections} across 4 pages`, icon: 'web', href: '/admin/pages' },
-    { label: 'Published items', value: liveItems, hint: 'programs, photos, stories…', icon: 'library_books', href: '/admin/collections/programs' },
-    { label: 'Media files', value: mediaTotal, hint: 'in the library', icon: 'perm_media', href: '/admin/media' },
+    { label: 'Photos', value: mediaTotal, hint: 'uploaded', icon: 'perm_media', href: '/admin/media' },
   ]
 
   return (
@@ -90,7 +74,7 @@ export default function Dashboard() {
         </div>
       </section>
 
-      <div className="mb-10 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+      <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-3 lg:gap-4">
         {stats.map((stat) => (
           <Link key={stat.label} href={stat.href}>
             <Card className="group h-full p-5 transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#2A0C0C]/5">
@@ -153,20 +137,6 @@ export default function Dashboard() {
             })}
           </div>
 
-          <h2 className="mb-4 mt-10 text-lg font-extrabold text-[#1F0808]">Content library</h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {collections.map((collection) => (
-              <Link key={collection.key} href={`/admin/collections/${collection.key}`}>
-                <Card className="group flex h-full flex-col gap-3 p-4 transition hover:border-primary/30 hover:shadow-md">
-                  <Icon name={collection.icon} className="text-[22px] text-primary" />
-                  <div>
-                    <div className="text-[13px] font-bold leading-tight text-[#1F0808] group-hover:text-primary">{collection.label}</div>
-                    <div className="mt-0.5 text-xs text-[#A88B8B]">{loading ? '…' : `${counts[collection.key]?.live ?? 0} live · ${counts[collection.key]?.total ?? 0} total`}</div>
-                  </div>
-                </Card>
-              </Link>
-            ))}
-          </div>
         </section>
 
         <section>
@@ -203,23 +173,6 @@ export default function Dashboard() {
             )}
           </Card>
 
-          <Card className="mt-6 p-5">
-            <h3 className="mb-3 flex items-center gap-2 text-sm font-bold text-[#1F0808]"><Icon name="bolt" className="text-[18px] text-primary" />Quick actions</h3>
-            <div className="grid gap-2">
-              {[
-                ['/admin/collections/hero_slides', 'view_carousel', 'Change homepage slides'],
-                ['/admin/collections/testimonials', 'format_quote', 'Add a parent testimonial'],
-                ['/admin/media', 'cloud_upload', 'Upload new photos'],
-                ['/admin/settings', 'call', 'Update contact details'],
-              ].map(([href, icon, label]) => (
-                <Link key={href} href={href} className="flex items-center gap-3 rounded-lg px-3 py-2 text-[13px] font-medium text-[#5C2E2E] transition hover:bg-[#FBF3F3] hover:text-primary">
-                  <Icon name={icon} className="text-[18px]" />
-                  {label}
-                  <Icon name="chevron_right" className="ml-auto text-[18px] text-[#D4BFBF]" />
-                </Link>
-              ))}
-            </div>
-          </Card>
         </section>
       </div>
     </>

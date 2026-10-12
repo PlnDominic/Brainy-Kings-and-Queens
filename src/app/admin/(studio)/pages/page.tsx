@@ -5,7 +5,7 @@ import { Card, Icon, PageHeader } from '@/components/admin/ui'
 export default function PagesOverview() {
   return (
     <>
-      <PageHeader eyebrow="Website" title="Pages" description="Choose a page to edit its sections in the same order visitors see them." />
+      <PageHeader title="Website pages" description="Choose a page to edit. Sections are listed in the order visitors see them." />
       <div className="grid gap-5 md:grid-cols-2">
         {pages.map((page) => (
           <Link key={page.key} href={`/admin/pages/${page.key}`} className="group">

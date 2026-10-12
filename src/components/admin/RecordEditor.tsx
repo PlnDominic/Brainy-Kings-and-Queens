@@ -27,6 +27,7 @@ export default function RecordEditor({ resource, record, open, title, subtitle, 
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
   const [pickerFor, setPickerFor] = useState<string | null>(null)
+  const [showAdvanced, setShowAdvanced] = useState(false)
 
   useEffect(() => {
     if (!open) return
@@ -56,12 +57,13 @@ export default function RecordEditor({ resource, record, open, title, subtitle, 
 
   const groups = useMemo(() => {
     const map = new Map<string, CmsField[]>()
-    resource.fields.forEach((field) => {
+    resource.fields.filter((field) => !field.advanced).forEach((field) => {
       const name = field.group || 'Details'
       map.set(name, [...(map.get(name) || []), field])
     })
     return Array.from(map.entries())
   }, [resource])
+  const advancedFields = resource.fields.filter((field) => field.advanced)
 
   if (!open) return null
 
@@ -131,6 +133,27 @@ export default function RecordEditor({ resource, record, open, title, subtitle, 
               </div>
             </section>
           ))}
+
+          {advancedFields.length > 0 && (
+            <section className="rounded-2xl border border-[#EFE3E3] bg-white">
+              <button
+                type="button"
+                aria-expanded={showAdvanced}
+                onClick={() => setShowAdvanced((value) => !value)}
+                className="flex w-full items-center justify-between px-5 py-4 text-[13px] font-bold uppercase tracking-[0.12em] text-[#8C6F6F] hover:text-[#1F0808]"
+              >
+                More options
+                <Icon name="expand_more" className={cx('text-[20px] transition-transform', showAdvanced && 'rotate-180')} />
+              </button>
+              {showAdvanced && (
+                <div className="grid grid-cols-1 gap-4 px-5 pb-5 sm:grid-cols-2">
+                  {advancedFields.map((field) => (
+                    <FieldInput key={field.key} field={field} value={values[field.key]} onChange={(value) => set(field.key, value)} onPickImage={() => setPickerFor(field.key)} />
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
 
           {error && (
             <div role="alert" className="flex items-start gap-2 rounded-xl border border-[#FECDCA] bg-[#FEF3F2] px-4 py-3 text-sm text-[#B42318]">

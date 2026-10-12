@@ -13,6 +13,8 @@ export type CmsField = {
   options?: { value: string; label: string }[]
   /** Group heading inside the editor drawer. */
   group?: string
+  /** Rarely needed; shown under "More options" in the editor. */
+  advanced?: boolean
   /** Span both columns of the editor grid. */
   wide?: boolean
 }
@@ -32,13 +34,14 @@ export type CmsResource = {
   statusField?: string
   orderField?: string
   orderDescending?: boolean
+  /** Order comes from other fields (e.g. gallery grid position), so hide the move arrows. */
+  noReorder?: boolean
   /** Fixed values applied to every record (e.g. gallery page). */
   scope?: Record<string, string>
   fields: CmsField[]
 }
 
 export const PUBLISH: CmsField = { key: 'is_published', label: 'Visible on website', type: 'boolean', group: 'Publishing' }
-const ORDER: CmsField = { key: 'display_order', label: 'Display order', type: 'number', group: 'Publishing', help: 'Lower numbers appear first.' }
 
 export const collections: CmsResource[] = [
   {
@@ -51,7 +54,6 @@ export const collections: CmsResource[] = [
       { key: 'title', label: 'Title', type: 'text', group: 'Text' },
       { key: 'link', label: 'Link', type: 'text', placeholder: '/admissions', group: 'Text' },
       { key: 'subtitle', label: 'Subtitle', type: 'textarea', group: 'Text', wide: true },
-      ORDER,
       { key: 'is_active', label: 'Visible on website', type: 'boolean', group: 'Publishing' },
     ],
   },
@@ -68,15 +70,7 @@ export const collections: CmsResource[] = [
       { key: 'description', label: 'Description', type: 'textarea', required: true, group: 'Overview', wide: true },
       { key: 'features', label: 'Key features', type: 'list', group: 'Overview', wide: true, help: 'One feature per line.' },
       { key: 'image_url', label: 'Program photo', type: 'image', required: true, group: 'Photo', wide: true },
-      { key: 'border_color', label: 'Border style', type: 'select', group: 'Appearance', options: [
-        { value: 'border-primary', label: 'Red' }, { value: 'border-secondary', label: 'Maroon' },
-        { value: 'border-primary-container', label: 'Light red' }, { value: 'border-outline', label: 'Muted' },
-      ] },
-      { key: 'accent_text_color', label: 'Accent colour', type: 'select', group: 'Appearance', options: [
-        { value: 'text-primary', label: 'Red' }, { value: 'text-secondary', label: 'Maroon' },
-        { value: 'text-primary-container', label: 'Light red' }, { value: 'text-outline', label: 'Muted' },
-      ] },
-      ORDER, PUBLISH,
+      PUBLISH,
     ],
   },
   {
@@ -87,21 +81,21 @@ export const collections: CmsResource[] = [
       { key: 'quote', label: 'Quote', type: 'textarea', required: true, group: 'Testimonial', wide: true },
       { key: 'name', label: 'Name', type: 'text', required: true, group: 'Testimonial' },
       { key: 'role', label: 'Role', type: 'text', required: true, placeholder: 'Parent · Pre-School', group: 'Testimonial' },
-      ORDER, PUBLISH,
+      PUBLISH,
     ],
   },
   {
     key: 'gallery_home', label: 'Home gallery', singular: 'photo', icon: 'photo_library',
     description: 'The “Campus Life” photo grid on the home page.',
     table: 'gallery_items', titleField: 'caption', subtitleField: 'alt_text', imageField: 'image_url', statusField: 'is_published',
-    scope: { page_key: 'home' },
+    scope: { page_key: 'home' }, noReorder: true,
     fields: galleryFields(),
   },
   {
     key: 'gallery_about', label: 'About gallery', singular: 'photo', icon: 'photo_library',
     description: 'The photo grid on the About page.',
     table: 'gallery_items', titleField: 'caption', subtitleField: 'alt_text', imageField: 'image_url', statusField: 'is_published',
-    scope: { page_key: 'about' },
+    scope: { page_key: 'about' }, noReorder: true,
     fields: galleryFields(),
   },
   {
@@ -112,7 +106,6 @@ export const collections: CmsResource[] = [
       { key: 'title', label: 'Title', type: 'text', required: true, group: 'Value' },
       { key: 'icon', label: 'Icon', type: 'icon', required: true, group: 'Value' },
       { key: 'body', label: 'Description', type: 'textarea', required: true, group: 'Value', wide: true },
-      ORDER,
     ],
   },
   {
@@ -124,8 +117,7 @@ export const collections: CmsResource[] = [
       { key: 'role', label: 'Role', type: 'text', required: true, group: 'Profile' },
       { key: 'image_url', label: 'Portrait', type: 'image', group: 'Profile', wide: true },
       { key: 'alt_text', label: 'Portrait description', type: 'text', group: 'Profile', wide: true },
-      { key: 'social_media', label: 'Social links', type: 'json', group: 'Profile', wide: true, help: 'JSON, e.g. { "linkedin": "https://…" }' },
-      ORDER, PUBLISH,
+      PUBLISH,
     ],
   },
   {
@@ -136,7 +128,6 @@ export const collections: CmsResource[] = [
       { key: 'title', label: 'Title', type: 'text', required: true, group: 'Principle' },
       { key: 'icon', label: 'Icon', type: 'icon', required: true, group: 'Principle' },
       { key: 'body', label: 'Description', type: 'textarea', required: true, group: 'Principle', wide: true },
-      ORDER,
     ],
   },
   {
@@ -148,7 +139,7 @@ export const collections: CmsResource[] = [
       { key: 'number', label: 'Number', type: 'text', required: true, placeholder: '01', group: 'Step' },
       { key: 'icon', label: 'Icon', type: 'icon', required: true, group: 'Step' },
       { key: 'body', label: 'Description', type: 'textarea', required: true, group: 'Step', wide: true },
-      ORDER, PUBLISH,
+      PUBLISH,
     ],
   },
 ]
@@ -158,9 +149,9 @@ function galleryFields(): CmsField[] {
     { key: 'image_url', label: 'Photo', type: 'image', required: true, group: 'Photo', wide: true },
     { key: 'caption', label: 'Caption', type: 'text', group: 'Photo' },
     { key: 'alt_text', label: 'Photo description', type: 'text', group: 'Photo' },
-    { key: 'row_index', label: 'Grid row', type: 'number', group: 'Layout' },
-    { key: 'column_index', label: 'Grid column', type: 'number', group: 'Layout' },
-    ORDER, PUBLISH,
+    { key: 'row_index', label: 'Grid row', type: 'number', advanced: true, help: 'Which row of the photo grid this appears in.' },
+    { key: 'column_index', label: 'Position in row', type: 'number', advanced: true },
+    PUBLISH,
   ]
 }
 
@@ -182,7 +173,7 @@ export const SECTION_RESOURCE: CmsResource = {
     { key: 'image_url', label: 'Image', type: 'image', group: 'Image', wide: true },
     { key: 'cta_label', label: 'Button label', type: 'text', group: 'Button' },
     { key: 'cta_href', label: 'Button link', type: 'text', placeholder: '/admissions', group: 'Button' },
-    ORDER, PUBLISH,
+    PUBLISH,
   ],
 }
 

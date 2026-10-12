@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useSupabase } from '@/lib/supabase-context'
 import { CmsRecord, CmsResource } from './config'
 import RecordEditor from './RecordEditor'
-import { Btn, EmptyState, Icon, SearchInput, Skeleton, StatusBadge, Toggle, cx, useFeedback } from './ui'
+import { Btn, EmptyState, Icon, SearchInput, Skeleton, Toggle, cx, useFeedback } from './ui'
 
 export function useCollection(resource: CmsResource) {
   const supabase = useSupabase()
@@ -37,7 +37,6 @@ export default function CollectionManager({ resource, embedded = false }: { reso
   const { toast, confirm } = useFeedback()
   const { records, loading, error, load, setRecords } = useCollection(resource)
   const [query, setQuery] = useState('')
-  const [filter, setFilter] = useState<'all' | 'live' | 'hidden'>('all')
   const [editing, setEditing] = useState<CmsRecord | null>(null)
   const [creating, setCreating] = useState(false)
   const [busyId, setBusyId] = useState<string | null>(null)
@@ -46,7 +45,6 @@ export default function CollectionManager({ resource, embedded = false }: { reso
   const status = resource.statusField
 
   const visible = records.filter((record) => {
-    if (status && filter !== 'all' && Boolean(record[status]) !== (filter === 'live')) return false
     if (!query) return true
     const haystack = resource.fields.map((field) => String(record[field.key] ?? '')).join(' ').toLowerCase()
     return haystack.includes(query.toLowerCase())
@@ -100,32 +98,17 @@ export default function CollectionManager({ resource, embedded = false }: { reso
     await load()
   }
 
-  const canReorder = !query && filter === 'all' && !resource.orderField
+  const canReorder = !query && !resource.orderField && !resource.noReorder
   const liveCount = status ? records.filter((record) => record[status]).length : records.length
 
   return (
     <div>
       <div className={cx('mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between', embedded && 'mb-3')}>
         <div className="flex flex-wrap items-center gap-2">
-          {status ? (
-            <div className="inline-flex rounded-lg bg-[#F4ECEC] p-0.5 text-[13px] font-semibold">
-              {(['all', 'live', 'hidden'] as const).map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  onClick={() => setFilter(option)}
-                  className={cx('rounded-md px-3 py-1.5 capitalize transition', filter === option ? 'bg-white text-[#1F0808] shadow-sm' : 'text-[#8C6F6F] hover:text-[#1F0808]')}
-                >
-                  {option}
-                  <span className="ml-1.5 text-[11px] font-medium text-[#A88B8B]">
-                    {option === 'all' ? records.length : option === 'live' ? liveCount : records.length - liveCount}
-                  </span>
-                </button>
-              ))}
-            </div>
-          ) : (
-            <span className="text-sm text-[#8C6F6F]"><b className="text-[#1F0808]">{records.length}</b> items</span>
-          )}
+          <span className="text-sm text-[#8C6F6F]">
+            <b className="text-[#1F0808]">{records.length}</b> {records.length === 1 ? resource.singular : 'items'}
+            {status && records.length > 0 && <> · {liveCount} on the website</>}
+          </span>
         </div>
         <div className="flex gap-2">
           {!embedded && <SearchInput value={query} onChange={setQuery} placeholder={`Search ${resource.label.toLowerCase()}`} />}
@@ -142,8 +125,8 @@ export default function CollectionManager({ resource, embedded = false }: { reso
       ) : visible.length === 0 ? (
         <EmptyState
           icon={resource.icon}
-          title={records.length ? 'Nothing matches your filters' : `No ${resource.label.toLowerCase()} yet`}
-          body={records.length ? 'Try a different search or filter.' : resource.description}
+          title={records.length ? 'Nothing matches your search' : `No ${resource.label.toLowerCase()} yet`}
+          body={records.length ? 'Try a different search.' : resource.description}
           action={!records.length && <Btn variant="primary" icon="add" onClick={() => setCreating(true)}>Add the first {resource.singular}</Btn>}
         />
       ) : (
@@ -173,7 +156,6 @@ export default function CollectionManager({ resource, embedded = false }: { reso
 
               {status && (
                 <div className="hidden items-center gap-3 sm:flex">
-                  <StatusBadge published={Boolean(record[status])} />
                   <Toggle checked={Boolean(record[status])} onChange={() => togglePublished(record)} label={`Show ${title(record)} on website`} />
                 </div>
               )}
