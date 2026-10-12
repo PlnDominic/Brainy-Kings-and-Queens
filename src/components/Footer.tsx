@@ -18,8 +18,6 @@ const socials = [
 
 export default function Footer({ settings }: { settings?: SiteSettings | null }) {
   const phone = settings?.phone || '0591664392'
-  // The column used to hold a privacy policy URL; its old default '#' means nothing was set.
-  const developedBy = settings?.privacy_policy_link?.trim().replace(/^#$/, '')
   const email = settings?.email || 'admissions@brainykings.edu'
   const address = settings?.address || 'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana'
   const hours = settings?.hours || 'Mon – Fri: 7:00 AM – 4:00 PM'
@@ -146,9 +144,17 @@ export default function Footer({ settings }: { settings?: SiteSettings | null })
           <p className="text-label-sm text-white/25">
             &copy; {settings?.copyright_year || new Date().getFullYear()} Brainy Kings &amp; Queens Montessori. All rights reserved.
           </p>
-          {developedBy && (
-            <p className="text-label-sm text-white/25">Developed by {developedBy}</p>
-          )}
+          <p className="text-label-sm text-white/25">
+            Developed By{' '}
+            <a
+              href="https://www.ecstasytechologies.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 underline-offset-2 transition-colors hover:text-white hover:underline"
+            >
+              Ecstasy Technologies
+            </a>
+          </p>
         </div>
       </div>
     </footer>

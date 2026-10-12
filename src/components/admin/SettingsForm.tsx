@@ -22,7 +22,6 @@ export default function SettingsForm() {
       return
     }
     const next = initialValues(SETTINGS_RESOURCE, data || undefined)
-    if (next.privacy_policy_link === '#') next.privacy_policy_link = '' // old placeholder value
     setRecord(data)
     setValues(next)
     setInitial(JSON.stringify(next))
@@ -95,7 +94,7 @@ export default function SettingsForm() {
           </ul>
           <div className="border-t border-white/10 px-5 py-3 text-xs text-white/40">
             © {values.copyright_year || new Date().getFullYear()} Brainy Kings &amp; Queens Montessori
-            {values.privacy_policy_link && values.privacy_policy_link !== '#' && <div className="mt-1">Developed by {values.privacy_policy_link}</div>}
+            <div className="mt-1">Developed By Ecstasy Technologies</div>
           </div>
         </div>
       </aside>
