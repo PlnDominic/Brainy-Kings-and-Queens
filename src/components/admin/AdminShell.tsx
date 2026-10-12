@@ -76,27 +76,15 @@ export default function AdminShell({ children }: { children: ReactNode }) {
     )
   }
 
-  const groups: { title: string; items: NavItem[] }[] = [
-    { title: 'Overview', items: [{ href: '/admin/dashboard', label: 'Dashboard', icon: 'space_dashboard' }] },
-    {
-      title: 'Website pages',
-      items: pages.map((page) => ({ href: `/admin/pages/${page.key}`, label: page.label, icon: page.icon })),
-    },
-    {
-      title: 'School office',
-      items: [
-        { href: '/admin/inquiries', label: 'Inquiries', icon: 'inbox', badge: newInquiries },
-        { href: '/admin/media', label: 'Media library', icon: 'perm_media' },
-        { href: '/admin/settings', label: 'Site settings', icon: 'tune' },
-      ],
-    },
-    {
-      title: 'Content library',
-      items: collections.map((collection) => ({ href: `/admin/collections/${collection.key}`, label: collection.label, icon: collection.icon })),
-    },
+  const navItems: NavItem[] = [
+    { href: '/admin/dashboard', label: 'Dashboard', icon: 'space_dashboard' },
+    { href: '/admin/pages', label: 'Website pages', icon: 'web', match: (path) => path.startsWith('/admin/pages') || path.startsWith('/admin/collections') },
+    { href: '/admin/inquiries', label: 'Inquiries', icon: 'inbox', badge: newInquiries },
+    { href: '/admin/media', label: 'Photos', icon: 'perm_media' },
+    { href: '/admin/settings', label: 'Contact details', icon: 'tune' },
   ]
 
-  const isActive = (item: NavItem) => pathname === item.href || pathname.startsWith(`${item.href}/`)
+  const isActive = (item: NavItem) => item.match ? item.match(pathname) : pathname === item.href || pathname.startsWith(`${item.href}/`)
 
   const sidebar = (
     <div className="flex h-full flex-col">
@@ -110,34 +98,27 @@ export default function AdminShell({ children }: { children: ReactNode }) {
         </div>
       </Link>
 
-      <nav className="flex-1 space-y-5 overflow-y-auto px-3 pb-6 [scrollbar-width:thin]">
-        {groups.map((group) => (
-          <div key={group.title}>
-            <div className="mb-1.5 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B39C9C]">{group.title}</div>
-            <ul className="space-y-0.5">
-              {group.items.map((item) => {
-                const active = isActive(item)
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={cx(
-                        'group flex items-center gap-3 rounded-lg px-3 py-[7px] text-[13.5px] font-medium transition',
-                        active ? 'bg-[#FBEAEA] text-primary' : 'text-[#5C2E2E] hover:bg-[#F7EFEF] hover:text-[#1F0808]',
-                      )}
-                    >
-                      <Icon name={item.icon} filled={active} className={cx('text-[19px]', active ? 'text-primary' : 'text-[#B39C9C] group-hover:text-[#5C2E2E]')} />
-                      <span className="flex-1 truncate">{item.label}</span>
-                      {item.badge ? (
-                        <span className={cx('min-w-[20px] rounded-full px-1.5 text-center text-[11px] font-bold', 'bg-primary text-white')}>{item.badge}</span>
-                      ) : null}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        ))}
+      <nav className="flex-1 overflow-y-auto px-3 pb-6 [scrollbar-width:thin]">
+        <ul className="space-y-1">
+          {navItems.map((item) => {
+            const active = isActive(item)
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={cx(
+                    'group flex items-center gap-3 rounded-lg px-3 py-2.5 text-[14px] font-medium transition',
+                    active ? 'bg-[#FBEAEA] text-primary' : 'text-[#5C2E2E] hover:bg-[#F7EFEF] hover:text-[#1F0808]',
+                  )}
+                >
+                  <Icon name={item.icon} filled={active} className={cx('text-[20px]', active ? 'text-primary' : 'text-[#B39C9C] group-hover:text-[#5C2E2E]')} />
+                  <span className="flex-1 truncate">{item.label}</span>
+                  {item.badge ? <span className="min-w-[20px] rounded-full bg-primary px-1.5 text-center text-[11px] font-bold text-white">{item.badge}</span> : null}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
       </nav>
 
       <div className="border-t border-[#F1E6E6] p-3">
@@ -201,7 +182,7 @@ export default function AdminShell({ children }: { children: ReactNode }) {
 function Breadcrumbs({ pathname }: { pathname: string }) {
   const parts = pathname.replace(/^\/admin\/?/, '').split('/').filter(Boolean)
   const labels: Record<string, string> = {
-    dashboard: 'Dashboard', pages: 'Pages', collections: 'Content library', inquiries: 'Inquiries', media: 'Media library', settings: 'Settings',
+    dashboard: 'Dashboard', pages: 'Website pages', collections: 'Website pages', inquiries: 'Inquiries', media: 'Photos', settings: 'Contact details',
   }
   const leaf = (part: string) =>
     pages.find((page) => page.key === part)?.label || collections.find((item) => item.key === part)?.label || labels[part] || part

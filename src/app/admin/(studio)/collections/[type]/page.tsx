@@ -10,7 +10,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ typ
   return (
     <>
       <PageHeader
-        eyebrow="Content library"
+        eyebrow={<a href="/admin/pages" className="hover:underline">Website pages</a>}
         title={collection.label}
         description={collection.description}
         actions={usedOn.map((page) => (
