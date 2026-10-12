@@ -18,19 +18,19 @@ export const dynamic = 'force-dynamic'
 const programs = [
   {
     number: '01', level: 'Pre-School', age: 'Ages 2.5 – 5', tagline: 'The Prepared Environment',
-    description: 'Montessori materials build fine motor skills, self-regulation, and early literacy.',
+    description: 'Hands-on materials for early literacy and independence.',
     subjects: ['Sensorial Learning', 'Practical Life Skills', 'Phonetic Reading', 'Basic Mathematics', 'Emotional Self-Regulation'],
     icon: 'child_care', image: '/images/students-preschool-standing.jpeg',
   },
   {
     number: '02', level: 'Primary', age: 'Grades 1 – 6', tagline: 'Growing Minds',
-    description: 'From the Great Lessons to leadership projects, raising confident, curious thinkers.',
+    description: 'Confident, curious thinkers through hands-on projects.',
     subjects: ['Literacy & Creative Writing', 'Mathematics & Sciences', 'Computational Thinking', 'Public Speaking & Debate', 'Research & Leadership Projects'],
     icon: 'auto_stories', image: '/images/students-classroom-fun.jpeg',
   },
   {
     number: '03', level: 'Junior High', age: 'JHS 1 – 3', tagline: 'Excellence & Achievement',
-    description: 'Core subjects, critical thinking, and BECE preparation for secondary success.',
+    description: 'Core subjects and BECE preparation for secondary success.',
     subjects: ['English Language & Literature', 'Mathematics & Integrated Science', 'ICT & Computing', 'Social & Civic Studies', 'BECE Examination Preparation'],
     icon: 'military_tech', image: '/images/students-teacher-outdoor.jpeg',
   },
@@ -41,6 +41,15 @@ const principles = [
   { icon: 'diversity_3', title: 'Mixed-Age Groups', body: 'Older students mentor younger ones: the most powerful form of learning.' },
   { icon: 'palette', title: 'Hands-On Materials', body: 'Montessori materials are self-correcting: children see their own errors and fix them.' },
   { icon: 'public', title: 'Cosmic Education', body: 'Every subject connects to a larger story: how humans and the universe are one.' },
+]
+
+const classroomPhotos = [
+  { src: '/images/students-montessori-classroom.jpeg', alt: 'Children working with Montessori materials' },
+  { src: '/images/students-classroom-fun.jpeg', alt: 'Students enjoying a lesson' },
+  { src: '/images/students-preschool-cubbies-2.jpeg', alt: 'Pre-school students at their cubbies' },
+  { src: '/images/students-classroom-primary.jpeg', alt: 'Primary students in class' },
+  { src: '/images/students-preschool-lunch-closeup-2.jpeg', alt: 'Pre-school children at lunch' },
+  { src: '/images/teacher-student-mentorship.jpeg', alt: 'A teacher guiding a student' },
 ]
 
 export default async function CurriculumPage() {
@@ -72,23 +81,18 @@ export default async function CurriculumPage() {
         imageAlt="Brainy Kings and Queens school campus"
         eyebrow={heroSection?.eyebrow ?? 'Academic Programs'}
         heading={heroSection?.heading ?? <>A Royal Path <span className="text-[#E2B45A]">Through Every Stage</span></>}
-        body={heroSection?.body ?? 'Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration, from age 2.5 through JHS 3.'}
+        body={heroSection?.body ?? 'Montessori learning from age 2.5 through JHS 3.'}
         highlights={displayPrograms.slice(0, 4).map((program) => ({ icon: program.icon, label: program.level }))}
       />
 
       {/* Principles */}
       <section className="bg-[#FBF6EE] py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <AnimateOnView className="mb-14 grid gap-6 lg:grid-cols-2 lg:items-end">
-            <div>
-              <Eyebrow>{principlesSection?.eyebrow ?? 'The Brainy Way'}</Eyebrow>
-              <h2 className="max-w-xl text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#2A0C0C] sm:text-[44px]">
-                {principlesSection?.heading ?? 'Four Principles That Guide Every Lesson'}
-              </h2>
-            </div>
-            <p className="max-w-md text-[17px] leading-relaxed text-[#6B4A4A] lg:justify-self-end">
-              {principlesSection?.body ?? 'A philosophy that respects the child as a natural learner. Every classroom decision flows from these four commitments.'}
-            </p>
+          <AnimateOnView className="mb-12">
+            <Eyebrow>{principlesSection?.eyebrow ?? 'The Brainy Way'}</Eyebrow>
+            <h2 className="max-w-xl text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#2A0C0C] sm:text-[44px]">
+              {principlesSection?.heading ?? 'Four Principles That Guide Every Lesson'}
+            </h2>
           </AnimateOnView>
 
           <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -102,7 +106,7 @@ export default async function CurriculumPage() {
                     <span className="text-sm font-extrabold text-[#D4BFBF]">{String(index + 1).padStart(2, '0')}</span>
                   </div>
                   <h3 className="text-lg font-bold text-[#2A0C0C]">{title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-[#6B4A4A]">{body}</p>
+                  <p className="mt-2 line-clamp-2 text-[15px] leading-relaxed text-[#6B4A4A]">{body}</p>
                 </article>
               </StaggerItem>
             ))}
@@ -111,7 +115,7 @@ export default async function CurriculumPage() {
       </section>
 
       {/* Programme journey */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="overflow-hidden bg-white py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <AnimateOnView className="mx-auto mb-16 max-w-2xl text-center">
             <div className="flex justify-center"><Eyebrow>{programsSection?.eyebrow ?? 'Curriculum Detail'}</Eyebrow></div>
@@ -144,12 +148,9 @@ export default async function CurriculumPage() {
                     </div>
                     <h3 className="text-[32px] font-extrabold tracking-tight text-[#2A0C0C] sm:text-[40px]">{program.level}</h3>
                     <p className="mt-4 max-w-lg text-[17px] leading-relaxed text-[#6B4A4A]">{program.description}</p>
-                    <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-                      {program.subjects.map((subject) => (
-                        <li key={subject} className="flex items-center gap-3 rounded-2xl bg-[#FBF6EE] px-4 py-3 text-[15px] font-medium text-[#4A2A2A]">
-                          <span className="material-symbols-outlined text-[18px] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                          {subject}
-                        </li>
+                    <ul className="mt-6 flex flex-wrap gap-2">
+                      {program.subjects.slice(0, 4).map((subject) => (
+                        <li key={subject} className="rounded-full bg-[#FBF6EE] px-4 py-2 text-sm font-semibold text-[#4A2A2A]">{subject}</li>
                       ))}
                     </ul>
                     <Link href="/admissions" className="group mt-9 inline-flex items-center gap-3 rounded-full bg-[#2A0C0C] py-2 pl-7 pr-2 text-[15px] font-bold text-white transition hover:bg-primary">
@@ -166,6 +167,24 @@ export default async function CurriculumPage() {
         </div>
       </section>
 
+      {/* Inside our classrooms */}
+      <section className="bg-white pb-24 lg:pb-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <AnimateOnView className="mb-10 text-center">
+            <div className="flex justify-center"><Eyebrow>Inside our classrooms</Eyebrow></div>
+          </AnimateOnView>
+          <StaggerContainer className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {classroomPhotos.map((photo, index) => (
+              <StaggerItem key={photo.src} className={index === 0 || index === 3 ? 'md:row-span-2' : ''}>
+                <div className={`relative aspect-[4/3] w-full overflow-hidden rounded-[28px] ${index === 0 || index === 3 ? 'md:aspect-auto md:h-full' : ''}`}>
+                  <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition duration-700 hover:scale-105" />
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
       {/* Quote */}
       <section className="relative overflow-hidden bg-[#2A0C0C] text-white">
         <Wave fill="#FFFFFF" flip className="absolute left-0 top-0 h-16 w-full md:h-24" />
@@ -179,9 +198,6 @@ export default async function CurriculumPage() {
               <span className="h-px w-10 bg-[#E2B45A]" />
               {quoteSection?.eyebrow ?? 'Maria Montessori'}
             </cite>
-            <p className="mt-10 max-w-xl text-[17px] leading-relaxed text-white/65">
-              {quoteSection?.body ?? 'This is the spirit that drives every lesson at Brainy Kings & Queens. We do not teach children what to think. We create the conditions for them to discover how to think.'}
-            </p>
           </AnimateOnView>
           <AnimateOnView variant="fadeRight" className="relative mx-auto hidden w-full max-w-[380px] lg:block">
             <Crown className="absolute -top-14 left-1/2 h-10 w-14 -translate-x-1/2" />
@@ -203,7 +219,7 @@ export default async function CurriculumPage() {
         defaults={{
           eyebrow: 'Start the Journey',
           heading: "Secure Your Child's Place Today",
-          body: 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.',
+          body: 'Enrolment for the new academic year is open.',
           label: 'Apply Now',
         }}
       />

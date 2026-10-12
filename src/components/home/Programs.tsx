@@ -11,21 +11,15 @@ type PageSection = Database['public']['Tables']['page_sections']['Row']
 
 const fallbackPrograms = [
   {
-    id: 'pre-school', number: '01', level: 'Pre-School', age: 'Ages 2.5 – 5', tagline: 'The Prepared Environment',
-    description: 'Montessori materials build fine motor skills, self-regulation, and early literacy.',
-    features: ['Sensorial Learning', 'Practical Life Skills', 'Phonetic Reading'],
+    id: 'pre-school', level: 'Pre-School', age: 'Ages 2.5 – 5', tagline: 'The Prepared Environment',
     icon: 'child_care', image: '/images/students-preschool-standing.jpeg',
   },
   {
-    id: 'primary', number: '02', level: 'Primary', age: 'Grades 1 – 6', tagline: 'Growing Minds',
-    description: 'From the Great Lessons to leadership projects, raising confident, curious thinkers.',
-    features: ['Literacy & Mathematics', 'Sciences & Computing', 'Public Speaking & Leadership'],
+    id: 'primary', level: 'Primary', age: 'Grades 1 – 6', tagline: 'Growing Minds',
     icon: 'auto_stories', image: '/images/students-classroom-fun.jpeg',
   },
   {
-    id: 'jhs', number: '03', level: 'Junior High', age: 'JHS 1 – 3', tagline: 'Excellence & Achievement',
-    description: 'Core subjects, critical thinking, and BECE preparation for secondary success.',
-    features: ['English & Literature', 'Mathematics & Sciences', 'ICT & Computing'],
+    id: 'jhs', level: 'Junior High', age: 'JHS 1 – 3', tagline: 'Excellence & Achievement',
     icon: 'military_tech', image: '/images/students-teacher-outdoor.jpeg',
   },
 ]
@@ -35,8 +29,8 @@ const accents = ['#B31B1B', '#C98A1B', '#7A1E3A']
 export default function Programs({ programs, section }: { programs?: Program[]; section?: PageSection }) {
   const items = programs?.length
     ? programs.map((program) => ({
-        id: program.id, number: program.number, level: program.level, age: program.age_range, tagline: program.tagline,
-        description: program.description, features: program.features, icon: program.icon, image: program.image_url,
+        id: program.id, level: program.level, age: program.age_range, tagline: program.tagline,
+        icon: program.icon, image: program.image_url,
       }))
     : fallbackPrograms
 
@@ -51,7 +45,7 @@ export default function Programs({ programs, section }: { programs?: Program[]; 
             </h2>
           </div>
           <Link href="/curriculum" className="group inline-flex items-center gap-2 self-start rounded-full border border-[#2A0C0C]/15 px-6 py-3 text-sm font-bold text-[#2A0C0C] transition hover:border-primary hover:text-primary lg:self-auto">
-            Explore the full curriculum
+            Full curriculum
             <span className="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
           </Link>
         </AnimateOnView>
@@ -61,34 +55,20 @@ export default function Programs({ programs, section }: { programs?: Program[]; 
             const accent = accents[index % accents.length]
             return (
               <StaggerItem key={program.id}>
-                <article className="group flex h-full flex-col overflow-hidden rounded-[32px] bg-[#FBF6EE] p-3 transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgba(42,12,12,0.4)]">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[24px]">
-                    <Image src={program.image} alt={`${program.level} students at Brainy Kings & Queens`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                    <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-[#2A0C0C] backdrop-blur">{program.age}</span>
-                    <span className="absolute bottom-3 right-5 text-6xl font-extrabold leading-none text-white/25">{program.number}</span>
-                  </div>
-
-                  <div className="relative flex flex-1 flex-col px-4 pb-4 pt-9">
-                    <span
-                      className="absolute -top-7 left-4 flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-lg ring-4 ring-[#FBF6EE]"
-                      style={{ backgroundColor: accent }}
-                    >
-                      <span className="material-symbols-outlined text-[26px]" style={{ fontVariationSettings: "'FILL' 1" }}>{program.icon}</span>
+                <Link href="/curriculum" className="group relative block aspect-[3/4] overflow-hidden rounded-[32px]">
+                  <Image src={program.image} alt={`${program.level} students at Brainy Kings & Queens`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-bold text-[#2A0C0C]">{program.age}</span>
+                  <div className="absolute inset-x-3 bottom-3 flex items-center gap-3 rounded-[24px] bg-white p-3 pr-4">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white" style={{ backgroundColor: accent }}>
+                      <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>{program.icon}</span>
                     </span>
-                    <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: accent }}>{program.tagline}</p>
-                    <h3 className="mt-1 text-2xl font-extrabold tracking-tight text-[#2A0C0C]">{program.level}</h3>
-                    <p className="mt-3 text-[15px] leading-relaxed text-[#6B4A4A]">{program.description}</p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {program.features.map((feature) => (
-                        <li key={feature} className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-[#4A2A2A] ring-1 ring-[#2A0C0C]/5">{feature}</li>
-                      ))}
-                    </ul>
-                    <Link href="/curriculum" className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[#2A0C0C] transition hover:gap-3" style={{ color: accent }}>
-                      Learn more
-                      <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                    </Link>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="truncate text-lg font-extrabold tracking-tight text-[#2A0C0C]">{program.level}</h3>
+                      <p className="truncate text-xs font-bold uppercase tracking-[0.14em]" style={{ color: accent }}>{program.tagline}</p>
+                    </div>
+                    <span className="material-symbols-outlined text-[22px] text-[#2A0C0C] transition-transform group-hover:translate-x-1">arrow_forward</span>
                   </div>
-                </article>
+                </Link>
               </StaggerItem>
             )
           })}

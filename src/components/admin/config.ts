@@ -218,7 +218,7 @@ export const pages: PageDef[] = [
     description: 'The school’s story, values, people and campus.',
     sections: [
       { key: 'hero', label: 'Hero', description: 'Headline with background photo.', fields: [...CTA, 'image_url'] },
-      { key: 'story', label: 'Our story', description: 'Two paragraphs and a photo.', fields: ['eyebrow', 'heading', 'body', 'secondary_body', 'image_url'] },
+      { key: 'story', label: 'Our story', description: 'A short paragraph and a photo.', fields: ['eyebrow', 'heading', 'body', 'image_url'] },
       { key: 'values', label: 'Values', description: 'What we stand for.', fields: ['eyebrow', 'heading'], collections: ['values'] },
       { key: 'gallery', label: 'Campus life', description: 'Photo grid.', fields: ['eyebrow', 'heading'], collections: ['gallery_about'] },
       { key: 'team', label: 'Team', description: 'Meet the team.', fields: ['eyebrow', 'heading'], collections: ['team_members'] },
@@ -230,8 +230,8 @@ export const pages: PageDef[] = [
     description: 'Teaching principles and the detailed programme journey.',
     sections: [
       { key: 'hero', label: 'Hero', description: 'Headline with background photo.', fields: [...TEXT, 'image_url'] },
-      { key: 'principles', label: 'Principles', description: 'The Brainy Way.', fields: TEXT, collections: ['principles'] },
-      { key: 'quote', label: 'Quote', description: 'Feature quote with photo.', fields: [...TEXT, 'image_url'] },
+      { key: 'principles', label: 'Principles', description: 'The Brainy Way.', fields: ['eyebrow', 'heading'], collections: ['principles'] },
+      { key: 'quote', label: 'Quote', description: 'Feature quote with photo.', fields: ['eyebrow', 'heading', 'image_url'] },
       { key: 'programs', label: 'Programs', description: 'Detailed programme timeline.', fields: ['eyebrow', 'heading'], collections: ['programs'] },
       { key: 'cta', label: 'Admissions banner', description: 'Closing call to action.', fields: CTA },
     ],

@@ -3,15 +3,15 @@ import Link from 'next/link'
 import AnimateOnView from '@/components/AnimateOnView'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
-import { Crown, Eyebrow, Sparkle, Wave } from './decor'
+import { Eyebrow, Wave } from './decor'
 
 const reasons = [
-  { icon: 'menu_book', title: 'Montessori curriculum', body: 'Hands-on materials and self-paced learning that build real understanding.' },
-  { icon: 'diversity_1', title: 'Small classes', body: 'A 1:8 teacher to student ratio, so every child is seen and heard.' },
-  { icon: 'verified_user', title: 'Safe & secure campus', body: 'A calm, caring environment where children feel at home.' },
-  { icon: 'workspace_premium', title: 'Qualified teachers', body: 'Trained, passionate educators who guide rather than lecture.' },
-  { icon: 'forest', title: 'Learning beyond walls', body: 'Field trips and outdoor play that turn curiosity into discovery.' },
-  { icon: 'palette', title: 'Culture & creativity', body: 'Cultural days, arts and music that celebrate who our children are.' },
+  { icon: 'menu_book', title: 'Montessori curriculum', image: '/images/students-montessori-classroom.jpeg' },
+  { icon: 'diversity_1', title: 'Small classes, 1:8', image: '/images/students-classroom-fun-2.jpeg' },
+  { icon: 'verified_user', title: 'Safe, caring campus', image: '/images/students-school-building-front.jpeg' },
+  { icon: 'workspace_premium', title: 'Qualified teachers', image: '/images/teacher-student-mentorship.jpeg' },
+  { icon: 'forest', title: 'Learning beyond walls', image: '/images/students-field-trip-bench.jpeg' },
+  { icon: 'palette', title: 'Culture & creativity', image: '/images/students-cultural-day.jpeg' },
 ]
 
 export default function WhyUs() {
@@ -19,58 +19,37 @@ export default function WhyUs() {
     <section className="relative overflow-hidden bg-[#2A0C0C] text-white">
       <Wave fill="#FFFFFF" flip className="absolute left-0 top-0 h-16 w-full md:h-24" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 pb-28 pt-36 md:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:pb-36 lg:pt-44">
-        <div>
-          <AnimateOnView>
+      <div className="relative mx-auto max-w-7xl px-5 pb-28 pt-36 md:px-8 lg:pb-36 lg:pt-44">
+        <AnimateOnView className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
             <Eyebrow light>Why families choose us</Eyebrow>
             <h2 className="max-w-xl text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] sm:text-[44px]">
               An education <span className="text-[#E2B45A]">fit for royalty</span>
             </h2>
-            <p className="mt-5 max-w-lg text-[17px] leading-relaxed text-white/65">
-              Everything at Brainy Kings &amp; Queens is designed around one belief: children thrive when they are respected, challenged and loved.
-            </p>
-          </AnimateOnView>
-
-          <StaggerContainer className="mt-12 grid gap-4 sm:grid-cols-2">
-            {reasons.map((reason) => (
-              <StaggerItem key={reason.title}>
-                <div className="group h-full rounded-[24px] border border-white/10 bg-white/[0.04] p-5 transition hover:border-[#E2B45A]/40 hover:bg-white/[0.07]">
-                  <div className="flex items-start gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E2B45A] text-[#2A0C0C] transition group-hover:scale-110">
-                      <span className="material-symbols-outlined text-[22px]">{reason.icon}</span>
-                    </span>
-                    <div>
-                      <h3 className="text-[16px] font-bold">{reason.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-white/60">{reason.body}</p>
-                    </div>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          <AnimateOnView className="mt-10">
-            <Link href="/admissions" className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pl-7 pr-2 text-[15px] font-bold text-[#2A0C0C] transition hover:bg-[#E2B45A]">
-              Book a school visit
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#2A0C0C] text-[#E2B45A] transition-transform group-hover:translate-x-0.5">
-                <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-              </span>
-            </Link>
-          </AnimateOnView>
-        </div>
-
-        <AnimateOnView variant="fadeRight" className="relative mx-auto hidden w-full max-w-[400px] lg:block">
-          <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-t-[999px] rounded-b-[40px] border-2 border-[#E2B45A]/50" />
-          <div className="relative aspect-[3/4] overflow-hidden rounded-t-[999px] rounded-b-[40px]">
-            <Image src="/images/student-uniform-portrait.jpeg" alt="A proud Brainy Kings & Queens student" fill sizes="400px" className="object-cover" />
           </div>
-          <Crown className="absolute -top-14 left-1/2 h-10 w-14 -translate-x-1/2" />
-          <Sparkle className="absolute -left-6 top-1/3 h-6 w-6" />
-          <div className="absolute -left-10 bottom-14 rounded-2xl bg-white px-5 py-4 text-[#2A0C0C] shadow-2xl">
-            <div className="text-2xl font-extrabold">1:8</div>
-            <div className="text-xs font-semibold text-[#8C6F6F]">teacher to student ratio</div>
-          </div>
+          <Link href="/admissions" className="group inline-flex items-center gap-3 self-start rounded-full bg-white py-2 pl-7 pr-2 text-[15px] font-bold text-[#2A0C0C] transition hover:bg-[#E2B45A] sm:self-auto">
+            Book a visit
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#2A0C0C] text-[#E2B45A] transition-transform group-hover:translate-x-0.5">
+              <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+            </span>
+          </Link>
         </AnimateOnView>
+
+        <StaggerContainer className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+          {reasons.map((reason) => (
+            <StaggerItem key={reason.title}>
+              <figure className="group relative aspect-[4/5] overflow-hidden rounded-[28px] sm:aspect-[4/3]">
+                <Image src={reason.image} alt={reason.title} fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                <figcaption className="absolute inset-x-3 bottom-3 flex items-center gap-3 rounded-2xl bg-[#2A0C0C] px-3 py-2.5">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#E2B45A] text-[#2A0C0C]">
+                    <span className="material-symbols-outlined text-[20px]">{reason.icon}</span>
+                  </span>
+                  <span className="text-sm font-bold leading-tight sm:text-[15px]">{reason.title}</span>
+                </figcaption>
+              </figure>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
 
       <Wave fill="#FBF6EE" className="absolute bottom-0 left-0 h-16 w-full md:h-24" />

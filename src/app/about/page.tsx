@@ -18,18 +18,24 @@ const values = [
   {
     icon: 'workspace_premium',
     title: 'Dignity First',
-    body: 'Every child is treated with the respect owed to a future leader. Discipline is built on self-mastery, never fear.',
+    body: 'Every child is respected as a future leader.',
   },
   {
     icon: 'psychology',
     title: 'Curiosity Over Compliance',
-    body: 'We ask "why?" before "what." The Montessori method honours the child\'s natural drive to understand the world.',
+    body: 'We ask "why?" before "what."',
   },
   {
     icon: 'groups',
     title: 'Community as Classroom',
-    body: 'Mixed-age groups and collaborative projects teach our students that leadership is always in service of others.',
+    body: 'Leadership is always in service of others.',
   },
+]
+
+const valuePhotos = [
+  '/images/student-uniform-portrait.jpeg',
+  '/images/students-classroom-primary.jpeg',
+  '/images/students-uniform-outdoor-group.jpeg',
 ]
 
 const aboutGalleryDefaults = [
@@ -38,6 +44,11 @@ const aboutGalleryDefaults = [
   { src: '/images/students-preschool-lunch-closeup.jpeg', alt: 'Pre-school children enjoying lunch at school', caption: 'Nourished & Cared For' },
   { src: '/images/teacher-student-mentorship.jpeg', alt: 'A teacher guiding a student', caption: 'Guided, Not Lectured' },
   { src: '/images/students-uniform-outdoor-group-2.jpeg', alt: 'Students in uniform outdoors', caption: 'Friends for Life' },
+  { src: '/images/students-playground-trampoline.jpeg', alt: 'Students playing on the trampoline', caption: 'Play Time' },
+  { src: '/images/students-preschool-twins.jpeg', alt: 'Two pre-school girls in uniform', caption: 'Our Youngest Royals' },
+  { src: '/images/student-field-trip-tree.jpeg', alt: 'Student on a field trip', caption: 'Field Trips' },
+  { src: '/images/students-outdoor-play-2.jpeg', alt: 'Children playing outdoors', caption: 'Outdoor Learning' },
+  { src: '/images/students-preschool-lunch-group.jpeg', alt: 'Pre-school students sharing lunch', caption: 'Shared Meals' },
 ]
 
 const milestones = [
@@ -74,7 +85,7 @@ export default async function AboutPage() {
         imagePosition="object-top"
         eyebrow={heroSection?.eyebrow ?? 'Est. 2010 · Kumasi, Ghana'}
         heading={heroSection?.heading ?? <>We Crown Children. <span className="text-[#E2B45A]">Not Just Educate Them.</span></>}
-        body={heroSection?.body ?? 'For over 15 years, Brainy Kings & Queens Montessori has been Kumasi’s most trusted name in early childhood excellence, rooted in dignity, driven by curiosity.'}
+        body={heroSection?.body ?? 'Kumasi’s trusted Montessori school for over 15 years.'}
         cta={{ label: heroSection?.cta_label ?? 'Enrol Your Child', href: heroSection?.cta_href ?? '/admissions' }}
       />
 
@@ -86,11 +97,13 @@ export default async function AboutPage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[40px] rounded-br-[120px] shadow-[0_30px_60px_-30px_rgba(42,12,12,0.45)]">
               <Image src={storySection?.image_url || '/images/students-cultural-day.jpeg'} alt="Students celebrating cultural day in kente attire" fill sizes="(max-width: 1024px) 90vw, 540px" className="object-cover" />
             </div>
+            <div className="absolute -right-4 top-10 hidden aspect-square w-[38%] overflow-hidden rounded-[28px] border-[6px] border-[#FBF6EE] shadow-xl sm:block">
+              <Image src="/images/students-group-celebration.jpeg" alt="Students celebrating together" fill sizes="220px" className="object-cover" />
+            </div>
             <div className="absolute -bottom-6 left-6 flex items-center gap-4 rounded-3xl bg-[#2A0C0C] p-5 pr-7 text-white shadow-2xl">
               <Crown className="h-8 w-10" />
               <div className="leading-tight">
                 <div className="text-lg font-extrabold">Founded in 2010</div>
-                <div className="text-xs text-white/60">Kumasi&apos;s first dedicated Montessori primary</div>
               </div>
             </div>
           </AnimateOnView>
@@ -100,11 +113,8 @@ export default async function AboutPage() {
             <h2 className="text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#2A0C0C] sm:text-[44px]">
               {storySection?.heading ?? 'A School Built on a Simple Belief'}
             </h2>
-            <p className="mt-6 text-[17px] leading-relaxed text-[#6B4A4A]">
-              {storySection?.body ?? 'Brainy Kings & Queens was founded on one conviction: that the children of Kumasi deserve an education worthy of their potential. The Montessori method gave us the framework; our community gave us the heart.'}
-            </p>
-            <p className="mt-4 text-[17px] leading-relaxed text-[#6B4A4A]">
-              {storySection?.secondary_body ?? 'Over 15 years, we have grown from a small pre-school to a full primary school serving over 250 students, from ages 2.5 through JHS 3. But our promise remains unchanged: to see each child as the leader they already are.'}
+            <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-[#6B4A4A]">
+              {storySection?.body ?? 'Founded on one belief: every child in Kumasi deserves an education worthy of their potential.'}
             </p>
             <dl className="mt-10 grid grid-cols-3 divide-x divide-[#2A0C0C]/10 rounded-[24px] bg-white py-5 shadow-[0_20px_50px_-30px_rgba(42,12,12,0.3)] ring-1 ring-[#2A0C0C]/5">
               {milestones.map((item) => (
@@ -122,28 +132,27 @@ export default async function AboutPage() {
       <section className="relative overflow-hidden bg-[#2A0C0C] text-white">
         <Wave fill="#FBF6EE" flip className="absolute left-0 top-0 h-16 w-full md:h-24" />
         <div className="relative mx-auto max-w-7xl px-5 pb-28 pt-36 md:px-8 lg:pb-36 lg:pt-44">
-          <AnimateOnView className="mb-14 grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
-            <div>
-              <Eyebrow light>{section('values')?.eyebrow ?? 'Our Values'}</Eyebrow>
-              <h2 className="text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] sm:text-[44px]">
-                {section('values')?.heading ?? 'What We Stand For'}
-              </h2>
-            </div>
-            <p className="max-w-md text-[17px] leading-relaxed text-white/65 lg:justify-self-end">
-              The principles that shape every classroom, every lesson and every conversation with our children.
-            </p>
+          <AnimateOnView className="mb-12">
+            <Eyebrow light>{section('values')?.eyebrow ?? 'Our Values'}</Eyebrow>
+            <h2 className="text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] sm:text-[44px]">
+              {section('values')?.heading ?? 'What We Stand For'}
+            </h2>
           </AnimateOnView>
 
           <StaggerContainer className="grid gap-5 md:grid-cols-3">
             {displayValues.map(({ id, icon, title, body }, index) => (
               <StaggerItem key={id}>
-                <article className="group relative h-full overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-8 transition hover:border-[#E2B45A]/40 hover:bg-white/[0.07]">
-                  <span className="absolute right-6 top-4 text-7xl font-extrabold leading-none text-white/[0.05]">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E2B45A] text-[#2A0C0C] transition group-hover:scale-110">
-                    <span className="material-symbols-outlined text-[28px]" style={{ fontVariationSettings: "'FILL' 1" }}>{icon}</span>
-                  </span>
-                  <h3 className="text-xl font-bold">{title}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-white/65">{body}</p>
+                <article className="group overflow-hidden rounded-[28px] bg-white/[0.04] ring-1 ring-white/10">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image src={valuePhotos[index % valuePhotos.length]} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                    <span className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#E2B45A] text-[#2A0C0C]">
+                      <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>{icon}</span>
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold">{title}</h3>
+                    <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-white/60">{body}</p>
+                  </div>
                 </article>
               </StaggerItem>
             ))}
@@ -221,7 +230,7 @@ export default async function AboutPage() {
         defaults={{
           eyebrow: 'Admissions Open',
           heading: 'Join Our Royal Community',
-          body: 'Enrolment for the upcoming academic year is now open. Give your child the royal start they deserve.',
+          body: 'Give your child the royal start they deserve.',
           label: 'Apply Now',
         }}
       />
