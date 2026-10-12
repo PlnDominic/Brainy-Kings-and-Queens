@@ -67,7 +67,7 @@
     color 0.3s ease,
     box-shadow 0.3s ease;
   box-shadow: 0 0 0.5px 1.5px transparent;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .gooey-nav-container nav ul li a {
@@ -104,6 +104,7 @@
 }
 
 .gooey-nav-container nav ul li.active a {
+  text-shadow: none;
   color: #1A0505;
 }
 
