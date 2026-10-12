@@ -6,10 +6,26 @@ import { Crown, DotGrid, Sparkle } from './decor'
 
 type PageSection = Database['public']['Tables']['page_sections']['Row']
 
-export default function AdmissionsCta({ section, phone }: { section?: PageSection; phone?: string | null }) {
+type Defaults = { eyebrow: string; heading: string; body: string; label: string }
+
+const HOME_DEFAULTS: Defaults = {
+  eyebrow: 'Admissions Open',
+  heading: "Secure Your Child's Place Today",
+  body: 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.',
+  label: 'Apply Now',
+}
+
+export default function AdmissionsCta({ section, phone, defaults = HOME_DEFAULTS, image = '/images/students-outdoor-play-1.jpeg', className = 'bg-white' }: {
+  section?: PageSection
+  phone?: string | null
+  defaults?: Defaults
+  image?: string
+  /** Background of the strip around the banner, to match the section above. */
+  className?: string
+}) {
   const tel = phone || '0591664392'
   return (
-    <section className="bg-white px-5 pb-24 md:px-8 lg:pb-32">
+    <section className={`${className} px-5 pb-24 md:px-8 lg:pb-32`}>
       <AnimateOnView variant="scaleIn" className="relative mx-auto max-w-7xl overflow-hidden rounded-[40px] bg-[#E2B45A]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_80%_at_0%_0%,rgba(255,255,255,0.45),transparent_60%)]" />
         <DotGrid className="pointer-events-none absolute bottom-6 left-1/2 h-28 w-40 text-[#2A0C0C]/15" />
@@ -17,20 +33,20 @@ export default function AdmissionsCta({ section, phone }: { section?: PageSectio
           <div>
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#2A0C0C] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#E2B45A]">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[#E2B45A]" />
-              {section?.eyebrow ?? 'Admissions Open'}
+              {section?.eyebrow ?? defaults.eyebrow}
             </div>
             <h2 className="max-w-xl text-[34px] font-extrabold leading-[1.08] tracking-[-0.02em] text-[#2A0C0C] sm:text-[48px]">
-              {section?.heading ?? "Secure Your Child's Place Today"}
+              {section?.heading ?? defaults.heading}
             </h2>
             <p className="mt-5 max-w-lg text-[17px] leading-relaxed text-[#2A0C0C]/75">
-              {section?.body ?? 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.'}
+              {section?.body ?? defaults.body}
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Link
                 href={section?.cta_href ?? '/admissions'}
                 className="group inline-flex items-center gap-3 rounded-full bg-[#2A0C0C] py-2 pl-7 pr-2 text-[15px] font-bold text-white transition hover:bg-primary"
               >
-                {section?.cta_label ?? 'Apply Now'}
+                {section?.cta_label ?? defaults.label}
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E2B45A] text-[#2A0C0C] transition-transform group-hover:translate-x-0.5">
                   <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
                 </span>
@@ -47,7 +63,7 @@ export default function AdmissionsCta({ section, phone }: { section?: PageSectio
           <div className="relative mx-auto hidden w-full max-w-[340px] lg:block">
             <Crown className="absolute -top-12 left-1/2 h-10 w-14 -translate-x-1/2" color="#2A0C0C" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-[32px] border-[6px] border-white/60 shadow-2xl">
-              <Image src="/images/students-outdoor-play-1.jpeg" alt="Young students playing outdoors" fill sizes="340px" className="object-cover" />
+              <Image src={image} alt="Brainy Kings & Queens students" fill sizes="340px" className="object-cover" />
             </div>
             <Sparkle className="absolute -left-4 top-1/4 h-7 w-7" color="#2A0C0C" />
             <Sparkle className="absolute -right-3 bottom-1/4 h-5 w-5" color="#fff" />
