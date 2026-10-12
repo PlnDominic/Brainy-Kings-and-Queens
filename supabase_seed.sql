@@ -67,9 +67,9 @@ ON CONFLICT DO NOTHING;
 INSERT INTO principles (icon, title, body, display_order)
 VALUES
   ('psychology', 'Child-Led Discovery', 'Children choose their work, building intrinsic motivation and deep understanding.', 1),
-  ('diversity_3', 'Mixed-Age Groups', 'Older students mentor younger ones — the most powerful form of learning.', 2),
+  ('diversity_3', 'Mixed-Age Groups', 'Older students mentor younger ones: the most powerful form of learning.', 2),
   ('palette', 'Hands-On Materials', 'Montessori materials are self-correcting: children see their own errors and fix them.', 3),
-  ('public', 'Cosmic Education', 'Every subject connects to a larger story — how humans and the universe are one.', 4)
+  ('public', 'Cosmic Education', 'Every subject connects to a larger story: how humans and the universe are one.', 4)
 ON CONFLICT DO NOTHING;
 
 -- 5. Programs (from curriculum/page.tsx and ProgramsSection.tsx)
@@ -78,7 +78,7 @@ VALUES
   ('01', 'Pre-School', 'Ages 2.5 – 5', 'The Prepared Environment', 'Montessori materials build fine motor skills, self-regulation, and early literacy.', 
    ARRAY['Sensorial Learning', 'Practical Life Skills', 'Phonetic Reading', 'Basic Mathematics', 'Emotional Self-Regulation'],
    'child_care', '/images/students-preschool-standing.jpeg', 'border-primary', 'text-primary', 1, true),
-  ('02', 'Primary', 'Grades 1 – 6', 'Growing Minds', 'From the Great Lessons to leadership projects — confident, curious thinkers.',
+  ('02', 'Primary', 'Grades 1 – 6', 'Growing Minds', 'From the Great Lessons to leadership projects, raising confident, curious thinkers.',
    ARRAY['Literacy & Creative Writing', 'Mathematics & Sciences', 'Computational Thinking', 'Public Speaking & Debate', 'Research & Leadership Projects'],
    'auto_stories', '/images/students-classroom-fun.jpeg', 'border-secondary', 'text-secondary', 2, true),
   ('03', 'Junior High', 'JHS 1 – 3', 'Excellence & Achievement', 'Core subjects, critical thinking, and BECE preparation for secondary success.',
@@ -92,11 +92,11 @@ INSERT INTO public.page_sections (
   image_url, cta_label, cta_href, is_published, display_order
 )
 VALUES
-  ('home', 'hero', 'Kumasi · Ghana · Est. 2010', 'Every Child is Born a King. We Help Them Reign.', 'Brainy Kings and Queens Montessori — where independent thinking, royal character, and academic excellence converge from age 2.5 through JHS 3.', NULL, NULL, 'Apply for Admission', '/admissions', true, 1),
-  ('home', 'mission', 'Our Philosophy', 'We don''t just teach children. We crown them.', 'The Montessori method recognises that children are natural learners — born with curiosity, dignity, and the capacity to lead. Our role is simply to prepare the environment and step aside.', NULL, NULL, NULL, NULL, true, 2),
+  ('home', 'hero', 'Kumasi · Ghana · Est. 2010', 'Every Child is Born a King. We Help Them Reign.', 'Brainy Kings and Queens Montessori, where independent thinking, royal character, and academic excellence converge from age 2.5 through JHS 3.', NULL, NULL, 'Apply for Admission', '/admissions', true, 1),
+  ('home', 'mission', 'Our Philosophy', 'We don''t just teach children. We crown them.', 'The Montessori method recognises that children are natural learners, born with curiosity, dignity, and the capacity to lead. Our role is simply to prepare the environment and step aside.', NULL, NULL, NULL, NULL, true, 2),
   ('home', 'cta', 'Admissions Open', 'Secure Your Child''s Place Today', 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.', NULL, NULL, 'Apply Now', '/admissions', true, 3),
-  ('about', 'hero', 'Est. 2010 · Kumasi, Ghana', 'We Crown Children. Not Just Educate Them.', 'For over 15 years, Brainy Kings & Queens Montessori has been Kumasi''s most trusted name in early childhood excellence — rooted in dignity, driven by curiosity.', '/images/students-large-group-photo.jpeg', 'Enrol Your Child', '/admissions', true, 1),
-  ('about', 'story', 'Our Story', 'A School Built on a Simple Belief', 'Brainy Kings & Queens was founded on one conviction: that the children of Kumasi deserve an education worthy of their potential. The Montessori method gave us the framework — our community gave us the heart.', 'Over 15 years, we have grown from a small pre-school to a full primary school serving over 250 students, from ages 2.5 through JHS 3. But our promise remains unchanged: to see each child as the leader they already are.', '/images/students-cultural-day.jpeg', NULL, NULL, true, 2),
+  ('about', 'hero', 'Est. 2010 · Kumasi, Ghana', 'We Crown Children. Not Just Educate Them.', 'For over 15 years, Brainy Kings & Queens Montessori has been Kumasi''s most trusted name in early childhood excellence, rooted in dignity, driven by curiosity.', '/images/students-large-group-photo.jpeg', 'Enrol Your Child', '/admissions', true, 1),
+  ('about', 'story', 'Our Story', 'A School Built on a Simple Belief', 'Brainy Kings & Queens was founded on one conviction: that the children of Kumasi deserve an education worthy of their potential. The Montessori method gave us the framework; our community gave us the heart.', 'Over 15 years, we have grown from a small pre-school to a full primary school serving over 250 students, from ages 2.5 through JHS 3. But our promise remains unchanged: to see each child as the leader they already are.', '/images/students-cultural-day.jpeg', NULL, NULL, true, 2),
   ('about', 'cta', 'Admissions Open', 'Join Our Royal Community', 'Enrolment for the upcoming academic year is now open. Give your child the royal start they deserve.', NULL, NULL, 'Apply Now', '/admissions', true, 3),
   ('home', 'programs', 'Academic Programs', 'A Royal Path Through Every Stage', NULL, NULL, NULL, NULL, NULL, true, 4),
   ('home', 'gallery', 'Campus Life', 'Life at Brainy Kings & Queens', NULL, NULL, NULL, 'See more', '/about', true, 5),
@@ -104,9 +104,9 @@ VALUES
   ('about', 'values', 'Our Values', 'What We Stand For', NULL, NULL, NULL, NULL, NULL, true, 4),
   ('about', 'gallery', 'Campus Life', 'Life at Brainy Kings & Queens', NULL, NULL, NULL, NULL, NULL, true, 5),
   ('about', 'team', 'Our People', 'Meet the team', NULL, NULL, NULL, NULL, NULL, true, 6),
-  ('curriculum', 'hero', 'Academic Programs', 'A Royal Path Through Every Stage', 'Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration — from age 2.5 through JHS 3.', '/images/school-building.jpeg', NULL, NULL, NULL, true, 1),
+  ('curriculum', 'hero', 'Academic Programs', 'A Royal Path Through Every Stage', 'Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration, from age 2.5 through JHS 3.', '/images/school-building.jpeg', NULL, NULL, NULL, true, 1),
   ('curriculum', 'principles', 'The Brainy Way', 'Four Principles That Guide Every Lesson', 'A philosophy that respects the child as a natural learner. Every classroom decision flows from these four commitments.', NULL, NULL, NULL, NULL, true, 2),
-  ('curriculum', 'quote', '— Maria Montessori', 'The child is both a hope and a promise for mankind.', 'This is the spirit that drives every lesson at Brainy Kings & Queens. We do not teach children what to think — we create the conditions for them to discover how to think.', '/images/students-classroom-primary.jpeg', NULL, NULL, true, 3),
+  ('curriculum', 'quote', 'Maria Montessori', 'The child is both a hope and a promise for mankind.', 'This is the spirit that drives every lesson at Brainy Kings & Queens. We do not teach children what to think. We create the conditions for them to discover how to think.', '/images/students-classroom-primary.jpeg', NULL, NULL, true, 3),
   ('curriculum', 'cta', 'Start the Journey', 'Secure Your Child''s Place Today', 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.', NULL, NULL, 'Apply Now', '/admissions', true, 4),
   ('curriculum', 'programs', 'Curriculum Detail', 'What Your Child Will Learn', NULL, NULL, NULL, NULL, NULL, true, 5),
   ('admissions', 'hero', 'Admissions Open', 'Begin Your Child''s Royal Journey', 'A royal education starts with one step. Complete the inquiry form below and our team will reach out within 24 hours.', '/images/student-uniform-portrait.jpeg', NULL, NULL, NULL, true, 1),
@@ -156,7 +156,7 @@ WHERE NOT EXISTS (
 INSERT INTO admissions_steps (number, icon, title, body, display_order, is_published)
 VALUES
   ('01', 'edit_note', 'Submit Inquiry', 'Fill out the form below. Our admissions team reads every inquiry personally.', 1, true),
-  ('02', 'fact_check', 'Assessment Visit', 'We invite your child for a relaxed, play-based assessment — no pressure, just observation.', 2, true),
+  ('02', 'fact_check', 'Assessment Visit', 'We invite your child for a relaxed, play-based assessment: no pressure, just observation.', 2, true),
   ('03', 'assignment', 'Application Review', 'Our team reviews your child''s profile and matches them with the right classroom environment.', 3, true),
   ('04', 'verified', 'Enrolment Confirmed', 'Receive your official acceptance letter and welcome pack from Brainy Kings & Queens.', 4, true)
 ON CONFLICT DO NOTHING;

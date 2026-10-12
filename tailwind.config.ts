@@ -27,7 +27,7 @@ const config: Config = {
         'inverse-surface': '#2C0A0A',
         'inverse-on-surface': '#FFF0F0',
 
-        // ── Primary — deep tartan red ────────────────────────────────
+        // ── Primary: deep tartan red ────────────────────────────────
         primary: '#B31B1B',
         'on-primary': '#ffffff',
         'primary-container': '#D94F4F',
@@ -38,7 +38,7 @@ const config: Config = {
         'on-primary-fixed-variant': '#8B0000',
         'inverse-primary': '#FFB0B0',
 
-        // ── Secondary — dark maroon ──────────────────────────────────
+        // ── Secondary: dark maroon ──────────────────────────────────
         secondary: '#8B1A1A',
         'on-secondary': '#ffffff',
         'secondary-container': '#ffffff',
@@ -48,7 +48,7 @@ const config: Config = {
         'on-secondary-fixed': '#1A0000',
         'on-secondary-fixed-variant': '#8B0000',
 
-        // ── Tertiary — lighter red ───────────────────────────────────
+        // ── Tertiary: lighter red ───────────────────────────────────
         tertiary: '#8B1A1A',
         'on-tertiary': '#ffffff',
         'tertiary-container': '#D94F4F',

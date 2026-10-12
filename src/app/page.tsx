@@ -66,7 +66,7 @@ export default async function HomePage() {
                   {section('mission')?.heading ?? <>We don&apos;t just teach children.{' '}<span className="text-primary">We crown them.</span></>}
                 </h2>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed">
-                  {section('mission')?.body ?? 'The Montessori method recognises that children are natural learners — born with curiosity, dignity, and the capacity to lead. Our role is simply to prepare the environment and step aside.'}
+                  {section('mission')?.body ?? 'The Montessori method recognises that children are natural learners, born with curiosity, dignity, and the capacity to lead. Our role is simply to prepare the environment and step aside.'}
                 </p>
               </div>
 
@@ -257,7 +257,7 @@ export default async function HomePage() {
           </AnimateOnView>
         </div>
 
-        {/* Full-bleed photo strip — asymmetric 3:2 split */}
+        {/* Full-bleed photo strip: asymmetric 3:2 split */}
         <AnimateOnView>
           <div className="flex gap-[3px] h-[280px] md:h-[420px]">
             <div className="relative overflow-hidden flex-[3]">

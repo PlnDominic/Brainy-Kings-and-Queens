@@ -36,7 +36,7 @@ const programs = [
     level: 'Primary',
     age: 'Grades 1 – 6',
     tagline: 'Growing Minds',
-    description: 'From the Great Lessons to leadership projects — confident, curious thinkers.',
+    description: 'From the Great Lessons to leadership projects, raising confident, curious thinkers.',
     subjects: [
       'Literacy & Creative Writing',
       'Mathematics & Sciences',
@@ -78,7 +78,7 @@ const principles = [
   {
     icon: 'diversity_3',
     title: 'Mixed-Age Groups',
-    body: 'Older students mentor younger ones — the most powerful form of learning.',
+    body: 'Older students mentor younger ones: the most powerful form of learning.',
   },
   {
     icon: 'palette',
@@ -88,7 +88,7 @@ const principles = [
   {
     icon: 'public',
     title: 'Cosmic Education',
-    body: 'Every subject connects to a larger story — how humans and the universe are one.',
+    body: 'Every subject connects to a larger story: how humans and the universe are one.',
   },
 ]
 
@@ -155,7 +155,7 @@ export default async function CurriculumPage() {
               {heroSection?.heading ?? <>A Royal Path{' '}<br className="hidden md:block" /><span className="text-secondary-container">Through Every Stage</span></>}
             </h1>
             <p className="text-body-lg text-white/70 max-w-xl leading-relaxed">
-              {heroSection?.body ?? 'Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration — from age 2.5 through JHS 3.'}
+              {heroSection?.body ?? 'Our Montessori-inspired curriculum blends rigorous academic standards with the dignity of self-paced exploration, from age 2.5 through JHS 3.'}
             </p>
           </AnimateOnView>
         </div>
@@ -319,10 +319,10 @@ export default async function CurriculumPage() {
                   &ldquo;{quoteSection?.heading ?? 'The child is both a hope and a promise for mankind.'}&rdquo;
                 </blockquote>
                 <cite className="text-label-sm font-bold text-secondary uppercase tracking-[0.2em] not-italic">
-                  {quoteSection?.eyebrow ?? '— Maria Montessori'}
+                  {quoteSection?.eyebrow ?? 'Maria Montessori'}
                 </cite>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed mt-xl">
-                  {quoteSection?.body ?? 'This is the spirit that drives every lesson at Brainy Kings & Queens. We do not teach children what to think — we create the conditions for them to discover how to think.'}
+                  {quoteSection?.body ?? 'This is the spirit that drives every lesson at Brainy Kings & Queens. We do not teach children what to think. We create the conditions for them to discover how to think.'}
                 </p>
               </div>
             </AnimateOnView>

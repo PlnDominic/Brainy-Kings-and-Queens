@@ -139,7 +139,7 @@
 }
 
 .gooey-nav-container .effect.filter {
-  /* filter and mix-blend-mode removed — active pill handled by li.active::after */
+  /* filter and mix-blend-mode removed; active pill handled by li.active::after */
 }
 
 .gooey-nav-container .effect.filter::before {

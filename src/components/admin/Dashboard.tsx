@@ -77,7 +77,7 @@ export default function Dashboard() {
           </div>
           <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">{greeting}.</h1>
           <p className="mt-2 text-[15px] leading-relaxed text-white/70">
-            Everything visitors see on the website — headlines, photos, programs, parent stories and contact details — is managed from here. Changes go live the moment you save.
+            Everything visitors see on the website (headlines, photos, programs, parent stories and contact details) is managed from here. Changes go live the moment you save.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             <Link href="/admin/pages/home" className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-[#c42424]">

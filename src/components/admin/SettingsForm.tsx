@@ -41,7 +41,7 @@ export default function SettingsForm() {
       toast(result.error.message, 'error')
       return
     }
-    toast('Settings saved — footer and contact details updated')
+    toast('Settings saved. Footer and contact details updated')
     await load()
   }
 

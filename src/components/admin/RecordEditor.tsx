@@ -78,7 +78,7 @@ export default function RecordEditor({ resource, record, open, title, subtitle, 
         ? await query.update(payload).eq('id', record.id)
         : await query.insert({ ...createDefaults, ...payload })
       if (result.error) throw new Error(result.error.message)
-      toast(record?.id ? 'Changes saved — the website is updated' : `New ${resource.singular} created`)
+      toast(record?.id ? 'Changes saved. The website is updated' : `New ${resource.singular} created`)
       onSaved()
       onClose()
     } catch (saveError) {

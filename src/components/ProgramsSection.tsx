@@ -28,7 +28,7 @@ const programsFallback = [
     level: 'Primary',
     age: 'Grades 1 – 6',
     tagline: 'Growing Minds',
-    description: 'From the Great Lessons to leadership projects — confident, curious thinkers.',
+    description: 'From the Great Lessons to leadership projects, raising confident, curious thinkers.',
     features: ['Literacy & Mathematics', 'Sciences & Computing', 'Public Speaking & Leadership'],
     icon: 'auto_stories',
     image: '/images/students-classroom-fun.jpeg',

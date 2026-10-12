@@ -30,7 +30,7 @@ function normalizeError(err: unknown): Error {
       typeof queryError.details === 'string' ? `details: ${queryError.details}` : null,
       typeof queryError.hint === 'string' ? `hint: ${queryError.hint}` : null,
     ].filter((part): part is string => part !== null)
-    return new Error(`Supabase query failed: ${parts.join(' — ')}`)
+    return new Error(`Supabase query failed: ${parts.join(' | ')}`)
   }
   return new Error(`Supabase query failed: ${String(err)}`)
 }

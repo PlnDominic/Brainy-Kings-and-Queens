@@ -74,7 +74,7 @@ export default function HeroSlideshow({ slides: cmsSlides, section, useFallbackC
           </motion.h1>
 
           <motion.p variants={heroItem} className="mb-xl max-w-xl text-body-lg leading-relaxed text-white/80">
-            {section?.body ?? (useFallbackContent ? 'Brainy Kings and Queens Montessori — where independent thinking, royal character, and academic excellence converge from age 2.5 through JHS 3.' : '')}
+            {section?.body ?? (useFallbackContent ? 'Brainy Kings and Queens Montessori, where independent thinking, royal character, and academic excellence converge from age 2.5 through JHS 3.' : '')}
           </motion.p>
 
           <motion.div variants={heroItem} className="flex flex-wrap gap-md">
