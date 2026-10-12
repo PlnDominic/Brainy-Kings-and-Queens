@@ -64,7 +64,6 @@ export default function Programs({ programs, section }: { programs?: Program[]; 
                 <article className="group flex h-full flex-col overflow-hidden rounded-[32px] bg-[#FBF6EE] p-3 transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgba(42,12,12,0.4)]">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-[24px]">
                     <Image src={program.image} alt={`${program.level} students at Brainy Kings & Queens`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                     <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-[#2A0C0C] backdrop-blur">{program.age}</span>
                     <span className="absolute bottom-3 right-5 text-6xl font-extrabold leading-none text-white/25">{program.number}</span>
                   </div>

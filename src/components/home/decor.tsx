@@ -1,3 +1,5 @@
+import { useId } from 'react'
+
 // Small decorative pieces shared by the homepage sections.
 
 export const GOLD = '#E2B45A'
@@ -29,12 +31,15 @@ export function Squiggle({ className, color = GOLD }: { className?: string; colo
 }
 
 export function DotGrid({ className }: { className?: string }) {
+  // Each grid needs its own pattern id so it keeps its own colour.
+  const id = `dot-grid-${useId().replace(/:/g, '')}`
   return (
-    <div
-      aria-hidden="true"
-      className={className}
-      style={{ backgroundImage: 'radial-gradient(currentColor 1.4px, transparent 1.4px)', backgroundSize: '16px 16px' }}
-    />
+    <svg aria-hidden="true" className={className}>
+      <pattern id={id} width="16" height="16" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1.4" fill="currentColor" />
+      </pattern>
+      <rect width="100%" height="100%" fill={`url(#${id})`} />
+    </svg>
   )
 }
 

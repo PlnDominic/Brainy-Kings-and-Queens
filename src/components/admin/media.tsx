@@ -166,7 +166,7 @@ export function MediaPicker({ open, onClose, onSelect }: { open: boolean; onClos
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={media.publicUrl(item.file_path)} alt={item.original_name || ''} className="h-full w-full object-cover transition group-hover:scale-105" />
-                  <span className="absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-2 pb-1.5 pt-4 text-left text-[11px] text-white opacity-0 transition group-hover:opacity-100">
+                  <span className="absolute inset-x-0 bottom-0 truncate bg-black/65 px-2 py-1.5 text-left text-[11px] text-white opacity-0 transition group-hover:opacity-100">
                     {item.original_name}
                   </span>
                 </button>

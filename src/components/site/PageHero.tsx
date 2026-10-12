@@ -31,8 +31,7 @@ export default function PageHero({ image, imageAlt, eyebrow, heading, body, cta,
         >
           <Image src={image} alt={imageAlt} fill sizes="100vw" priority className={`object-cover ${imagePosition}`} />
         </motion.div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1A0505] via-[#1A0505]/50 to-[#1A0505]/40" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1A0505]/80 via-[#1A0505]/20 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-[#1A0505]/60" />
 
         <div className="relative z-10 mx-auto mt-auto w-full max-w-7xl px-5 pb-14 pt-40 md:px-8 lg:pb-20">
           <motion.div variants={heroContainer} initial="hidden" animate="visible" className="max-w-3xl">

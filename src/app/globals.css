@@ -13,21 +13,6 @@
   gap: 24px;
 }
 
-/* Gallery caption overlay */
-.gallery-caption {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(179, 27, 27, 0.82) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
-}
-.gallery-item:hover .gallery-caption {
-  opacity: 1;
-}
-
 /* Curriculum timeline dot */
 .curriculum-dot::before {
   content: '';
@@ -40,11 +25,6 @@
   border: 3px solid #FFFAFA;
   z-index: 10;
   box-shadow: 0 0 0 2px #B31B1B;
-}
-
-/* Red gradient utility */
-.royal-gradient {
-  background: linear-gradient(135deg, #B31B1B 0%, #D94F4F 100%);
 }
 
 /* Content Studio (admin) animations */

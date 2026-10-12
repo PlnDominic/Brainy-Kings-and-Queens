@@ -91,8 +91,7 @@ export default function Hero({ slides: cmsSlides, section }: { slides?: HeroSlid
         </AnimatePresence>
 
         {/* Legibility overlays */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1A0505] via-[#1A0505]/45 to-[#1A0505]/50" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1A0505]/70 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-[#1A0505]/60" />
 
         <div className="absolute right-8 top-28 z-10 hidden md:block lg:right-12 lg:top-32">
           <AdmissionsSeal />
@@ -110,7 +109,7 @@ export default function Hero({ slides: cmsSlides, section }: { slides?: HeroSlid
               {section?.heading ?? (
                 <>
                   Every Child is Born a King.{' '}
-                  <span className="bg-gradient-to-r from-[#F3D28C] to-[#E2B45A] bg-clip-text text-transparent">We Help Them Reign.</span>
+                  <span className="text-[#E2B45A]">We Help Them Reign.</span>
                 </>
               )}
             </motion.h1>

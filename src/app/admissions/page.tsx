@@ -55,7 +55,7 @@ export default async function AdmissionsPage() {
           </AnimateOnView>
 
           <div className="relative">
-            <div className="absolute left-[12%] right-[12%] top-8 hidden h-0.5 bg-[repeating-linear-gradient(90deg,#E2B45A_0_10px,transparent_10px_18px)] lg:block" />
+            <div className="absolute left-[12%] right-[12%] top-8 hidden border-t-2 border-dashed border-[#E2B45A] lg:block" />
             <StaggerContainer className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {displaySteps.map(({ id, number, icon, title, body }, index) => (
                 <StaggerItem key={id}>

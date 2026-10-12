@@ -55,10 +55,10 @@ export default function AdminLoginPage() {
     <div className="grid min-h-screen bg-[#FCF9F9] lg:grid-cols-[1.1fr_1fr]">
       <div className="relative hidden overflow-hidden bg-[#2A0C0C] lg:block">
         <Image src="/images/students-large-group-photo.jpeg" alt="" fill sizes="55vw" className="object-cover opacity-50" priority />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2A0C0C] via-[#2A0C0C]/60 to-[#2A0C0C]/20" />
+        <div className="absolute inset-0 bg-[#2A0C0C]/65" />
         <div className="relative flex h-full flex-col justify-between p-12 text-white">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#E04848] to-[#9E1515] shadow-lg shadow-black/30">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary shadow-lg shadow-black/30">
               <Icon name="crown" filled className="text-[24px]" />
             </div>
             <div className="leading-tight">
