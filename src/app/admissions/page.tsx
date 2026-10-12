@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import AnimateOnView from '@/components/AnimateOnView'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
 import AdmissionsForm from '@/components/AdmissionsForm'
+import PageHero from '@/components/site/PageHero'
+import { Eyebrow } from '@/components/home/decor'
 import { getAdmissionsSteps, getPageSections, getSiteSettings } from '@/lib/data'
 
 export const metadata: Metadata = {
@@ -13,30 +14,10 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic'
 
 const steps = [
-  {
-    number: '01',
-    icon: 'edit_note',
-    title: 'Submit Inquiry',
-    body: 'Fill out the form below. Our admissions team reads every inquiry personally.',
-  },
-  {
-    number: '02',
-    icon: 'fact_check',
-    title: 'Assessment Visit',
-    body: "We invite your child for a relaxed, play-based assessment: no pressure, just observation.",
-  },
-  {
-    number: '03',
-    icon: 'assignment',
-    title: 'Application Review',
-    body: "Our team reviews your child's profile and matches them with the right classroom environment.",
-  },
-  {
-    number: '04',
-    icon: 'verified',
-    title: 'Enrolment Confirmed',
-    body: 'Receive your official acceptance letter and welcome pack from Brainy Kings & Queens.',
-  },
+  { number: '01', icon: 'edit_note', title: 'Submit Inquiry', body: 'Fill out the form below. Our admissions team reads every inquiry personally.' },
+  { number: '02', icon: 'fact_check', title: 'Assessment Visit', body: 'We invite your child for a relaxed, play-based assessment: no pressure, just observation.' },
+  { number: '03', icon: 'assignment', title: 'Application Review', body: "Our team reviews your child's profile and matches them with the right classroom environment." },
+  { number: '04', icon: 'verified', title: 'Enrolment Confirmed', body: 'Receive your official acceptance letter and welcome pack from Brainy Kings & Queens.' },
 ]
 
 export default async function AdmissionsPage() {
@@ -52,86 +33,55 @@ export default async function AdmissionsPage() {
 
   return (
     <main>
-      {/* ── 1. Hero ── */}
-      <section
-        className="relative min-h-[70vh] flex items-center overflow-hidden"
-        style={{ background: '#1A0505' }}
-      >
+      <PageHero
+        image={heroSection?.image_url || '/images/student-uniform-portrait.jpeg'}
+        imageAlt="Young student in school uniform ready for class"
+        imagePosition="object-top"
+        eyebrow={heroSection?.eyebrow ?? 'Admissions Open'}
+        heading={heroSection?.heading ?? <>Begin Your Child&apos;s <span className="text-[#E2B45A]">Royal Journey</span></>}
+        body={heroSection?.body ?? 'A royal education starts with one step. Complete the inquiry form below and our team will reach out within 24 hours.'}
+        cta={{ label: 'Start your inquiry', href: '#inquiry' }}
+        highlights={[{ icon: 'schedule', label: 'Reply within 24 hours' }]}
+      />
 
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={heroSection?.image_url || '/images/student-uniform-portrait.jpeg'}
-            alt="Young student in school uniform ready for class"
-            fill
-            className="object-cover object-top"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-        </div>
-
-        <div className="container mx-auto px-margin-mobile md:px-margin-desktop relative z-10 pt-28 pb-32">
-          <AnimateOnView className="max-w-3xl">
-            <div className="flex items-center gap-md mb-lg">
-              <div className="h-px w-10 bg-secondary-container flex-shrink-0" />
-              <span className="text-secondary-container text-label-sm font-bold tracking-[0.3em] uppercase">
-                {heroSection?.eyebrow ?? 'Admissions Open'}
-              </span>
-            </div>
-            <h1 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-white mb-lg leading-tight">
-              {heroSection?.heading ?? <>Begin Your Child&apos;s{' '}<br className="hidden md:block" /><span className="text-secondary-container">Royal Journey</span></>}
-            </h1>
-            <p className="text-body-lg text-white/70 max-w-xl leading-relaxed">
-              {heroSection?.body ?? 'A royal education starts with one step. Complete the inquiry form below and our team will reach out within 24 hours.'}
-            </p>
-          </AnimateOnView>
-        </div>
-      </section>
-
-      {/* ── 2. Process Steps ── */}
-      <section className="py-xl bg-surface">
-        <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
-          <AnimateOnView className="mb-xl">
-            <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
-              {stepsSection?.eyebrow ?? 'How It Works'}
-            </p>
-            <h2 className="text-headline-lg font-headline-lg text-on-surface">
+      {/* Steps */}
+      <section className="bg-[#FBF6EE] py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <AnimateOnView className="mx-auto mb-16 max-w-2xl text-center">
+            <div className="flex justify-center"><Eyebrow>{stepsSection?.eyebrow ?? 'How It Works'}</Eyebrow></div>
+            <h2 className="text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#2A0C0C] sm:text-[44px]">
               {stepsSection?.heading ?? 'Four Steps to Enrolment'}
             </h2>
           </AnimateOnView>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-gutter">
-            {displaySteps.map(({ id, number, icon, title, body }) => (
-              <StaggerItem key={id}>
-                <div className="relative">
-                  <span className="text-[80px] font-bold text-on-surface/5 font-headline-xl leading-none absolute -top-4 -left-2 select-none">
-                    {number}
-                  </span>
-                  <div className="relative pt-lg">
-                    <span
-                      className="material-symbols-outlined text-[32px] text-primary mb-md block"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      {icon}
-                    </span>
-                    <h3 className="text-headline-md font-headline-md text-on-surface mb-sm">{title}</h3>
-                    <p className="text-body-lg text-on-surface-variant leading-relaxed">{body}</p>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <div className="relative">
+            <div className="absolute left-[12%] right-[12%] top-8 hidden h-0.5 bg-[repeating-linear-gradient(90deg,#E2B45A_0_10px,transparent_10px_18px)] lg:block" />
+            <StaggerContainer className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {displaySteps.map(({ id, number, icon, title, body }, index) => (
+                <StaggerItem key={id}>
+                  <article className="flex h-full flex-col items-center text-center">
+                    <div className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full shadow-lg ring-8 ring-[#FBF6EE] ${index === 0 ? 'bg-primary text-white' : 'bg-[#2A0C0C] text-[#E2B45A]'}`}>
+                      <span className="material-symbols-outlined text-[28px]" style={{ fontVariationSettings: "'FILL' 1" }}>{icon}</span>
+                    </div>
+                    <div className="mt-6 flex h-full w-full flex-col rounded-[28px] bg-white p-6 shadow-[0_20px_50px_-35px_rgba(42,12,12,0.35)] ring-1 ring-[#2A0C0C]/5">
+                      <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Step {number}</span>
+                      <h3 className="mt-2 text-lg font-bold text-[#2A0C0C]">{title}</h3>
+                      <p className="mt-2 text-[15px] leading-relaxed text-[#6B4A4A]">{body}</p>
+                    </div>
+                  </article>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
         </div>
       </section>
 
-      {/* ── 3. Inquiry Form ── */}
-      <section className="py-xl bg-surface-container-low">
-        <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
-          <AnimateOnView className="mb-xl">
-            <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
-              Step One
-            </p>
-            <h2 className="text-headline-lg font-headline-lg text-on-surface">
+      {/* Inquiry form */}
+      <section id="inquiry" className="scroll-mt-24 overflow-hidden bg-white py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <AnimateOnView className="mb-12">
+            <Eyebrow>Step One</Eyebrow>
+            <h2 className="max-w-xl text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#2A0C0C] sm:text-[44px]">
               Submit Your Inquiry
             </h2>
           </AnimateOnView>
@@ -139,6 +89,7 @@ export default async function AdmissionsPage() {
             phone={siteSettings?.phone || '0591664392'}
             email={siteSettings?.email || 'admissions@brainykings.edu'}
             address={siteSettings?.address || 'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana'}
+            hours={siteSettings?.hours || 'Mon – Fri: 7:00 AM – 4:00 PM'}
           />
         </div>
       </section>
