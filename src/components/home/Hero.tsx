@@ -117,7 +117,7 @@ export default function Hero({ slides: cmsSlides, section }: { slides?: HeroSlid
             <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <motion.div variants={heroItem}>
                 <p className="max-w-lg text-[17px] leading-relaxed text-white/75">
-                  {section?.body ?? 'Brainy Kings and Queens Montessori, where independent thinking, royal character, and academic excellence converge from age 2.5 through JHS 3.'}
+                  {section?.body ?? 'Montessori education in Kumasi, from age 2.5 to JHS 3.'}
                 </p>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <Link

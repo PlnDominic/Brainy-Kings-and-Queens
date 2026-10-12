@@ -11,7 +11,7 @@ type Defaults = { eyebrow: string; heading: string; body: string; label: string 
 const HOME_DEFAULTS: Defaults = {
   eyebrow: 'Admissions Open',
   heading: "Secure Your Child's Place Today",
-  body: 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.',
+  body: 'Enrolment for the new academic year is open.',
   label: 'Apply Now',
 }
 

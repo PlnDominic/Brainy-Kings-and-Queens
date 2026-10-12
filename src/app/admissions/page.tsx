@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import AnimateOnView from '@/components/AnimateOnView'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
@@ -14,10 +15,17 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic'
 
 const steps = [
-  { number: '01', icon: 'edit_note', title: 'Submit Inquiry', body: 'Fill out the form below. Our admissions team reads every inquiry personally.' },
-  { number: '02', icon: 'fact_check', title: 'Assessment Visit', body: 'We invite your child for a relaxed, play-based assessment: no pressure, just observation.' },
-  { number: '03', icon: 'assignment', title: 'Application Review', body: "Our team reviews your child's profile and matches them with the right classroom environment." },
-  { number: '04', icon: 'verified', title: 'Enrolment Confirmed', body: 'Receive your official acceptance letter and welcome pack from Brainy Kings & Queens.' },
+  { number: '01', icon: 'edit_note', title: 'Submit Inquiry', body: 'Fill in the short form below.' },
+  { number: '02', icon: 'fact_check', title: 'Assessment Visit', body: 'A relaxed, play-based visit.' },
+  { number: '03', icon: 'assignment', title: 'Application Review', body: 'We find the right classroom.' },
+  { number: '04', icon: 'verified', title: 'Enrolment Confirmed', body: 'Your welcome pack arrives.' },
+]
+
+const stripPhotos = [
+  { src: '/images/students-preschool-standing-2.jpeg', alt: 'Pre-school students in uniform' },
+  { src: '/images/students-uniform-badges.jpeg', alt: 'Students showing their school badges' },
+  { src: '/images/students-outdoor-play-1.jpeg', alt: 'Children playing outdoors' },
+  { src: '/images/students-smiling-closeup.jpeg', alt: 'Smiling students' },
 ]
 
 export default async function AdmissionsPage() {
@@ -39,7 +47,7 @@ export default async function AdmissionsPage() {
         imagePosition="object-top"
         eyebrow={heroSection?.eyebrow ?? 'Admissions Open'}
         heading={heroSection?.heading ?? <>Begin Your Child&apos;s <span className="text-[#E2B45A]">Royal Journey</span></>}
-        body={heroSection?.body ?? 'A royal education starts with one step. Complete the inquiry form below and our team will reach out within 24 hours.'}
+        body={heroSection?.body ?? 'Send an inquiry and we will reply within 24 hours.'}
         cta={{ label: 'Start your inquiry', href: '#inquiry' }}
         highlights={[{ icon: 'schedule', label: 'Reply within 24 hours' }]}
       />
@@ -66,7 +74,7 @@ export default async function AdmissionsPage() {
                     <div className="mt-6 flex h-full w-full flex-col rounded-[28px] bg-white p-6 shadow-[0_20px_50px_-35px_rgba(42,12,12,0.35)] ring-1 ring-[#2A0C0C]/5">
                       <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Step {number}</span>
                       <h3 className="mt-2 text-lg font-bold text-[#2A0C0C]">{title}</h3>
-                      <p className="mt-2 text-[15px] leading-relaxed text-[#6B4A4A]">{body}</p>
+                      <p className="mt-2 line-clamp-2 text-[15px] leading-relaxed text-[#6B4A4A]">{body}</p>
                     </div>
                   </article>
                 </StaggerItem>
@@ -74,6 +82,19 @@ export default async function AdmissionsPage() {
             </StaggerContainer>
           </div>
         </div>
+      </section>
+
+      {/* Photo strip */}
+      <section className="bg-[#FBF6EE] pb-24 lg:pb-32">
+        <StaggerContainer className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 md:grid-cols-4 md:px-8">
+          {stripPhotos.map((photo, index) => (
+            <StaggerItem key={photo.src}>
+              <div className={`relative aspect-[3/4] overflow-hidden rounded-[28px] ${index % 2 === 1 ? 'md:mt-10' : ''}`}>
+                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition duration-700 hover:scale-105" />
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </section>
 
       {/* Inquiry form */}

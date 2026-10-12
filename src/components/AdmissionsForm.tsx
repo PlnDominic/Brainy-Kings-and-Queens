@@ -93,7 +93,6 @@ export default function AdmissionsForm({ phone, email, address, hours }: { phone
               <motion.form key="form" onSubmit={handleSubmit} exit={{ opacity: 0, y: -16 }} className="space-y-6">
                 <div>
                   <h3 className="text-2xl font-extrabold text-[#2A0C0C]">Inquiry form</h3>
-                  <p className="mt-1 text-[15px] text-[#7A5C5C]">Take the first step toward a royal education for your child.</p>
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
@@ -160,7 +159,6 @@ export default function AdmissionsForm({ phone, email, address, hours }: { phone
                     </>
                   )}
                 </button>
-                <p className="text-center text-xs text-[#A88B8B]">We only use your details to respond to your inquiry.</p>
               </motion.form>
             )}
           </AnimatePresence>
@@ -172,7 +170,6 @@ export default function AdmissionsForm({ phone, email, address, hours }: { phone
         <div className="relative overflow-hidden rounded-[32px] bg-[#2A0C0C] p-7 text-white sm:p-8">
           <div className="relative">
             <h3 className="text-xl font-extrabold">Prefer to talk?</h3>
-            <p className="mt-1 text-sm text-white/60">Our admissions team is happy to help.</p>
             <ul className="mt-6 space-y-3">
               {[
                 { icon: 'call', label: 'Phone', value: phone, href: `tel:${phone}` },
