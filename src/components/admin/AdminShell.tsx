@@ -101,19 +101,19 @@ export default function AdminShell({ children }: { children: ReactNode }) {
   const sidebar = (
     <div className="flex h-full flex-col">
       <Link href="/admin/dashboard" className="flex items-center gap-3 px-5 pb-6 pt-6">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#E04848] to-[#9E1515] text-white shadow-lg shadow-black/30">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#E04848] to-[#9E1515] text-white shadow-md shadow-primary/30">
           <Icon name="crown" filled className="text-[22px]" />
         </div>
         <div className="leading-tight">
-          <div className="text-[15px] font-extrabold text-white">Brainy Kings</div>
-          <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#FF9C9C]">Content Studio</div>
+          <div className="text-[15px] font-extrabold text-[#1F0808]">Brainy Kings</div>
+          <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Content Studio</div>
         </div>
       </Link>
 
       <nav className="flex-1 space-y-5 overflow-y-auto px-3 pb-6 [scrollbar-width:thin]">
         {groups.map((group) => (
           <div key={group.title}>
-            <div className="mb-1.5 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white/35">{group.title}</div>
+            <div className="mb-1.5 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#B39C9C]">{group.title}</div>
             <ul className="space-y-0.5">
               {group.items.map((item) => {
                 const active = isActive(item)
@@ -123,13 +123,13 @@ export default function AdminShell({ children }: { children: ReactNode }) {
                       href={item.href}
                       className={cx(
                         'group flex items-center gap-3 rounded-lg px-3 py-[7px] text-[13.5px] font-medium transition',
-                        active ? 'bg-white text-[#2A0C0C] shadow-sm' : 'text-white/70 hover:bg-white/[0.07] hover:text-white',
+                        active ? 'bg-[#FBEAEA] text-primary' : 'text-[#5C2E2E] hover:bg-[#F7EFEF] hover:text-[#1F0808]',
                       )}
                     >
-                      <Icon name={item.icon} filled={active} className={cx('text-[19px]', active ? 'text-primary' : 'text-white/50 group-hover:text-white/80')} />
+                      <Icon name={item.icon} filled={active} className={cx('text-[19px]', active ? 'text-primary' : 'text-[#B39C9C] group-hover:text-[#5C2E2E]')} />
                       <span className="flex-1 truncate">{item.label}</span>
                       {item.badge ? (
-                        <span className={cx('min-w-[20px] rounded-full px-1.5 text-center text-[11px] font-bold', active ? 'bg-primary text-white' : 'bg-[#E04848] text-white')}>{item.badge}</span>
+                        <span className={cx('min-w-[20px] rounded-full px-1.5 text-center text-[11px] font-bold', 'bg-primary text-white')}>{item.badge}</span>
                       ) : null}
                     </Link>
                   </li>
@@ -140,16 +140,16 @@ export default function AdminShell({ children }: { children: ReactNode }) {
         ))}
       </nav>
 
-      <div className="border-t border-white/10 p-3">
+      <div className="border-t border-[#F1E6E6] p-3">
         <div className="flex items-center gap-3 rounded-xl px-2 py-2">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-sm font-bold uppercase text-white">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2A0C0C] text-sm font-bold uppercase text-white">
             {email.slice(0, 1) || 'A'}
           </div>
           <div className="min-w-0 flex-1">
-            <div className="truncate text-[13px] font-semibold text-white">{email || 'Administrator'}</div>
-            <div className="text-[11px] text-white/40">Administrator</div>
+            <div className="truncate text-[13px] font-semibold text-[#1F0808]">{email || 'Administrator'}</div>
+            <div className="text-[11px] text-[#A88B8B]">Administrator</div>
           </div>
-          <button type="button" onClick={signOut} aria-label="Sign out" title="Sign out" className="rounded-lg p-2 text-white/50 transition hover:bg-white/10 hover:text-white">
+          <button type="button" onClick={signOut} aria-label="Sign out" title="Sign out" className="rounded-lg p-2 text-[#A88B8B] transition hover:bg-[#F7EFEF] hover:text-primary">
             <Icon name="logout" className="text-[18px]" />
           </button>
         </div>
@@ -160,15 +160,12 @@ export default function AdminShell({ children }: { children: ReactNode }) {
   return (
     <FeedbackProvider>
       <div className="min-h-screen bg-[#FCF9F9] font-body-md text-on-surface">
-        <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 bg-[#2A0C0C] lg:block">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_60%_at_0%_0%,rgba(224,72,72,0.18),transparent_60%)]" />
-          <div className="relative h-full">{sidebar}</div>
-        </aside>
+        <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 border-r border-[#EFE3E3] bg-white lg:block">{sidebar}</aside>
 
         {menuOpen && (
           <div className="fixed inset-0 z-[80] lg:hidden">
             <div className="absolute inset-0 bg-black/50" onClick={() => setMenuOpen(false)} />
-            <aside className="relative h-full w-72 max-w-[85vw] bg-[#2A0C0C] shadow-2xl animate-[cms-slide_.2s_ease-out]">{sidebar}</aside>
+            <aside className="relative h-full w-72 max-w-[85vw] bg-white shadow-2xl animate-[cms-slide_.2s_ease-out]">{sidebar}</aside>
           </div>
         )}
 
