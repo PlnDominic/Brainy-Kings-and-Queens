@@ -4,10 +4,13 @@ import Link from 'next/link'
 import AnimateOnView from '@/components/AnimateOnView'
 import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
+import { getGalleryItems, getPageSections, getTeamMembers, getValues } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: 'About Us | Brainy Kings & Queens Montessori',
 }
+
+export const dynamic = 'force-dynamic'
 
 const values = [
   {
@@ -27,7 +30,41 @@ const values = [
   },
 ]
 
-export default function AboutPage() {
+const aboutGalleryDefaults = [
+  {
+    src: '/images/students-group-pavilion.jpeg',
+    alt: 'Students at the school pavilion',
+    caption: 'The Pavilion',
+  },
+  {
+    src: '/images/students-preschool-cubbies.jpeg',
+    alt: 'Pre-school students organising their belongings',
+    caption: 'Practical Life',
+  },
+  {
+    src: '/images/students-preschool-lunch-closeup.jpeg',
+    alt: 'Pre-school children enjoying lunch at school',
+    caption: 'Nourished & Cared For',
+  },
+]
+
+export default async function AboutPage() {
+  const [cmsValues, galleryItems, teamMembers, pageSections] = await Promise.all([
+    getValues(),
+    getGalleryItems('about'),
+    getTeamMembers(),
+    getPageSections('about'),
+  ])
+  const displayValues = cmsValues.length ? cmsValues : values.map((value) => ({ ...value, id: value.title }))
+  const section = (key: string) => pageSections.find((item) => item.section_key === key)
+  const heroSection = section('hero')
+  const storySection = section('story')
+  const gallerySection = section('gallery')
+  const ctaSection = section('cta')
+  const additionalGalleryItems = galleryItems.filter(
+    (item) => !aboutGalleryDefaults.some((defaultItem) => defaultItem.src === item.image_url),
+  )
+
   return (
     <main>
       {/* ── 1. Hero ── */}
@@ -38,7 +75,7 @@ export default function AboutPage() {
 
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/students-large-group-photo.jpeg"
+            src={heroSection?.image_url || '/images/students-large-group-photo.jpeg'}
             alt="Brainy Kings and Queens school community"
             fill
             className="object-cover object-top"
@@ -52,23 +89,20 @@ export default function AboutPage() {
             <div className="flex items-center gap-md mb-lg">
               <div className="h-px w-10 bg-secondary-container flex-shrink-0" />
               <span className="text-secondary-container text-label-sm font-bold tracking-[0.3em] uppercase">
-                Est. 2010 · Kumasi, Ghana
+                {heroSection?.eyebrow ?? 'Est. 2010 · Kumasi, Ghana'}
               </span>
             </div>
             <h1 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-white mb-lg leading-tight">
-              We Crown Children.{' '}
-              <br className="hidden md:block" />
-              <span className="text-secondary-container">Not Just Educate Them.</span>
+              {heroSection?.heading ?? <>We Crown Children.{' '}<br className="hidden md:block" /><span className="text-secondary-container">Not Just Educate Them.</span></>}
             </h1>
             <p className="text-body-lg text-white/70 max-w-xl leading-relaxed mb-xl">
-              For over 15 years, Brainy Kings &amp; Queens Montessori has been Kumasi&apos;s most
-              trusted name in early childhood excellence — rooted in dignity, driven by curiosity.
+              {heroSection?.body ?? 'For over 15 years, Brainy Kings & Queens Montessori has been Kumasi’s most trusted name in early childhood excellence — rooted in dignity, driven by curiosity.'}
             </p>
             <Link
-              href="/admissions"
+              href={heroSection?.cta_href ?? '/admissions'}
               className="bg-secondary-container text-on-secondary-container px-8 py-4 font-label-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-xl w-fit"
             >
-              Enrol Your Child
+              {heroSection?.cta_label ?? 'Enrol Your Child'}
               <span className="material-symbols-outlined">arrow_forward</span>
             </Link>
           </AnimateOnView>
@@ -83,7 +117,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="relative h-[500px] overflow-hidden">
                   <Image
-                    src="/images/students-cultural-day.jpeg"
+                    src={storySection?.image_url || '/images/students-cultural-day.jpeg'}
                     alt="Students celebrating cultural day in kente attire"
                     fill
                     className="object-cover"
@@ -103,20 +137,16 @@ export default function AboutPage() {
             <AnimateOnView variant="fadeRight" className="space-y-lg">
               <div>
                 <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-lg">
-                  Our Story
+                  {storySection?.eyebrow ?? 'Our Story'}
                 </p>
                 <h2 className="text-headline-lg font-headline-lg text-on-surface mb-lg leading-tight">
-                  A School Built on a Simple Belief
+                  {storySection?.heading ?? 'A School Built on a Simple Belief'}
                 </h2>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed mb-md">
-                  Brainy Kings &amp; Queens was founded on one conviction: that the children of
-                  Kumasi deserve an education worthy of their potential. The Montessori method
-                  gave us the framework — our community gave us the heart.
+                  {storySection?.body ?? 'Brainy Kings & Queens was founded on one conviction: that the children of Kumasi deserve an education worthy of their potential. The Montessori method gave us the framework — our community gave us the heart.'}
                 </p>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed">
-                  Over 15 years, we have grown from a small pre-school to a full primary school
-                  serving over 250 students, from ages 2.5 through JHS 3. But our promise
-                  remains unchanged: to see each child as the leader they already are.
+                  {storySection?.secondary_body ?? 'Over 15 years, we have grown from a small pre-school to a full primary school serving over 250 students, from ages 2.5 through JHS 3. But our promise remains unchanged: to see each child as the leader they already are.'}
                 </p>
               </div>
             </AnimateOnView>
@@ -131,17 +161,17 @@ export default function AboutPage() {
             <div className="flex items-center gap-md mb-md">
               <div className="h-px w-10 bg-primary flex-shrink-0" />
               <span className="text-primary text-label-sm font-bold tracking-[0.3em] uppercase">
-                Our Values
+                {section('values')?.eyebrow ?? 'Our Values'}
               </span>
             </div>
             <h2 className="text-headline-lg font-headline-lg text-on-surface max-w-xl leading-tight">
-              What We Stand For
+              {section('values')?.heading ?? 'What We Stand For'}
             </h2>
           </AnimateOnView>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            {values.map(({ icon, title, body }) => (
-              <StaggerItem key={title}>
+            {displayValues.map(({ id, icon, title, body }) => (
+              <StaggerItem key={id}>
                 <div className="bg-surface-container-lowest border-t-4 border-primary p-lg flex flex-col h-full shadow-sm">
                   <span
                     className="material-symbols-outlined text-[40px] text-primary mb-md"
@@ -165,10 +195,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
           <AnimateOnView className="mb-xl">
             <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
-              Campus Life
+              {gallerySection?.eyebrow ?? 'Campus Life'}
             </p>
             <h2 className="text-headline-lg font-headline-lg text-on-surface">
-              Life at Brainy Kings &amp; Queens
+              {gallerySection?.heading ?? 'Life at Brainy Kings & Queens'}
             </h2>
           </AnimateOnView>
 
@@ -176,64 +206,94 @@ export default function AboutPage() {
             <div className="flex flex-col md:flex-row gap-md">
               <div className="md:w-1/2 relative gallery-item overflow-hidden h-[400px]">
                 <Image
-                  src="/images/students-group-pavilion.jpeg"
-                  alt="Students at the school pavilion"
+                  src={aboutGalleryDefaults[0].src}
+                  alt={aboutGalleryDefaults[0].alt}
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="gallery-caption">
-                  <span className="text-white font-label-lg">The Pavilion</span>
+                  <span className="text-white font-label-lg">{aboutGalleryDefaults[0].caption}</span>
                 </div>
               </div>
               <div className="md:w-1/2 flex flex-col gap-md">
-                <div className="relative gallery-item overflow-hidden h-[192px] md:h-auto md:flex-1">
-                  <Image
-                    src="/images/students-preschool-cubbies.jpeg"
-                    alt="Pre-school students organising their belongings"
-                    fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="gallery-caption">
-                    <span className="text-white font-label-lg">Practical Life</span>
+                {aboutGalleryDefaults.slice(1).map((item) => (
+                  <div key={item.src} className="relative gallery-item overflow-hidden h-[192px] md:h-auto md:flex-1">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="gallery-caption">
+                      <span className="text-white font-label-lg">{item.caption}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="relative gallery-item overflow-hidden h-[192px] md:h-auto md:flex-1">
-                  <Image
-                    src="/images/students-preschool-lunch-closeup.jpeg"
-                    alt="Pre-school children enjoying lunch at school"
-                    fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="gallery-caption">
-                    <span className="text-white font-label-lg">Nourished &amp; Cared For</span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </AnimateOnView>
+          {additionalGalleryItems.length > 0 && (
+            <div className="mt-md grid grid-cols-1 gap-md sm:grid-cols-3">
+              {additionalGalleryItems.map((item) => (
+                <div key={item.id} className="relative gallery-item h-[300px] overflow-hidden">
+                  <Image src={item.image_url} alt={item.alt_text} fill className="object-cover transition-transform duration-700 hover:scale-105" />
+                  {item.caption && <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
+
+      {teamMembers.length > 0 && (
+        <section className="py-xl bg-surface">
+          <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
+            <AnimateOnView className="mb-xl">
+              <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
+                {section('team')?.eyebrow ?? 'Our People'}
+              </p>
+              <h2 className="text-headline-lg font-headline-lg text-on-surface">
+                {section('team')?.heading ?? 'Meet the team'}
+              </h2>
+            </AnimateOnView>
+            <StaggerContainer className="grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-3">
+              {teamMembers.map((member) => (
+                <StaggerItem key={member.id}>
+                  <article className="border-t-4 border-primary bg-surface-container-lowest p-lg shadow-sm">
+                    {member.image_url && (
+                      <div className="relative mb-md h-64 overflow-hidden">
+                        <Image src={member.image_url} alt={member.alt_text || member.name} fill className="object-cover" />
+                      </div>
+                    )}
+                    <h3 className="text-headline-md font-headline-md text-on-surface">{member.name}</h3>
+                    <p className="mt-xs text-label-lg text-on-surface-variant">{member.role}</p>
+                  </article>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+      )}
 
       {/* ── 6. CTA ── */}
       <section className="bg-primary py-xl">
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
           <AnimateOnView className="max-w-4xl mx-auto text-center">
             <p className="text-label-sm font-bold text-secondary-container uppercase tracking-[0.25em] mb-md">
-              Admissions Open
+              {ctaSection?.eyebrow ?? 'Admissions Open'}
             </p>
             <h2 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-on-primary mb-md leading-tight">
-              Join Our Royal <br className="hidden md:block" /> Community
+              {ctaSection?.heading ?? <>Join Our Royal <br className="hidden md:block" /> Community</>}
             </h2>
             <p className="text-body-lg text-on-primary/75 mb-xl max-w-xl mx-auto">
-              Enrolment for the upcoming academic year is now open. Give your child
-              the royal start they deserve.
+              {ctaSection?.body ?? 'Enrolment for the upcoming academic year is now open. Give your child the royal start they deserve.'}
             </p>
             <div className="flex flex-wrap gap-md justify-center">
               <Link
-                href="/admissions"
+                href={ctaSection?.cta_href ?? '/admissions'}
                 className="bg-secondary-container text-on-secondary-container px-10 py-4 font-label-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-xl"
               >
-                Apply Now
+                {ctaSection?.cta_label ?? 'Apply Now'}
                 <span className="material-symbols-outlined">arrow_forward</span>
               </Link>
               <a

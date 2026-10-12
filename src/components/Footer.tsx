@@ -1,4 +1,7 @@
 import Link from 'next/link'
+import type { Database } from '@/types/database'
+
+type SiteSettings = Partial<Database['public']['Tables']['site_settings']['Row']>
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -13,7 +16,12 @@ const socials = [
   { icon: 'alternate_email', label: 'Email' },
 ]
 
-export default function Footer() {
+export default function Footer({ settings }: { settings?: SiteSettings | null }) {
+  const phone = settings?.phone || '0591664392'
+  const email = settings?.email || 'admissions@brainykings.edu'
+  const address = settings?.address || 'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana'
+  const hours = settings?.hours || 'Mon – Fri: 7:00 AM – 4:00 PM'
+
   return (
     <footer style={{ background: '#1A0505' }}>
       {/* Gold top accent */}
@@ -90,7 +98,7 @@ export default function Footer() {
               Contact Us
             </h4>
             <div className="flex flex-col gap-md">
-              <a href="tel:0591664392" className="group flex items-start gap-md">
+              <a href={`tel:${phone}`} className="group flex items-start gap-md">
                 <span
                   className="material-symbols-outlined text-[18px] text-secondary-container mt-px flex-shrink-0"
                   style={{ fontVariationSettings: "'FILL' 1" }}
@@ -98,8 +106,12 @@ export default function Footer() {
                   call
                 </span>
                 <span className="text-white/50 group-hover:text-white transition-colors text-label-lg">
-                  0591664392
+                  {phone}
                 </span>
+              </a>
+              <a href={`mailto:${email}`} className="group flex items-start gap-md">
+                <span className="material-symbols-outlined mt-px flex-shrink-0 text-[18px] text-secondary-container">mail</span>
+                <span className="break-all text-label-lg text-white/50 transition-colors group-hover:text-white">{email}</span>
               </a>
               <div className="flex items-start gap-md">
                 <span
@@ -109,9 +121,7 @@ export default function Footer() {
                   location_on
                 </span>
                 <span className="text-white/50 text-label-lg leading-relaxed">
-                  Anwomaso - Ankaa Junction,
-                  <br />
-                  Kumasi, Ashanti Region, Ghana
+                  {address}
                 </span>
               </div>
               <div className="flex items-start gap-md">
@@ -122,7 +132,7 @@ export default function Footer() {
                   schedule
                 </span>
                 <span className="text-white/50 text-label-lg">
-                  Mon – Fri: 7:00 AM – 4:00 PM
+                  {hours}
                 </span>
               </div>
             </div>
@@ -132,9 +142,9 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 mt-xl pt-lg flex flex-col sm:flex-row justify-between items-center gap-sm">
           <p className="text-label-sm text-white/25">
-            &copy; 2026 Brainy Kings &amp; Queens Montessori. All rights reserved.
+            &copy; {settings?.copyright_year || new Date().getFullYear()} Brainy Kings &amp; Queens Montessori. All rights reserved.
           </p>
-          <a href="#" className="text-label-sm text-white/25 hover:text-white/50 transition-colors">
+          <a href={settings?.privacy_policy_link || '#'} className="text-label-sm text-white/25 hover:text-white/50 transition-colors">
             Privacy Policy
           </a>
         </div>
