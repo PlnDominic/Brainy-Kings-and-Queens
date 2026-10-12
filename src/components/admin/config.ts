@@ -271,7 +271,8 @@ export const SETTINGS_RESOURCE: CmsResource = {
     { key: 'address', label: 'Address', type: 'textarea', group: 'Contact', wide: true },
     { key: 'hours', label: 'Opening hours', type: 'text', group: 'Contact', wide: true },
     { key: 'copyright_year', label: 'Copyright year', type: 'number', group: 'Footer' },
-    { key: 'privacy_policy_link', label: 'Privacy policy link', type: 'text', group: 'Footer' },
+    // Stored in the existing privacy_policy_link column so no database migration is needed.
+    { key: 'privacy_policy_link', label: 'Developed By', type: 'text', group: 'Footer', placeholder: 'e.g. Pln. Dominic', help: 'Shown at the bottom of every page. Leave empty to hide it.' },
   ],
 }
 
