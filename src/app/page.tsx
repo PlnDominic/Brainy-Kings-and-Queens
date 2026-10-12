@@ -1,5 +1,4 @@
 import Hero from '@/components/home/Hero'
-import Stats from '@/components/home/Stats'
 import Philosophy, { PHILOSOPHY_PHOTOS } from '@/components/home/Philosophy'
 import Programs, { FALLBACK_PROGRAMS } from '@/components/home/Programs'
 import WhyUs, { WHY_US_REASONS } from '@/components/home/WhyUs'
@@ -64,7 +63,6 @@ export default async function HomePage() {
     (item) => item.src,
   )
 
-  const statsPhoto = photos.pick(['/images/students-smiling-closeup.jpeg'])
   const philosophyPhotos = photos.pickMany(PHILOSOPHY_PHOTOS, 3)
   const whyUsPhotos = WHY_US_REASONS.map((reason) => photos.pick(reason.photos))
   const testimonialsPhoto = photos.pick(['/images/students-group-celebration.jpeg'])
@@ -74,7 +72,6 @@ export default async function HomePage() {
   return (
     <>
       <Hero slides={heroSlides} section={section('hero')} />
-      <Stats image={statsPhoto} />
       <Philosophy section={section('mission')} photos={philosophyPhotos} />
       <Programs items={programItems} section={section('programs')} />
       <WhyUs images={whyUsPhotos} />

@@ -205,21 +205,3 @@ export async function getTeamMembers() {
     throw normalizeError(err)
   }
 }
-
-// Stats
-export async function getStats() {
-  try {
-    const supabase = createSupabaseServerClient()
-    const { data, error } = await supabase
-      .from('site_settings')
-      .select('*')
-      .order('created_at', { ascending: true })
-      .limit(1)
-      .maybeSingle()
-
-    if (error) throw error
-    return data
-  } catch (err) {
-    throw normalizeError(err)
-  }
-}
