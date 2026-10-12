@@ -1,15 +1,13 @@
-'use client'
+import { redirect } from 'next/navigation'
 
-import { Suspense } from 'react'
-import AdminContentManager from '@/components/AdminContentManager'
-import AdminLayout from '@/components/AdminLayout'
-
-export default function AdminContentPage() {
-  return (
-    <AdminLayout>
-      <Suspense fallback={<p className="py-xl text-on-surface-variant">Loading content manager...</p>}>
-        <AdminContentManager />
-      </Suspense>
-    </AdminLayout>
-  )
+// Older links pointed at /admin/content?tab=…; send them to the new sections.
+export default async function LegacyContentPage({ searchParams }: { searchParams: Promise<{ tab?: string; type?: string }> }) {
+  const { tab, type } = await searchParams
+  if (tab === 'media') redirect('/admin/media')
+  if (tab === 'settings') redirect('/admin/settings')
+  if (tab === 'inquiries') redirect('/admin/inquiries')
+  if (type === 'page_sections') redirect('/admin/pages')
+  if (type === 'gallery_items') redirect('/admin/collections/gallery_home')
+  if (type) redirect(`/admin/collections/${type}`)
+  redirect('/admin/pages')
 }

@@ -46,3 +46,8 @@
 .royal-gradient {
   background: linear-gradient(135deg, #B31B1B 0%, #D94F4F 100%);
 }
+
+/* Content Studio (admin) animations */
+@keyframes cms-drawer { from { transform: translateX(32px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes cms-slide { from { transform: translateX(-100%); } to { transform: none; } }
+@keyframes cms-toast { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
