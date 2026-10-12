@@ -6,13 +6,16 @@ import { Eyebrow, Sparkle } from './decor'
 
 type PageSection = Database['public']['Tables']['page_sections']['Row']
 
-const photos = [
-  { src: '/images/students-montessori-classroom.jpeg', alt: 'Students learning in the Montessori classroom' },
-  { src: '/images/students-playground-trampoline.jpeg', alt: 'Students playing outdoors' },
-  { src: '/images/teacher-student-mentorship.jpeg', alt: 'A teacher guiding a student' },
+/** Preferred photos for the collage, in order. */
+export const PHILOSOPHY_PHOTOS = [
+  '/images/students-montessori-classroom.jpeg',
+  '/images/students-playground-trampoline.jpeg',
+  '/images/teacher-student-mentorship.jpeg',
+  '/images/students-outdoor-play-2.jpeg',
+  '/images/students-bench-outdoor.jpeg',
 ]
 
-export default function Philosophy({ section }: { section?: PageSection }) {
+export default function Philosophy({ section, photos }: { section?: PageSection; photos: string[] }) {
   return (
     <section className="relative overflow-hidden bg-[#FBF6EE] py-24 lg:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
@@ -35,13 +38,13 @@ export default function Philosophy({ section }: { section?: PageSection }) {
         {/* Three-photo collage */}
         <AnimateOnView variant="fadeRight" className="relative grid h-[420px] grid-cols-5 grid-rows-2 gap-4 sm:h-[520px]">
           <div className="relative col-span-3 row-span-2 overflow-hidden rounded-[32px] rounded-tl-[100px]">
-            <Image src={photos[0].src} alt={photos[0].alt} fill sizes="(max-width: 1024px) 60vw, 420px" className="object-cover" />
+            <Image src={photos[0]} alt="Students learning at Brainy Kings & Queens" fill sizes="(max-width: 1024px) 60vw, 420px" className="object-cover" />
           </div>
           <div className="relative col-span-2 overflow-hidden rounded-[28px]">
-            <Image src={photos[1].src} alt={photos[1].alt} fill sizes="(max-width: 1024px) 40vw, 280px" className="object-cover" />
+            <Image src={photos[1]} alt="Students at play" fill sizes="(max-width: 1024px) 40vw, 280px" className="object-cover" />
           </div>
           <div className="relative col-span-2 overflow-hidden rounded-[28px] rounded-br-[80px]">
-            <Image src={photos[2].src} alt={photos[2].alt} fill sizes="(max-width: 1024px) 40vw, 280px" className="object-cover" />
+            <Image src={photos[2]} alt="Life at Brainy Kings & Queens" fill sizes="(max-width: 1024px) 40vw, 280px" className="object-cover" />
           </div>
           <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-[#2A0C0C] shadow-lg">
             <span className="material-symbols-outlined text-[18px] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>auto_awesome</span>

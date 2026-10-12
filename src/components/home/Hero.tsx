@@ -8,16 +8,8 @@ import { heroContainer, heroItem } from '@/lib/animations'
 import type { Database } from '@/types/database'
 import { Crown } from './decor'
 
-type HeroSlide = Database['public']['Tables']['hero_slides']['Row']
 type PageSection = Database['public']['Tables']['page_sections']['Row']
-type Slide = { id?: string; src: string; alt: string }
-
-const fallbackSlides: Slide[] = [
-  { src: '/images/students-group-pavilion.jpeg', alt: 'Students at the school pavilion' },
-  { src: '/images/students-cultural-day.jpeg', alt: 'Cultural celebration day' },
-  { src: '/images/students-uniform-outdoor-group.jpeg', alt: 'Students in uniform at Brainy Kings & Queens' },
-  { src: '/images/students-large-group-photo.jpeg', alt: 'Our school community' },
-]
+export type Slide = { id?: string; src: string; alt: string }
 
 const SLIDE_DURATION = 6000
 
@@ -44,10 +36,7 @@ function AdmissionsSeal() {
   )
 }
 
-export default function Hero({ slides: cmsSlides, section }: { slides?: HeroSlide[]; section?: PageSection }) {
-  const slides: Slide[] = cmsSlides?.length
-    ? cmsSlides.map((slide) => ({ id: slide.id, src: slide.image_url, alt: slide.alt_text }))
-    : fallbackSlides
+export default function Hero({ slides, section }: { slides: Slide[]; section?: PageSection }) {
   const [current, setCurrent] = useState(0)
   const [cycle, setCycle] = useState(0)
 
@@ -150,7 +139,7 @@ export default function Hero({ slides: cmsSlides, section }: { slides?: HeroSlid
                         index === current ? 'ring-2 ring-[#E2B45A] ring-offset-2 ring-offset-[#1A0505]' : 'opacity-60 hover:opacity-100'
                       }`}
                     >
-                      <Image src={slide.src} alt="" fill sizes="96px" className="object-cover" />
+                      <Image src={slide.src} alt="" fill sizes="96px" className="object-cover" data-slide-thumbnail="" />
                       {index === current && (
                         <motion.span
                           key={cycle}

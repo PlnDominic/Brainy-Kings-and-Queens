@@ -5,16 +5,16 @@ import StaggerContainer from '@/components/StaggerContainer'
 import StaggerItem from '@/components/StaggerItem'
 import { Eyebrow, Wave } from './decor'
 
-const reasons = [
-  { icon: 'menu_book', title: 'Montessori curriculum', image: '/images/students-montessori-classroom.jpeg' },
-  { icon: 'diversity_1', title: 'Small classes, 1:8', image: '/images/students-classroom-fun-2.jpeg' },
-  { icon: 'verified_user', title: 'Safe, caring campus', image: '/images/students-school-building-front.jpeg' },
-  { icon: 'workspace_premium', title: 'Qualified teachers', image: '/images/teacher-student-mentorship.jpeg' },
-  { icon: 'forest', title: 'Learning beyond walls', image: '/images/students-field-trip-bench.jpeg' },
-  { icon: 'palette', title: 'Culture & creativity', image: '/images/students-cultural-day.jpeg' },
+export const WHY_US_REASONS = [
+  { icon: 'menu_book', title: 'Montessori curriculum', photos: ['/images/students-classroom-primary.jpeg', '/images/students-montessori-classroom.jpeg', '/images/students-preschool-cubbies.jpeg'] },
+  { icon: 'diversity_1', title: 'Small classes, 1:8', photos: ['/images/students-classroom-fun.jpeg', '/images/students-preschool-lunch-closeup.jpeg', '/images/students-preschool-twins.jpeg'] },
+  { icon: 'verified_user', title: 'Safe, caring campus', photos: ['/images/students-school-building-front.jpeg', '/images/school-building.jpeg', '/images/students-group-pavilion.jpeg'] },
+  { icon: 'workspace_premium', title: 'Qualified teachers', photos: ['/images/teacher-student-mentorship.jpeg', '/images/students-teacher-outdoor.jpeg'] },
+  { icon: 'forest', title: 'Learning beyond walls', photos: ['/images/students-field-trip-bench.jpeg', '/images/student-field-trip-tree.jpeg', '/images/students-bench-outdoor.jpeg'] },
+  { icon: 'palette', title: 'Culture & creativity', photos: ['/images/students-cultural-day.jpeg', '/images/students-group-celebration.jpeg', '/images/students-uniform-badges.jpeg'] },
 ]
 
-export default function WhyUs() {
+export default function WhyUs({ images }: { images: string[] }) {
   return (
     <section className="relative overflow-hidden bg-[#2A0C0C] text-white">
       <Wave fill="#FFFFFF" flip className="absolute left-0 top-0 h-16 w-full md:h-24" />
@@ -36,10 +36,10 @@ export default function WhyUs() {
         </AnimateOnView>
 
         <StaggerContainer className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-          {reasons.map((reason) => (
+          {WHY_US_REASONS.map((reason, index) => (
             <StaggerItem key={reason.title}>
               <figure className="group relative aspect-[4/5] overflow-hidden rounded-[28px] sm:aspect-[4/3]">
-                <Image src={reason.image} alt={reason.title} fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                <Image src={images[index]} alt={reason.title} fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
                 <figcaption className="absolute inset-x-3 bottom-3 flex items-center gap-3 rounded-2xl bg-[#2A0C0C] px-3 py-2.5">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#E2B45A] text-[#2A0C0C]">
                     <span className="material-symbols-outlined text-[20px]">{reason.icon}</span>
