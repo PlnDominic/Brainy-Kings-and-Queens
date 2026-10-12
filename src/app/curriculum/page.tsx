@@ -128,7 +128,6 @@ export default async function CurriculumPage() {
                   <AnimateOnView variant={flip ? 'fadeRight' : 'fadeLeft'} className={`relative ${flip ? 'lg:order-2' : ''}`}>
                     <div className="relative aspect-[5/4] overflow-hidden rounded-[40px] shadow-[0_30px_60px_-30px_rgba(42,12,12,0.45)]">
                       <Image src={program.image} alt={`${program.level} students at Brainy Kings & Queens`} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                       <span className="absolute bottom-5 left-6 text-[96px] font-extrabold leading-none text-white/30">{program.number}</span>
                     </div>
                     <div className={`absolute -top-5 ${flip ? 'left-6' : 'right-6'} rounded-full bg-[#E2B45A] px-5 py-2.5 text-sm font-bold text-[#2A0C0C] shadow-lg`}>
@@ -170,7 +169,6 @@ export default async function CurriculumPage() {
       {/* Quote */}
       <section className="relative overflow-hidden bg-[#2A0C0C] text-white">
         <Wave fill="#FFFFFF" flip className="absolute left-0 top-0 h-16 w-full md:h-24" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_100%_50%,rgba(179,27,27,0.45),transparent_70%)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 pb-28 pt-36 md:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:pb-36 lg:pt-44">
           <AnimateOnView>
             <span className="material-symbols-outlined text-[64px] text-[#E2B45A]" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>

@@ -121,7 +121,6 @@ export default async function AboutPage() {
       {/* Values */}
       <section className="relative overflow-hidden bg-[#2A0C0C] text-white">
         <Wave fill="#FBF6EE" flip className="absolute left-0 top-0 h-16 w-full md:h-24" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_0%_60%,rgba(179,27,27,0.4),transparent_70%)]" />
         <div className="relative mx-auto max-w-7xl px-5 pb-28 pt-36 md:px-8 lg:pb-36 lg:pt-44">
           <AnimateOnView className="mb-14 grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
             <div>

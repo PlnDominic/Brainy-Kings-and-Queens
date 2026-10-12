@@ -58,7 +58,7 @@ export default function Testimonials({ testimonials, section }: { testimonials?:
         </div>
 
         <div
-          className="relative overflow-hidden rounded-[36px] bg-gradient-to-br from-[#B31B1B] to-[#5A1010] p-8 text-white shadow-[0_40px_80px_-40px_rgba(122,20,20,0.8)] sm:p-12"
+          className="relative overflow-hidden rounded-[36px] bg-[#B31B1B] p-8 text-white shadow-[0_40px_80px_-40px_rgba(122,20,20,0.8)] sm:p-12"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >

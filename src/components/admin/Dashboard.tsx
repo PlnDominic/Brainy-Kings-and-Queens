@@ -54,7 +54,7 @@ export default function Dashboard() {
       <section className="relative mb-8 overflow-hidden rounded-3xl bg-[#2A0C0C] px-6 py-8 text-white shadow-xl shadow-[#2A0C0C]/10 sm:px-10 sm:py-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/school-building.jpeg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2A0C0C] via-[#2A0C0C]/90 to-[#2A0C0C]/30" />
+        <div className="absolute inset-0 bg-[#2A0C0C]/80" />
         <div className="relative max-w-xl">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-[#FFB4B4] backdrop-blur">
             <Icon name="crown" filled className="text-[14px]" /> Brainy Kings &amp; Queens Montessori
@@ -112,7 +112,7 @@ export default function Dashboard() {
                     <div className="relative h-28 overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={page.cover} alt="" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#2A0C0C]/80 to-transparent" />
+                      <div className="absolute inset-0 bg-[#2A0C0C]/45" />
                       <div className="absolute bottom-3 left-4 flex items-center gap-2 text-white">
                         <Icon name={page.icon} className="text-[20px]" />
                         <span className="text-lg font-extrabold">{page.label}</span>

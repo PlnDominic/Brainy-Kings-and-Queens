@@ -13,7 +13,7 @@ export default function PagesOverview() {
               <div className="relative h-44 overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={page.cover} alt="" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2A0C0C]/85 via-[#2A0C0C]/20 to-transparent" />
+                <div className="absolute inset-0 bg-[#2A0C0C]/50" />
                 <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between text-white">
                   <div>
                     <div className="font-mono text-xs text-white/70">{page.path}</div>

@@ -35,7 +35,9 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative z-10 bg-[linear-gradient(to_bottom,transparent_96px,#FBF6EE_96px)] px-5 md:px-8">
+    <section className="relative z-10 px-5 md:px-8">
+      {/* Ivory backdrop starts below the part of the card that overlaps the hero */}
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-24 bg-[#FBF6EE]" />
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -170,7 +170,6 @@ export default function AdmissionsForm({ phone, email, address, hours }: { phone
       {/* Contact + map */}
       <AnimateOnView variant="fadeRight" className="flex flex-col gap-6">
         <div className="relative overflow-hidden rounded-[32px] bg-[#2A0C0C] p-7 text-white sm:p-8">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_100%_0%,rgba(179,27,27,0.5),transparent_70%)]" />
           <div className="relative">
             <h3 className="text-xl font-extrabold">Prefer to talk?</h3>
             <p className="mt-1 text-sm text-white/60">Our admissions team is happy to help.</p>

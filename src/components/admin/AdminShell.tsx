@@ -89,7 +89,7 @@ export default function AdminShell({ children }: { children: ReactNode }) {
   const sidebar = (
     <div className="flex h-full flex-col">
       <Link href="/admin/dashboard" className="flex items-center gap-3 px-5 pb-6 pt-6">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#E04848] to-[#9E1515] text-white shadow-md shadow-primary/30">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-md shadow-primary/30">
           <Icon name="crown" filled className="text-[22px]" />
         </div>
         <div className="leading-tight">

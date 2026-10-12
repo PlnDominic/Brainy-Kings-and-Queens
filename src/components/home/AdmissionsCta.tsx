@@ -27,7 +27,6 @@ export default function AdmissionsCta({ section, phone, defaults = HOME_DEFAULTS
   return (
     <section className={`${className} px-5 pb-24 md:px-8 lg:pb-32`}>
       <AnimateOnView variant="scaleIn" className="relative mx-auto max-w-7xl overflow-hidden rounded-[40px] bg-[#E2B45A]">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_80%_at_0%_0%,rgba(255,255,255,0.45),transparent_60%)]" />
         <DotGrid className="pointer-events-none absolute bottom-6 left-1/2 h-28 w-40 text-[#2A0C0C]/15" />
         <div className="relative grid items-center gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:p-16">
           <div>
