@@ -205,7 +205,7 @@ export const pages: PageDef[] = [
     key: 'home', label: 'Home', path: '/', icon: 'home', cover: '/images/school-building.jpeg',
     description: 'The first impression: slideshow, philosophy, programs, campus life and parent stories.',
     sections: [
-      { key: 'hero', label: 'Hero', description: 'Headline over the photo slideshow.', fields: CTA, collections: ['hero_slides'] },
+      { key: 'hero', label: 'Hero', description: 'Headline and button over the photo slideshow.', fields: ['heading', 'cta_label', 'cta_href'], collections: ['hero_slides'] },
       { key: 'mission', label: 'Philosophy', description: 'The mission statement beneath the hero.', fields: TEXT },
       { key: 'programs', label: 'Programs', description: 'Intro to the programme cards.', fields: ['eyebrow', 'heading'], collections: ['programs'] },
       { key: 'gallery', label: 'Campus life', description: 'Photo grid with a link to more.', fields: ['eyebrow', 'heading', 'cta_label', 'cta_href'], collections: ['gallery_home'] },

@@ -30,7 +30,11 @@ export default function Navigation() {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled ? 'py-3 shadow-2xl' : 'py-5'
         }`}
-        style={{ background: scrolled ? '#1A0505' : 'transparent' }}
+        style={{
+          background: scrolled ? '#1A0505' : 'transparent',
+          // Keeps the links readable over a bright photo without a dark overlay.
+          textShadow: scrolled ? 'none' : '0 1px 12px rgba(0,0,0,0.6), 0 1px 2px rgba(0,0,0,0.5)',
+        }}
       >
         <div className="container mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between">
           {/* Wordmark */}
@@ -70,7 +74,7 @@ export default function Navigation() {
           <div className="flex items-center gap-md">
             <Link
               href="/admissions"
-              className="hidden md:flex bg-secondary-container text-on-secondary-container px-6 py-2 font-label-lg font-bold hover:opacity-90 transition-all active:scale-95 items-center gap-sm"
+              className="hidden md:flex bg-secondary-container text-on-secondary-container px-6 py-2 font-label-lg font-bold hover:opacity-90 transition-all active:scale-95 items-center gap-sm [text-shadow:none]"
             >
               Apply Now
               <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
