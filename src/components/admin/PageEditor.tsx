@@ -41,7 +41,7 @@ export default function PageEditor({ page }: { page: PageDef }) {
       toast(updateError.message, 'error')
       await load()
     } else {
-      toast(next ? 'Section is live' : 'Section hidden — the page shows its default text')
+      toast(next ? 'Section is live' : 'Section hidden. The page shows its default text')
     }
   }
 

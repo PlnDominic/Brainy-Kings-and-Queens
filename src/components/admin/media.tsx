@@ -154,7 +154,7 @@ export function MediaPicker({ open, onClose, onSelect }: { open: boolean; onClos
               {Array.from({ length: 10 }).map((_, i) => <Skeleton key={i} className="aspect-square" />)}
             </div>
           ) : visible.length === 0 ? (
-            <p className="py-8 text-center text-sm text-[#8C6F6F]">No images yet — upload one above.</p>
+            <p className="py-8 text-center text-sm text-[#8C6F6F]">No images yet. Upload one above.</p>
           ) : (
             <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5">
               {visible.map((item) => (

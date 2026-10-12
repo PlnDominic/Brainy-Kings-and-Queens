@@ -96,7 +96,7 @@ export default async function AboutPage() {
               {heroSection?.heading ?? <>We Crown Children.{' '}<br className="hidden md:block" /><span className="text-secondary-container">Not Just Educate Them.</span></>}
             </h1>
             <p className="text-body-lg text-white/70 max-w-xl leading-relaxed mb-xl">
-              {heroSection?.body ?? 'For over 15 years, Brainy Kings & Queens Montessori has been Kumasi’s most trusted name in early childhood excellence — rooted in dignity, driven by curiosity.'}
+              {heroSection?.body ?? 'For over 15 years, Brainy Kings & Queens Montessori has been Kumasi’s most trusted name in early childhood excellence, rooted in dignity, driven by curiosity.'}
             </p>
             <Link
               href={heroSection?.cta_href ?? '/admissions'}
@@ -143,7 +143,7 @@ export default async function AboutPage() {
                   {storySection?.heading ?? 'A School Built on a Simple Belief'}
                 </h2>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed mb-md">
-                  {storySection?.body ?? 'Brainy Kings & Queens was founded on one conviction: that the children of Kumasi deserve an education worthy of their potential. The Montessori method gave us the framework — our community gave us the heart.'}
+                  {storySection?.body ?? 'Brainy Kings & Queens was founded on one conviction: that the children of Kumasi deserve an education worthy of their potential. The Montessori method gave us the framework; our community gave us the heart.'}
                 </p>
                 <p className="text-body-lg text-on-surface-variant leading-relaxed">
                   {storySection?.secondary_body ?? 'Over 15 years, we have grown from a small pre-school to a full primary school serving over 250 students, from ages 2.5 through JHS 3. But our promise remains unchanged: to see each child as the leader they already are.'}

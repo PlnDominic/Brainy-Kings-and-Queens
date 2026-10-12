@@ -23,7 +23,7 @@ const steps = [
     number: '02',
     icon: 'fact_check',
     title: 'Assessment Visit',
-    body: "We invite your child for a relaxed, play-based assessment — no pressure, just observation.",
+    body: "We invite your child for a relaxed, play-based assessment: no pressure, just observation.",
   },
   {
     number: '03',

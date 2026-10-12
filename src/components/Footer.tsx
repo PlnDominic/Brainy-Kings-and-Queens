@@ -30,7 +30,7 @@ export default function Footer({ settings }: { settings?: SiteSettings | null })
       <div className="container mx-auto px-margin-mobile md:px-margin-desktop pt-xl pb-lg">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-xl">
 
-          {/* Brand — 5 cols */}
+          {/* Brand: 5 cols */}
           <div className="md:col-span-5">
             <div className="flex items-center gap-sm mb-lg">
               <div className="w-10 h-10 bg-secondary-container flex items-center justify-center flex-shrink-0">
@@ -73,7 +73,7 @@ export default function Footer({ settings }: { settings?: SiteSettings | null })
           {/* Spacer */}
           <div className="hidden md:block md:col-span-1" />
 
-          {/* Navigate — 2 cols */}
+          {/* Navigate: 2 cols */}
           <div className="md:col-span-2">
             <h4 className="text-label-sm font-bold text-white uppercase tracking-[0.25em] mb-lg">
               Navigate
@@ -92,7 +92,7 @@ export default function Footer({ settings }: { settings?: SiteSettings | null })
             </nav>
           </div>
 
-          {/* Contact — 4 cols */}
+          {/* Contact: 4 cols */}
           <div className="md:col-span-4">
             <h4 className="text-label-sm font-bold text-white uppercase tracking-[0.25em] mb-lg">
               Contact Us

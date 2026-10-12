@@ -68,7 +68,7 @@ export default function AdminLoginPage() {
           </Link>
           <div className="max-w-md">
             <div className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[#FF9C9C]">Content Studio</div>
-            <p className="text-4xl font-extrabold leading-tight tracking-tight">Tell the school’s story — one page at a time.</p>
+            <p className="text-4xl font-extrabold leading-tight tracking-tight">Tell the school’s story, one page at a time.</p>
             <ul className="mt-8 space-y-3 text-sm text-white/75">
               {[
                 ['web', 'Edit every page section in the order visitors see it'],
