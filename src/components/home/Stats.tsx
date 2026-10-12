@@ -35,7 +35,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative z-10 bg-[#FBF6EE] px-5 md:px-8">
+    <section className="relative z-10 bg-[linear-gradient(to_bottom,transparent_96px,#FBF6EE_96px)] px-5 md:px-8">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
