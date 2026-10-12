@@ -1,286 +1,43 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import HeroSlideshow from '@/components/HeroSlideshow'
-import ProgramsSection from '@/components/ProgramsSection'
-import TestimonialsSection from '@/components/TestimonialsSection'
-import AnimateOnView from '@/components/AnimateOnView'
+import Hero from '@/components/home/Hero'
+import Stats from '@/components/home/Stats'
+import Philosophy from '@/components/home/Philosophy'
+import Programs from '@/components/home/Programs'
+import WhyUs from '@/components/home/WhyUs'
+import Gallery from '@/components/home/Gallery'
+import Testimonials from '@/components/home/Testimonials'
+import AdmissionsCta from '@/components/home/AdmissionsCta'
 import {
   getGalleryItems,
   getHeroSlides,
   getPageSections,
   getPrograms,
+  getSiteSettings,
   getTestimonials,
 } from '@/lib/data'
 
 export const dynamic = 'force-dynamic'
 
-const galleryRow1 = [
-  { src: '/images/students-large-group-photo.jpeg', alt: 'Our entire school community', caption: 'Our school family', large: true },
-  { src: '/images/students-uniform-badges.jpeg', alt: 'Students proudly showing school badges', caption: 'Royal pride' },
-  { src: '/images/students-teacher-outdoor.jpeg', alt: 'Teacher with students outdoors', caption: 'Mentorship' },
-]
-
-const galleryRow2 = [
-  { src: '/images/student-field-trip-bench-2.jpeg', alt: 'Young student at field trip', caption: 'Field trip explorer' },
-  { src: '/images/students-preschool-twins-2.jpeg', alt: 'Two pre-school girls in uniform', caption: 'Our youngest royals' },
-  { src: '/images/student-field-trip-tree.jpeg', alt: 'Student at field trip by large tree', caption: 'Beyond the classroom' },
-  { src: '/images/students-cultural-day.jpeg', alt: 'Cultural celebration day', caption: 'Cultural day' },
-]
-
-const galleryRow3 = [
-  { src: '/images/students-preschool-standing.jpeg', alt: 'Pre-school students in uniform', caption: 'Ready for the day' },
-  { src: '/images/students-classroom-fun.jpeg', alt: 'Students enjoying classroom learning', caption: 'Classroom joy' },
-  { src: '/images/students-preschool-lunch-group.jpeg', alt: 'Pre-school students sharing lunch', caption: 'Shared meals' },
-]
-
 export default async function HomePage() {
-  const [slides, programs, testimonials, galleryItems, pageSections] = await Promise.all([
+  const [slides, programs, testimonials, galleryItems, pageSections, settings] = await Promise.all([
     getHeroSlides(),
     getPrograms(),
     getTestimonials(),
     getGalleryItems('home'),
     getPageSections('home'),
+    getSiteSettings(),
   ])
   const section = (key: string) => pageSections.find((item) => item.section_key === key)
-  const gallerySection = section('gallery')
 
   return (
     <>
-      {/* ── 1. Hero ── */}
-      <HeroSlideshow
-        slides={slides.length ? slides : undefined}
-        section={section('hero')}
-      />
-
-      {/* ── 2. Mission Statement ── */}
-      <section className="py-xl bg-surface">
-        <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
-          <AnimateOnView className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
-              {/* Left: large quote */}
-              <div>
-                <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-lg">
-                  {section('mission')?.eyebrow ?? 'Our Philosophy'}
-                </p>
-                <h2 className="text-headline-lg font-headline-lg text-on-surface leading-tight mb-lg">
-                  {section('mission')?.heading ?? <>We don&apos;t just teach children.{' '}<span className="text-primary">We crown them.</span></>}
-                </h2>
-                <p className="text-body-lg text-on-surface-variant leading-relaxed">
-                  {section('mission')?.body ?? 'The Montessori method recognises that children are natural learners, born with curiosity, dignity, and the capacity to lead. Our role is simply to prepare the environment and step aside.'}
-                </p>
-              </div>
-
-              {/* Right: two stacked photos with accent block */}
-              <AnimateOnView variant="fadeRight">
-                <div className="relative">
-                  <div className="flex flex-col gap-md">
-                    <div className="relative h-[192px] overflow-hidden">
-                      <Image
-                        src="/images/students-playground-trampoline.jpeg"
-                        alt="Students playing at Brainy Kings and Queens"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="relative h-[192px] overflow-hidden">
-                      <Image
-                        src="/images/students-group-celebration.jpeg"
-                        alt="Students celebrating at Brainy Kings and Queens"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  {/* Accent block */}
-                  <div className="absolute -bottom-6 -left-6 bg-secondary-container p-md shadow-xl max-w-[200px]">
-                    <p className="text-label-sm font-bold text-on-secondary-container uppercase tracking-wide mb-xs">
-                      15+ Years
-                    </p>
-                    <p className="text-label-sm text-on-secondary-container/70">
-                      of academic excellence in Kumasi
-                    </p>
-                  </div>
-                </div>
-              </AnimateOnView>
-            </div>
-          </AnimateOnView>
-        </div>
-      </section>
-
-      {/* ── 4. Programs ── */}
-      <ProgramsSection
-        programs={programs.length ? programs : undefined}
-        section={section('programs')}
-      />
-
-      {/* ── 5. Gallery ── */}
-      <section className="py-xl bg-surface-container-low">
-        <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
-          <AnimateOnView className="mb-xl">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-md">
-              <div>
-                <p className="text-label-sm font-bold text-secondary uppercase tracking-[0.25em] mb-sm">
-                  {gallerySection?.eyebrow ?? 'Campus Life'}
-                </p>
-                <h2 className="text-headline-lg font-headline-lg text-on-surface">
-                  {gallerySection?.heading ?? 'Life at Brainy Kings & Queens'}
-                </h2>
-              </div>
-              <Link
-                href={gallerySection?.cta_href ?? '/about'}
-                className="flex items-center gap-sm text-primary font-label-lg font-bold hover:gap-md transition-all self-start md:self-auto group"
-              >
-                {gallerySection?.cta_label ?? 'See more'}
-                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
-              </Link>
-            </div>
-          </AnimateOnView>
-
-          {galleryItems.length > 0 ? (
-            <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
-              {galleryItems.map((item) => (
-                <div key={item.id} className="relative gallery-item h-[220px] overflow-hidden">
-                  <Image
-                    src={item.image_url}
-                    alt={item.alt_text}
-                    fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  {item.caption && <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>}
-                </div>
-              ))}
-            </div>
-          ) : (
-          <>
-          {/* Row 1: large (7/12) + two stacked (5/12) */}
-          <AnimateOnView>
-            <div className="flex flex-col md:flex-row gap-md mb-md">
-              <div className="md:w-7/12 relative gallery-item overflow-hidden h-[340px] md:h-[480px]">
-                <Image src={galleryRow1[0].src} alt={galleryRow1[0].alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
-                <div className="gallery-caption"><span className="text-white font-label-lg">{galleryRow1[0].caption}</span></div>
-              </div>
-              <div className="md:w-5/12 flex flex-col gap-md">
-                {galleryRow1.slice(1).map((item) => (
-                  <div key={item.src} className="flex-1 relative gallery-item overflow-hidden h-[160px] md:h-auto">
-                    <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
-                    <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimateOnView>
-
-          {/* Row 2: four equal */}
-          <AnimateOnView delay={0.1}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-md mb-md">
-              {galleryRow2.map((item) => (
-                <div key={item.src} className="relative gallery-item overflow-hidden h-[180px] md:h-[220px]">
-                  <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
-                  <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>
-                </div>
-              ))}
-            </div>
-          </AnimateOnView>
-
-          {/* Row 3: three equal */}
-          <AnimateOnView delay={0.2}>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-md mb-md">
-              {galleryRow3.map((item) => (
-                <div key={item.src} className="relative gallery-item overflow-hidden h-[220px]">
-                  <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 hover:scale-105" />
-                  <div className="gallery-caption"><span className="text-white font-label-lg">{item.caption}</span></div>
-                </div>
-              ))}
-            </div>
-          </AnimateOnView>
-
-          {/* Row 4: two equal */}
-          <AnimateOnView delay={0.3}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
-              <div className="relative gallery-item overflow-hidden h-[280px]">
-                <Image src="/images/students-school-building-front.jpeg" alt="Students in front of the Brainy Kings and Queens school building" fill className="object-cover transition-transform duration-700 hover:scale-105" />
-                <div className="gallery-caption"><span className="text-white font-label-lg">Our Campus</span></div>
-              </div>
-              <div className="relative gallery-item overflow-hidden h-[280px]">
-                <Image src="/images/students-montessori-classroom.jpeg" alt="Young students learning in the Montessori classroom" fill className="object-cover transition-transform duration-700 hover:scale-105" />
-                <div className="gallery-caption"><span className="text-white font-label-lg">Learning Through Play</span></div>
-              </div>
-            </div>
-          </AnimateOnView>
-          </>
-          )}
-        </div>
-      </section>
-
-      {/* ── 6. Testimonials ── */}
-      <TestimonialsSection
-        testimonials={testimonials.length ? testimonials : undefined}
-        section={section('testimonials')}
-      />
-
-      {/* ── 7. Admissions CTA ── */}
-      <section className="bg-primary overflow-hidden">
-        {/* Text content */}
-        <div className="container mx-auto px-margin-mobile md:px-margin-desktop pt-xl pb-xl">
-          <AnimateOnView className="max-w-3xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-md mb-md">
-              <div className="h-px w-10 bg-white/20 flex-shrink-0" />
-              <p className="text-label-sm font-bold text-secondary-container uppercase tracking-[0.25em]">
-                {section('cta')?.eyebrow ?? 'Admissions Open'}
-              </p>
-              <div className="h-px w-10 bg-white/20 flex-shrink-0" />
-            </div>
-            <h2 className="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-on-primary mb-md leading-tight">
-              {section('cta')?.heading ?? <>Secure Your Child&apos;s <br className="hidden md:block" />Place Today</>}
-            </h2>
-            <p className="text-body-lg text-on-primary/70 mb-xl max-w-lg mx-auto leading-relaxed">
-              {section('cta')?.body ?? 'Enrolment for the upcoming academic year is now open. Join a community that believes every child deserves a royal education.'}
-            </p>
-            <div className="flex flex-wrap gap-md justify-center">
-              <Link
-                href={section('cta')?.cta_href ?? '/admissions'}
-                className="bg-secondary-container text-on-secondary-container px-10 py-4 font-label-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-xl"
-              >
-                {section('cta')?.cta_label ?? 'Apply Now'}
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </Link>
-              <a
-                href="tel:0591664392"
-                className="border-2 border-white/30 text-on-primary px-10 py-4 font-label-lg hover:border-white hover:bg-white/10 transition-all flex items-center gap-sm"
-              >
-                <span className="material-symbols-outlined text-[20px]">call</span>
-                0591664392
-              </a>
-            </div>
-          </AnimateOnView>
-        </div>
-
-        {/* Full-bleed photo strip: asymmetric 3:2 split */}
-        <AnimateOnView>
-          <div className="flex gap-[3px] h-[280px] md:h-[420px]">
-            <div className="relative overflow-hidden flex-[3]">
-              <Image
-                src="/images/students-outdoor-play-1.jpeg"
-                alt="Young students playing outdoors at Brainy Kings and Queens"
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-              />
-              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-primary/60 to-transparent" />
-            </div>
-            <div className="relative overflow-hidden flex-[2]">
-              <Image
-                src="/images/students-outdoor-play-2.jpeg"
-                alt="Children enjoying outdoor learning time at Brainy Kings and Queens"
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-              />
-              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-primary/60 to-transparent" />
-            </div>
-          </div>
-        </AnimateOnView>
-      </section>
+      <Hero slides={slides} section={section('hero')} />
+      <Stats />
+      <Philosophy section={section('mission')} />
+      <Programs programs={programs} section={section('programs')} />
+      <WhyUs />
+      <Gallery items={galleryItems} section={section('gallery')} />
+      <Testimonials testimonials={testimonials} section={section('testimonials')} />
+      <AdmissionsCta section={section('cta')} phone={settings?.phone} />
     </>
   )
 }
