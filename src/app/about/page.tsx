@@ -6,6 +6,7 @@ import StaggerItem from '@/components/StaggerItem'
 import PageHero from '@/components/site/PageHero'
 import AdmissionsCta from '@/components/home/AdmissionsCta'
 import { Crown, DotGrid, Eyebrow, Wave } from '@/components/home/decor'
+import { PhotoPicker } from '@/lib/photos'
 import { getGalleryItems, getPageSections, getSiteSettings, getTeamMembers, getValues } from '@/lib/data'
 
 export const metadata: Metadata = {
@@ -32,10 +33,11 @@ const values = [
   },
 ]
 
-const valuePhotos = [
+const VALUE_PHOTOS = [
   '/images/student-uniform-portrait.jpeg',
   '/images/students-classroom-primary.jpeg',
   '/images/students-uniform-outdoor-group.jpeg',
+  '/images/students-teacher-outdoor.jpeg',
 ]
 
 const aboutGalleryDefaults = [
@@ -43,7 +45,8 @@ const aboutGalleryDefaults = [
   { src: '/images/students-preschool-cubbies.jpeg', alt: 'Pre-school students organising their belongings', caption: 'Practical Life' },
   { src: '/images/students-preschool-lunch-closeup.jpeg', alt: 'Pre-school children enjoying lunch at school', caption: 'Nourished & Cared For' },
   { src: '/images/teacher-student-mentorship.jpeg', alt: 'A teacher guiding a student', caption: 'Guided, Not Lectured' },
-  { src: '/images/students-uniform-outdoor-group-2.jpeg', alt: 'Students in uniform outdoors', caption: 'Friends for Life' },
+  { src: '/images/students-montessori-classroom.jpeg', alt: 'Children in the Montessori classroom', caption: 'Learning by Doing' },
+  { src: '/images/students-field-trip-bench.jpeg', alt: 'Students on a field trip', caption: 'Friends for Life' },
   { src: '/images/students-playground-trampoline.jpeg', alt: 'Students playing on the trampoline', caption: 'Play Time' },
   { src: '/images/students-preschool-twins.jpeg', alt: 'Two pre-school girls in uniform', caption: 'Our Youngest Royals' },
   { src: '/images/student-field-trip-tree.jpeg', alt: 'Student on a field trip', caption: 'Field Trips' },
@@ -70,17 +73,28 @@ export default async function AboutPage() {
   const heroSection = section('hero')
   const storySection = section('story')
   const gallerySection = section('gallery')
-  const photos = [
-    ...aboutGalleryDefaults,
-    ...galleryItems
-      .filter((item) => !aboutGalleryDefaults.some((defaultItem) => defaultItem.src === item.image_url))
-      .map((item) => ({ src: item.image_url, alt: item.alt_text, caption: item.caption })),
-  ]
+
+  // No photo appears twice on this page; Content Studio photos take priority.
+  const picker = new PhotoPicker()
+  const heroPhoto = heroSection?.image_url || '/images/students-group-celebration.jpeg'
+  picker.claim(heroPhoto)
+  const storyPhoto = storySection?.image_url || '/images/students-cultural-day.jpeg'
+  picker.claim(storyPhoto)
+  const cmsGallery = picker.unique(
+    galleryItems.map((item) => ({ src: item.image_url, alt: item.alt_text, caption: item.caption })),
+    (item) => item.src,
+  )
+  const storySecondPhoto = picker.pick(['/images/students-smiling-closeup.jpeg', '/images/students-bench-outdoor.jpeg'])
+  const valuePhotos = picker.pickMany(VALUE_PHOTOS, displayValues.length)
+  const ctaPhoto = picker.pick(['/images/students-uniform-badges.jpeg', '/images/students-teacher-outdoor.jpeg'])
+  const galleryPhotos = [...cmsGallery, ...picker.unique(aboutGalleryDefaults, (item) => item.src)]
+  // The mosaic is laid out in groups of five.
+  const photos = galleryPhotos.slice(0, galleryPhotos.length >= 5 ? galleryPhotos.length - (galleryPhotos.length % 5) : galleryPhotos.length)
 
   return (
     <main>
       <PageHero
-        image={heroSection?.image_url || '/images/students-large-group-photo.jpeg'}
+        image={heroPhoto}
         imageAlt="Brainy Kings and Queens school community"
         imagePosition="object-top"
         eyebrow={heroSection?.eyebrow ?? 'Est. 2010 · Kumasi, Ghana'}
@@ -95,10 +109,10 @@ export default async function AboutPage() {
           <AnimateOnView variant="fadeLeft" className="relative mx-auto w-full max-w-[540px]">
             <DotGrid className="absolute -right-6 -top-6 h-32 w-32 text-[#B31B1B]/20" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[40px] rounded-br-[120px] shadow-[0_30px_60px_-30px_rgba(42,12,12,0.45)]">
-              <Image src={storySection?.image_url || '/images/students-cultural-day.jpeg'} alt="Students celebrating cultural day in kente attire" fill sizes="(max-width: 1024px) 90vw, 540px" className="object-cover" />
+              <Image src={storyPhoto} alt="Students celebrating cultural day in kente attire" fill sizes="(max-width: 1024px) 90vw, 540px" className="object-cover" />
             </div>
             <div className="absolute -right-4 top-10 hidden aspect-square w-[38%] overflow-hidden rounded-[28px] border-[6px] border-[#FBF6EE] shadow-xl sm:block">
-              <Image src="/images/students-group-celebration.jpeg" alt="Students celebrating together" fill sizes="220px" className="object-cover" />
+              <Image src={storySecondPhoto} alt="Students at Brainy Kings & Queens" fill sizes="220px" className="object-cover" />
             </div>
             <div className="absolute -bottom-6 left-6 flex items-center gap-4 rounded-3xl bg-[#2A0C0C] p-5 pr-7 text-white shadow-2xl">
               <Crown className="h-8 w-10" />
@@ -144,7 +158,7 @@ export default async function AboutPage() {
               <StaggerItem key={id}>
                 <article className="group overflow-hidden rounded-[28px] bg-white/[0.04] ring-1 ring-white/10">
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image src={valuePhotos[index % valuePhotos.length]} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                    <Image src={valuePhotos[index]} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
                     <span className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#E2B45A] text-[#2A0C0C]">
                       <span className="material-symbols-outlined text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>{icon}</span>
                     </span>
@@ -226,7 +240,7 @@ export default async function AboutPage() {
         section={section('cta')}
         phone={settings?.phone}
         className={teamMembers.length > 0 ? 'bg-white' : 'bg-[#FBF6EE]'}
-        image="/images/students-uniform-badges.jpeg"
+        image={ctaPhoto}
         defaults={{
           eyebrow: 'Admissions Open',
           heading: 'Join Our Royal Community',

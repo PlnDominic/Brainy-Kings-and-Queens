@@ -7,6 +7,7 @@ import StaggerItem from '@/components/StaggerItem'
 import PageHero from '@/components/site/PageHero'
 import AdmissionsCta from '@/components/home/AdmissionsCta'
 import { Crown, Eyebrow, Sparkle, Wave } from '@/components/home/decor'
+import { PhotoPicker } from '@/lib/photos'
 import { getPageSections, getPrinciples, getPrograms, getSiteSettings } from '@/lib/data'
 
 export const metadata: Metadata = {
@@ -43,13 +44,16 @@ const principles = [
   { icon: 'public', title: 'Cosmic Education', body: 'Every subject connects to a larger story: how humans and the universe are one.' },
 ]
 
-const classroomPhotos = [
-  { src: '/images/students-montessori-classroom.jpeg', alt: 'Children working with Montessori materials' },
-  { src: '/images/students-classroom-fun.jpeg', alt: 'Students enjoying a lesson' },
-  { src: '/images/students-preschool-cubbies-2.jpeg', alt: 'Pre-school students at their cubbies' },
-  { src: '/images/students-classroom-primary.jpeg', alt: 'Primary students in class' },
-  { src: '/images/students-preschool-lunch-closeup-2.jpeg', alt: 'Pre-school children at lunch' },
-  { src: '/images/teacher-student-mentorship.jpeg', alt: 'A teacher guiding a student' },
+/** Preferred photos for the classroom strip, in order. */
+const CLASSROOM_PHOTOS = [
+  '/images/students-montessori-classroom.jpeg',
+  '/images/students-preschool-cubbies.jpeg',
+  '/images/teacher-student-mentorship.jpeg',
+  '/images/students-preschool-lunch-closeup.jpeg',
+  '/images/students-classroom-fun.jpeg',
+  '/images/students-classroom-primary.jpeg',
+  '/images/students-preschool-twins.jpeg',
+  '/images/students-preschool-lunch-group.jpeg',
 ]
 
 export default async function CurriculumPage() {
@@ -74,10 +78,20 @@ export default async function CurriculumPage() {
   const programsSection = section('programs')
   const quoteSection = section('quote')
 
+  // No photo appears twice on this page; Content Studio photos take priority.
+  const picker = new PhotoPicker()
+  const heroPhoto = heroSection?.image_url || '/images/school-building.jpeg'
+  picker.claim(heroPhoto)
+  displayPrograms.forEach((program) => picker.claim(program.image))
+  const quotePhoto = quoteSection?.image_url || picker.pick(['/images/students-classroom-primary.jpeg'])
+  picker.claim(quotePhoto)
+  const stripPhotos = picker.pickMany(CLASSROOM_PHOTOS, 6)
+  const ctaPhoto = picker.pick(['/images/students-smiling-closeup.jpeg', '/images/students-uniform-badges.jpeg'])
+
   return (
     <main>
       <PageHero
-        image={heroSection?.image_url || '/images/school-building.jpeg'}
+        image={heroPhoto}
         imageAlt="Brainy Kings and Queens school campus"
         eyebrow={heroSection?.eyebrow ?? 'Academic Programs'}
         heading={heroSection?.heading ?? <>A Royal Path <span className="text-[#E2B45A]">Through Every Stage</span></>}
@@ -174,10 +188,10 @@ export default async function CurriculumPage() {
             <div className="flex justify-center"><Eyebrow>Inside our classrooms</Eyebrow></div>
           </AnimateOnView>
           <StaggerContainer className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {classroomPhotos.map((photo, index) => (
-              <StaggerItem key={photo.src} className={index === 0 || index === 3 ? 'md:row-span-2' : ''}>
+            {stripPhotos.map((photo, index) => (
+              <StaggerItem key={photo} className={index === 0 || index === 3 ? 'md:row-span-2' : ''}>
                 <div className={`relative aspect-[4/3] w-full overflow-hidden rounded-[28px] ${index === 0 || index === 3 ? 'md:aspect-auto md:h-full' : ''}`}>
-                  <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition duration-700 hover:scale-105" />
+                  <Image src={photo} alt="Inside a Brainy Kings & Queens classroom" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition duration-700 hover:scale-105" />
                 </div>
               </StaggerItem>
             ))}
@@ -203,7 +217,7 @@ export default async function CurriculumPage() {
             <Crown className="absolute -top-14 left-1/2 h-10 w-14 -translate-x-1/2" />
             <div className="absolute inset-0 -translate-x-5 translate-y-5 rounded-t-[999px] rounded-b-[40px] border-2 border-[#E2B45A]/50" />
             <div className="relative aspect-[3/4] overflow-hidden rounded-t-[999px] rounded-b-[40px]">
-              <Image src={quoteSection?.image_url || '/images/students-classroom-primary.jpeg'} alt="Primary students learning in the classroom" fill sizes="380px" className="object-cover" />
+              <Image src={quotePhoto} alt="Primary students learning in the classroom" fill sizes="380px" className="object-cover" />
             </div>
             <Sparkle className="absolute -right-4 top-1/3 h-6 w-6" />
           </AnimateOnView>
@@ -215,7 +229,7 @@ export default async function CurriculumPage() {
         section={section('cta')}
         phone={settings?.phone}
         className="bg-white pt-10"
-        image="/images/students-classroom-fun-2.jpeg"
+        image={ctaPhoto}
         defaults={{
           eyebrow: 'Start the Journey',
           heading: "Secure Your Child's Place Today",

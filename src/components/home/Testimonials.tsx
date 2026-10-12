@@ -19,7 +19,7 @@ function initials(name: string) {
   return name.replace(/^(Dr|Mr|Mrs|Ms)\.?\s+/i, '').split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase()
 }
 
-export default function Testimonials({ testimonials, section }: { testimonials?: Testimonial[]; section?: PageSection }) {
+export default function Testimonials({ testimonials, section, image }: { testimonials?: Testimonial[]; section?: PageSection; image: string }) {
   const items = testimonials?.length
     ? testimonials.map((item) => ({ key: item.id, quote: item.quote, name: item.name, role: item.role }))
     : fallback
@@ -52,7 +52,7 @@ export default function Testimonials({ testimonials, section }: { testimonials?:
             <span className="text-sm font-semibold text-[#7A5C5C]">Loved by Kumasi families</span>
           </div>
           <div className="relative mt-10 hidden h-56 w-56 overflow-hidden rounded-full ring-8 ring-[#FBF6EE] lg:block">
-            <Image src="/images/students-group-celebration.jpeg" alt="Students celebrating together" fill sizes="224px" className="object-cover" />
+            <Image src={image} alt="Students celebrating together" fill sizes="224px" className="object-cover" />
           </div>
           <Sparkle className="absolute bottom-6 left-52 hidden h-6 w-6 lg:block" />
         </div>

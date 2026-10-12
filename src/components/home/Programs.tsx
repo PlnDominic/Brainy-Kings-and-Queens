@@ -6,10 +6,11 @@ import StaggerItem from '@/components/StaggerItem'
 import type { Database } from '@/types/database'
 import { Eyebrow } from './decor'
 
-type Program = Database['public']['Tables']['programs']['Row']
 type PageSection = Database['public']['Tables']['page_sections']['Row']
 
-const fallbackPrograms = [
+export type ProgramCard = { id: string; level: string; age: string; tagline: string; icon: string; image: string }
+
+export const FALLBACK_PROGRAMS: ProgramCard[] = [
   {
     id: 'pre-school', level: 'Pre-School', age: 'Ages 2.5 – 5', tagline: 'The Prepared Environment',
     icon: 'child_care', image: '/images/students-preschool-standing.jpeg',
@@ -26,13 +27,7 @@ const fallbackPrograms = [
 
 const accents = ['#B31B1B', '#C98A1B', '#7A1E3A']
 
-export default function Programs({ programs, section }: { programs?: Program[]; section?: PageSection }) {
-  const items = programs?.length
-    ? programs.map((program) => ({
-        id: program.id, level: program.level, age: program.age_range, tagline: program.tagline,
-        icon: program.icon, image: program.image_url,
-      }))
-    : fallbackPrograms
+export default function Programs({ items, section }: { items: ProgramCard[]; section?: PageSection }) {
 
   return (
     <section className="relative bg-white py-24 lg:py-32">

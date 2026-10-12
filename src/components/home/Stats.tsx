@@ -33,7 +33,7 @@ const stats = [
   { icon: 'workspace_premium', value: 100, suffix: '%', label: 'Qualified staff' },
 ]
 
-export default function Stats() {
+export default function Stats({ image }: { image: string }) {
   return (
     <section className="relative z-10 px-5 md:px-8">
       {/* Ivory backdrop starts below the part of the card that overlaps the hero */}
@@ -47,7 +47,7 @@ export default function Stats() {
       >
         <div className="flex items-center gap-5">
           <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full ring-4 ring-[#FBEAD3] sm:h-28 sm:w-28">
-            <Image src="/images/students-smiling-closeup.jpeg" alt="Smiling Brainy Kings & Queens students" fill sizes="112px" className="object-cover" />
+            <Image src={image} alt="Smiling Brainy Kings & Queens students" fill sizes="112px" className="object-cover" />
           </div>
           <div>
             <Sparkle className="mb-2 h-4 w-4" />

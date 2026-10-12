@@ -7,26 +7,12 @@ import AnimateOnView from '@/components/AnimateOnView'
 import type { Database } from '@/types/database'
 import { Eyebrow } from './decor'
 
-type GalleryItem = Database['public']['Tables']['gallery_items']['Row']
 type PageSection = Database['public']['Tables']['page_sections']['Row']
 
-const fallback = [
-  { src: '/images/students-large-group-photo.jpeg', alt: 'Our entire school community', caption: 'Our school family' },
-  { src: '/images/students-uniform-badges.jpeg', alt: 'Students proudly showing school badges', caption: 'Royal pride' },
-  { src: '/images/students-cultural-day.jpeg', alt: 'Cultural celebration day', caption: 'Cultural day' },
-  { src: '/images/students-teacher-outdoor.jpeg', alt: 'Teacher with students outdoors', caption: 'Mentorship' },
-  { src: '/images/students-preschool-twins-2.jpeg', alt: 'Two pre-school girls in uniform', caption: 'Our youngest royals' },
-  { src: '/images/student-field-trip-tree.jpeg', alt: 'Student at field trip by large tree', caption: 'Beyond the classroom' },
-  { src: '/images/students-classroom-fun.jpeg', alt: 'Students enjoying classroom learning', caption: 'Classroom joy' },
-  { src: '/images/students-preschool-lunch-group.jpeg', alt: 'Pre-school students sharing lunch', caption: 'Shared meals' },
-  { src: '/images/students-school-building-front.jpeg', alt: 'Students in front of the school building', caption: 'Our campus' },
-]
+export type GalleryPhoto = { src: string; alt: string; caption?: string | null }
 
-export default function Gallery({ items, section }: { items?: GalleryItem[]; section?: PageSection }) {
+export default function Gallery({ photos, section }: { photos: GalleryPhoto[]; section?: PageSection }) {
   const track = useRef<HTMLDivElement>(null)
-  const photos = items?.length
-    ? items.map((item) => ({ src: item.image_url, alt: item.alt_text, caption: item.caption }))
-    : fallback
 
   function scroll(direction: 1 | -1) {
     const el = track.current

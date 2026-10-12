@@ -6,6 +6,7 @@ import StaggerItem from '@/components/StaggerItem'
 import AdmissionsForm from '@/components/AdmissionsForm'
 import PageHero from '@/components/site/PageHero'
 import { Eyebrow } from '@/components/home/decor'
+import { PhotoPicker } from '@/lib/photos'
 import { getAdmissionsSteps, getPageSections, getSiteSettings } from '@/lib/data'
 
 export const metadata: Metadata = {
@@ -21,11 +22,13 @@ const steps = [
   { number: '04', icon: 'verified', title: 'Enrolment Confirmed', body: 'Your welcome pack arrives.' },
 ]
 
-const stripPhotos = [
-  { src: '/images/students-preschool-standing-2.jpeg', alt: 'Pre-school students in uniform' },
-  { src: '/images/students-uniform-badges.jpeg', alt: 'Students showing their school badges' },
-  { src: '/images/students-outdoor-play-1.jpeg', alt: 'Children playing outdoors' },
-  { src: '/images/students-smiling-closeup.jpeg', alt: 'Smiling students' },
+/** Preferred photos for the strip above the form, in order. */
+const STRIP_PHOTOS = [
+  '/images/students-preschool-standing.jpeg',
+  '/images/students-uniform-badges.jpeg',
+  '/images/students-outdoor-play-1.jpeg',
+  '/images/students-smiling-closeup.jpeg',
+  '/images/students-preschool-twins.jpeg',
 ]
 
 export default async function AdmissionsPage() {
@@ -39,10 +42,16 @@ export default async function AdmissionsPage() {
   const heroSection = section('hero')
   const stepsSection = section('steps')
 
+  // No photo appears twice on this page; the Content Studio hero photo takes priority.
+  const picker = new PhotoPicker()
+  const heroPhoto = heroSection?.image_url || '/images/student-uniform-portrait.jpeg'
+  picker.claim(heroPhoto)
+  const stripPhotos = picker.pickMany(STRIP_PHOTOS, 4)
+
   return (
     <main>
       <PageHero
-        image={heroSection?.image_url || '/images/student-uniform-portrait.jpeg'}
+        image={heroPhoto}
         imageAlt="Young student in school uniform ready for class"
         imagePosition="object-top"
         eyebrow={heroSection?.eyebrow ?? 'Admissions Open'}
@@ -88,9 +97,9 @@ export default async function AdmissionsPage() {
       <section className="bg-[#FBF6EE] pb-24 lg:pb-32">
         <StaggerContainer className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 md:grid-cols-4 md:px-8">
           {stripPhotos.map((photo, index) => (
-            <StaggerItem key={photo.src}>
+            <StaggerItem key={photo}>
               <div className={`relative aspect-[3/4] overflow-hidden rounded-[28px] ${index % 2 === 1 ? 'md:mt-10' : ''}`}>
-                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition duration-700 hover:scale-105" />
+                <Image src={photo} alt="Students at Brainy Kings & Queens" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition duration-700 hover:scale-105" />
               </div>
             </StaggerItem>
           ))}
