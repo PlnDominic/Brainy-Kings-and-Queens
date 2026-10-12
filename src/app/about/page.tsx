@@ -54,12 +54,6 @@ const aboutGalleryDefaults = [
   { src: '/images/students-preschool-lunch-group.jpeg', alt: 'Pre-school students sharing lunch', caption: 'Shared Meals' },
 ]
 
-const milestones = [
-  { value: '2010', label: 'Founded in Kumasi' },
-  { value: '250+', label: 'Students today' },
-  { value: '2.5 to JHS 3', label: 'Ages we serve' },
-]
-
 export default async function AboutPage() {
   const [cmsValues, galleryItems, teamMembers, pageSections, settings] = await Promise.all([
     getValues(),
@@ -130,14 +124,6 @@ export default async function AboutPage() {
             <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-[#6B4A4A]">
               {storySection?.body ?? 'Founded on one belief: every child in Kumasi deserves an education worthy of their potential.'}
             </p>
-            <dl className="mt-10 grid grid-cols-3 divide-x divide-[#2A0C0C]/10 rounded-[24px] bg-white py-5 shadow-[0_20px_50px_-30px_rgba(42,12,12,0.3)] ring-1 ring-[#2A0C0C]/5">
-              {milestones.map((item) => (
-                <div key={item.label} className="px-4 text-center sm:px-6">
-                  <dd className="text-xl font-extrabold tracking-tight text-primary sm:text-2xl">{item.value}</dd>
-                  <dt className="mt-1 text-xs font-medium text-[#7A5C5C] sm:text-[13px]">{item.label}</dt>
-                </div>
-              ))}
-            </dl>
           </AnimateOnView>
         </div>
       </section>

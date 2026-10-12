@@ -7,7 +7,7 @@ import { Eyebrow, Wave } from './decor'
 
 export const WHY_US_REASONS = [
   { icon: 'menu_book', title: 'Montessori curriculum', photos: ['/images/students-classroom-primary.jpeg', '/images/students-montessori-classroom.jpeg', '/images/students-preschool-cubbies.jpeg'] },
-  { icon: 'diversity_1', title: 'Small classes, 1:8', photos: ['/images/students-classroom-fun.jpeg', '/images/students-preschool-lunch-closeup.jpeg', '/images/students-preschool-twins.jpeg'] },
+  { icon: 'diversity_1', title: 'Small classes', photos: ['/images/students-classroom-fun.jpeg', '/images/students-preschool-lunch-closeup.jpeg', '/images/students-preschool-twins.jpeg'] },
   { icon: 'verified_user', title: 'Safe, caring campus', photos: ['/images/students-school-building-front.jpeg', '/images/school-building.jpeg', '/images/students-group-pavilion.jpeg'] },
   { icon: 'workspace_premium', title: 'Qualified teachers', photos: ['/images/teacher-student-mentorship.jpeg', '/images/students-teacher-outdoor.jpeg'] },
   { icon: 'forest', title: 'Learning beyond walls', photos: ['/images/students-field-trip-bench.jpeg', '/images/student-field-trip-tree.jpeg', '/images/students-bench-outdoor.jpeg'] },
