@@ -18,7 +18,7 @@ const socials = [
 
 export default function Footer({ settings }: { settings?: SiteSettings | null }) {
   const phone = settings?.phone || '0591664392'
-  const email = settings?.email || 'admissions@brainykings.edu'
+  const email = settings?.email || 'brainykingsandqueens1@gmail.com'
   const address = settings?.address || 'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana'
   const hours = settings?.hours || 'Mon – Fri: 7:00 AM – 4:00 PM'
 

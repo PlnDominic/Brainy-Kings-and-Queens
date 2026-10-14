@@ -17,7 +17,7 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE TABLE IF NOT EXISTS public.site_settings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   phone TEXT DEFAULT '0591664392',
-  email TEXT DEFAULT 'admissions@brainykings.edu',
+  email TEXT DEFAULT 'brainykingsandqueens1@gmail.com',
   address TEXT DEFAULT 'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana',
   hours TEXT DEFAULT 'Mon – Fri: 7:00 AM – 4:00 PM',
   copyright_year INT DEFAULT 2026,
@@ -245,7 +245,7 @@ CREATE TABLE IF NOT EXISTS public.admins (
 
 ALTER TABLE public.site_settings
   ADD COLUMN IF NOT EXISTS phone TEXT DEFAULT '0591664392',
-  ADD COLUMN IF NOT EXISTS email TEXT DEFAULT 'admissions@brainykings.edu',
+  ADD COLUMN IF NOT EXISTS email TEXT DEFAULT 'brainykingsandqueens1@gmail.com',
   ADD COLUMN IF NOT EXISTS address TEXT DEFAULT 'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana',
   ADD COLUMN IF NOT EXISTS hours TEXT DEFAULT 'Mon – Fri: 7:00 AM – 4:00 PM',
   ADD COLUMN IF NOT EXISTS copyright_year INT DEFAULT 2026,

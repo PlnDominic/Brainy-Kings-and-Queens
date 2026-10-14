@@ -117,7 +117,7 @@ export default async function AdmissionsPage() {
           </AnimateOnView>
           <AdmissionsForm
             phone={siteSettings?.phone || '0591664392'}
-            email={siteSettings?.email || 'admissions@brainykings.edu'}
+            email={siteSettings?.email || 'brainykingsandqueens1@gmail.com'}
             address={siteSettings?.address || 'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana'}
             hours={siteSettings?.hours || 'Mon – Fri: 7:00 AM – 4:00 PM'}
           />

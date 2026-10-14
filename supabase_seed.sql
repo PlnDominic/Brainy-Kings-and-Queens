@@ -7,7 +7,7 @@
 INSERT INTO site_settings (phone, email, address, hours, copyright_year, privacy_policy_link)
 VALUES (
   '0591664392',
-  'admissions@brainykings.edu',
+  'brainykingsandqueens1@gmail.com',
   'Anwomaso - Ankaa Junction, Kumasi, Ashanti Region, Ghana',
   'Mon – Fri: 7:00 AM – 4:00 PM',
   2026,
