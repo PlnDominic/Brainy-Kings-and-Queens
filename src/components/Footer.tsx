@@ -147,7 +147,7 @@ export default function Footer({ settings }: { settings?: SiteSettings | null })
           <p className="text-label-sm text-white/25">
             Developed By{' '}
             <a
-              href="https://www.ecstasytechologies.com/"
+              href="https://www.ecstasytechnologies.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/50 underline-offset-2 transition-colors hover:text-white hover:underline"
