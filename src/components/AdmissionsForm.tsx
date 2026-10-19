@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import AnimateOnView from '@/components/AnimateOnView'
-import { getSupabaseBrowserClient } from '@/lib/supabase-context'
 
 type Status = 'idle' | 'loading' | 'success'
 
@@ -27,7 +26,6 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 export default function AdmissionsForm({ phone, email, address, hours }: { phone: string; email: string; address: string; hours?: string }) {
-  const supabase = getSupabaseBrowserClient()
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
   const [parentName, setParentName] = useState('')
@@ -40,15 +38,15 @@ export default function AdmissionsForm({ phone, email, address, hours }: { phone
     const formData = new FormData(e.currentTarget)
 
     try {
-      const { error: submitError } = await supabase.from('admissions_inquiries').insert({
-        parent_name: String(formData.get('parent_name') || ''),
-        phone: String(formData.get('phone') || ''),
-        email: String(formData.get('email') || ''),
-        child_age: String(formData.get('child_age') || ''),
-        preferred_start_date: String(formData.get('preferred_start_date') || '') || null,
-        referral_source: String(formData.get('referral_source') || '') || null,
+      const response = await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
       })
-      if (submitError) throw submitError
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}))
+        throw new Error(data.error || 'We could not send your inquiry. Please try again.')
+      }
       setParentName(String(formData.get('parent_name') || '').split(' ')[0])
       setStatus('success')
     } catch (submitError) {
@@ -91,6 +89,13 @@ export default function AdmissionsForm({ phone, email, address, hours }: { phone
               </motion.div>
             ) : (
               <motion.form key="form" onSubmit={handleSubmit} exit={{ opacity: 0, y: -16 }} className="space-y-6">
+                {/* Spam trap: kept off-screen for people, but bots tend to fill it in. The name avoids words browsers autofill. */}
+                <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                  <label>
+                    Leave this field empty
+                    <input type="text" name="reference_code" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
                 <div>
                   <h3 className="text-2xl font-extrabold text-[#2A0C0C]">Inquiry form</h3>
                 </div>

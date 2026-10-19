@@ -19,6 +19,19 @@ Next.js website and Supabase-backed content management system for Brainy Kings &
 	Admin access is membership-based; signing up or knowing a URL does not grant admin permissions. Add further authorized users to `public.admins` using their Auth UUIDs.
 5. Start the app with `npm run dev` and sign in at `/admin/login`.
 
+## Inquiry emails (Gmail with nodemailer)
+
+Each submission of the Admissions form is saved in the Content Studio inbox **and** emailed to the school. The email's Reply-To is the parent, so replying answers them directly.
+
+1. Turn on 2-Step Verification for the Gmail account, then create an App Password at <https://myaccount.google.com/apppasswords>.
+2. Set these in `.env.local`, and in the Vercel project's Environment Variables for production (then redeploy):
+   - `GMAIL_USER`: the Gmail address that sends the mail
+   - `GMAIL_APP_PASSWORD`: the app password (spaces are ignored)
+   - `INQUIRY_TO_EMAIL` (optional): where inquiries are delivered; defaults to `GMAIL_USER`
+3. These are server-only secrets and must never start with `NEXT_PUBLIC_`.
+
+If the Gmail variables are missing or Gmail rejects the login, inquiries are still saved to the Content Studio and the visitor still sees the success message; the problem is written to the server log. The form only shows an error when an inquiry could not be saved or emailed at all.
+
 ## CMS features
 
 - Manage homepage slides, page sections, academic programs, school values, curriculum principles, testimonials, page-specific gallery items, admissions steps, team members, and contact settings at `/admin/content`. Page-section entries are labeled with their page key; gallery items use `home` or `about` as their page key.
